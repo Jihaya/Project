@@ -12,8 +12,8 @@ if(isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true){
 require_once "config.php";
  
 // Define variables and initialize with empty values
-$username = $password = "";
-$username_err = $password_err = "";
+$username = $password = $level ="";
+$username_err = $password_err = $level ="";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -60,12 +60,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             
                             // Store data in session variables
                             $_SESSION["loggedin"] = true;
-                            $_SESSION["id"] = $id;
-                            $_SESSION["username"] = $username;                            
-                            
+                            $_SESSION["id"] = $id; 
+                            $_SESSION["username"] = $username;
+
                             // Redirect user to welcome page
-                            header("location: welcome.php");
-                        } else{
+                            header("location: home.php");
+                        }else{
                             // Display an error message if password is not valid
                             $password_err = "The password you entered was not valid.";
                         }
@@ -95,7 +95,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <title>Login</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
-        body{ font: 14px sans-serif; }
+        body{
+            font: 14px sans-serif;
+            max-width: 500px;
+            margin: auto;
+            background: white;
+            padding: 10px;
+        }
         .wrapper{ width: 350px; padding: 20px; }
         .wrapper{
             margin: 30px;
@@ -104,9 +110,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             opacity: 0.9;
             /*filter: alpha(opacity=100); /* For IE8 and earlier */
             max-width: 500px;
-            margin: auto;
-            background: white;
-            padding: 10px;
         }
     </style>
 </head>

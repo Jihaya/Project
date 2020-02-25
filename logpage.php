@@ -1,3 +1,16 @@
+<?php
+// Initialize the session
+session_start();
+ 
+// Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+    header("location: login.php");
+    exit;
+    unset($_SESSION);
+    session_destroy();
+}
+?>
+
 <html>
   <head>
     <meta charset="UTF-8">
@@ -18,6 +31,32 @@
     </script>
     <style type="text/css">
         body{ font: 14px sans-serif; text-align: center; }
+    </style>
+
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        
+        li a:hover {
+            background-color: #111;
+        }
     </style>
 
     <style>
@@ -46,6 +85,9 @@
     
   </head>
   <body>
+  <ul>
+    <li style="float:right"><a href="welcome.php">Back</a></li>
+  </ul>
   <h1 class="Top">Log Data</h1>
   <div class="container" style="display: flex; height: 100px;">
     <div style="width: 50%;">
@@ -64,10 +106,7 @@
         </tr>
       </table>
     </div>
-        </div>
-    <p>
-      <a href="welcome.php" class="btn btn-danger">Back</a>
-    </p>
+  </div>
 
     <script>
       var tbltime = document.getElementById('tbl_time_list');

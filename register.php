@@ -1,10 +1,22 @@
 <?php
+// // Initialize the session
+// session_start();
+ 
+// // Check if the user is logged in, if not then redirect him to login page
+// if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+//     header("location: login.php");
+//     exit;
+//     unset($_SESSION);
+//     session_destroy();
+// }
+?>
+<?php
 // Include config file
 require_once "config.php";
  
 // Define variables and initialize with empty values
-$username = $password = $confirm_password = $fname = $lname ="";
-$username_err = $password_err = $confirm_password_err = $fname_err = $lname_err = "";
+$username = $password = $confirm_password = $fname = $lname = $email = "";
+$username_err = $password_err = $confirm_password_err = $fname_err = $lname_err = $email = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -107,6 +119,39 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         // Close statement
         mysqli_stmt_close($stmt);
     }
+
+    // Validate email
+    if(empty(trim($_POST["email"]))){
+        $email_err = "Please enter a Email.";
+    } else{
+        // Prepare a select statement
+        $sql = "SELECT id FROM users WHERE email = ?";
+        
+        if($stmt = mysqli_prepare($link, $sql)){
+            // Bind variables to the prepared statement as parameters
+            mysqli_stmt_bind_param($stmt, "s", $param_email);
+            
+            // Set parameters
+            $param_email = trim($_POST["email"]);
+            
+            // Attempt to execute the prepared statement
+            if(mysqli_stmt_execute($stmt)){
+                /* store result */
+                mysqli_stmt_store_result($stmt);
+                
+                if(mysqli_stmt_num_rows($stmt) == 1){
+                    $email_err = "This Email is already.";
+                } else{
+                    $email = trim($_POST["email"]);
+                }
+            } else{
+                echo "Oops! Something went wrong. Please try again later.";
+            }
+        }
+         
+        // Close statement
+        mysqli_stmt_close($stmt);
+    }
 	
     // Validate password
     if(empty(trim($_POST["password"]))){
@@ -128,25 +173,26 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     
     // Check input errors before inserting in database
-    if(empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($fname_err) && empty($lname_err)){
+    if(empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($fname_err) && empty($lname_err) && empty($email_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password , fname , lname) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO users (username, password , fname , lname , email) VALUES (?, ?, ?, ?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "ssss", $param_username, $param_password , $param_fname , $param_lname);
+            mysqli_stmt_bind_param($stmt, "sssss", $param_username, $param_password , $param_fname , $param_lname, $param_email);
             
             // Set parameters
             $param_username = $username;
-			$param_fname = $fname;
-			$param_lname = $lname;
+            $param_fname = $fname;
+            $param_lname = $lname;
+            $param_email = $email;
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
             
             // Attempt to execute the prepared statement
             if(mysqli_stmt_execute($stmt)){
                 // Redirect to login page
-                header("location: login.php");
+                header("location: admin.php");
             } else{
                 echo "Something went wrong. Please try again later.";
             }
@@ -168,11 +214,48 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <title>Sign Up</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
-        body{ font: 14px sans-serif; }
+        body{
+            font: 14px sans-serif;
+        }
         .wrapper{ width: 350px; padding: 20px; }
+        .wrapper{
+            margin: 30px;
+            background-color: #ffffff;
+            border: 1px solid black;
+            opacity: 0.9;
+            /*filter: alpha(opacity=100); /* For IE8 and earlier */
+        }
+    </style>
+    <style>
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #333;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+        }
+        
+        li a:hover {
+            background-color: #111;
+        }
     </style>
 </head>
 <body>
+    <ul>
+        <li style="float:right"><a href="login.php">Back</a></li>
+    </ul>
     <div class="wrapper">
         <h2>Sign Up</h2>
         <p>Please fill this form to create an account.</p>
@@ -202,11 +285,15 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <input type="text" name="lname" class="form-control" value="<?php echo $lname; ?>">
                 <span class="help-block"><?php echo $lname; ?></span>
             </div> 
+            <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
+                <label>Email</label>
+                <input type="text" name="email" class="form-control" value="<?php echo $email; ?>">
+                <span class="help-block"><?php echo $email; ?></span>
+            </div> 
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">
                 <input type="reset" class="btn btn-default" value="Reset">
             </div>
-            <p>Already have an account? <a href="login.php">Login here</a>.</p>
         </form>
     </div>    
 </body>

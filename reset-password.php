@@ -6,6 +6,8 @@ session_start();
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
+    unset($_SESSION);
+    session_destroy();
 }
  
 // Include config file
@@ -54,7 +56,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             if(mysqli_stmt_execute($stmt)){
                 // Password updated successfully. Destroy the session, and redirect to login page
                 session_destroy();
-                header("location: login.php");
+                header("location: home.php");
                 exit();
             } else{
                 echo "Oops! Something went wrong. Please try again later.";
@@ -111,7 +113,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">
-                <a class="btn btn-link" href="welcome.php">Cancel</a>
+                <a class="btn btn-link" href="home.php">Cancel</a>
             </div>
         </form>
     </div>    
