@@ -1,0 +1,7 @@
+{
+    "require": {
+        "kreait/firebase-php": "4.35",
+        "tecnickcom/tcpdf": "^6.3"
+    }
+
+}

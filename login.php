@@ -60,7 +60,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             
                             // Store data in session variables
                             $_SESSION["loggedin"] = true;
-                            $_SESSION["id"] = $id; 
+                            $_SESSION["id"] = $id;
+                            $_SESSION["id1"] = $row["$id"]; 
                             $_SESSION["username"] = $username;
                             $_SESSION["level"] = $row["$level"];
  
@@ -69,12 +70,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 Header("Location: admin.php");
          
                               }
+                            if($id =="1"){
+
+                                Header("Location: admin.php");
+
+                            }else {
+
+                                Header("Location: home.php");
+
+                            }
                             if ($level =="U"){  //ถ้าเป็น member ให้กระโดดไปหน้า home.php
  
                                 Header("Location: home.php");
          
                             }
-
                             // Redirect user to home page
                             //header("location: home.php");
                         }else{

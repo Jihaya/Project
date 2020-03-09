@@ -45,13 +45,17 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         li a:hover {
             background-color: #111;
         }
+
+        .activeout {
+            background-color: #cc0000;
+        }
     </style>
 
     <style>
         .databox{
-            margin: 30px;
+            margin: 35px;
             background-color: #ffffff;
-            border: 1px solid black;
+            border: 1px;
             opacity: 0.9;
             /*filter: alpha(opacity=100); /* For IE8 and earlier */
         }
@@ -80,6 +84,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             width: 70%;
         }
     </style>
+    <style>
+        body {
+            background-image: url('bghome.jpg');
+        }
+    </style>
+    
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
     <script>
         // Initialize Firebase
@@ -97,9 +107,26 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <body>
     <ul>
         <!-- <li><a href="updateforuser.php">แก้ไขข้อมูลส่วนตัว</a></li> -->
-        <li><a href="welcome.php">หน้า Moniter</a></li>
-        <li><a href="reset-password.php">เปลี่ยนรหัสผ่าน</a></li>
-        <li style="float:right"><a href="logout.php">Logout</a></li>
+        <li><a href="welcome.php">Moniter Page</a></li>
+        <li><a href="reset-password.php">Reset Password</a></li>
+        <li style="float:right" class="activeout"><a href="logout.php">Logout</a></li>
     </ul>
+    <div class="databox">
+        <h3>ทำไมเราจึงต้องการผักสด ?</h3>
+        <p>ปฏิเสธไม่ได้เลยว่าผู้คนนิยมเลือกผักที่สดเพื่อประกอบอาหาร 
+        ไม่ว่าจะเพื่อให้มีระยะเวลาในการเก็บรักษาที่ยาวนานกว่าผักที่ไม่สด</p>
+        <p>หรือจะด้วยรสชาติที่กรอบใหม่ 
+        อีกทั้งยังเป็นความมั่นใจว่าพวกเขาได้ทานผักคุณภาพ</p>
+        <p>หากเป็นผู้ผลิตอาหาร แน่นอนว่าผักที่สดย่อมดีกว่า
+        ไม่จำเป็นจะต้องเสียค่าเสียจ่ายจากเศษผักที่เน่าเสีย </p>
+        <p>หรือส่วนที่มีตำหนิ
+        โดยการนำไปทิ้งและไม่แม้แต่จะนำมาใช้นอกเสียจากนำไปขายเพื่อทดแทนค่าใช้จ่ายที่เสียไปจากการซื้อ</p>
+    </div>
+
+    <div class="databox">
+        <h3>แล้วทำอย่างไรจึงจะเก็บผักสดไว้ได้นาน ?</h3>
+        <p>จัดเก็บไว้ในอุณหภูมิที่เหมาะสม</p>
+        <p>ไม่จัดเก็บผักไว้รวมกัน จะทำให้เกิดการเน่าเสียและเสื่อมสภาพเร็วขึ้น</p>
+    </div>
 </body>
 </html>

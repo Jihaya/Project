@@ -63,13 +63,10 @@ extract($row);
         }
     </style>
 <body>
-    <ul>
-      <li><a class="active" href="reset-password.php">Reset Password</a></li>
-    </ul>
 <form action="userupdate_db.php" method="post" name="updateuser" id="updateuser">
   <table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
     <tr>
-      <td height="40" colspan="2" align="center" bgcolor="#D6D5D6"><b>แก้ไขข้อมูลสมาชิก</b></td>
+      <td height="40" colspan="2" align="center" bgcolor="#D6D5D6"><b>Edit Information User</b></td>
     </tr>
     <tr>
       <td align="right" bgcolor="#EBEBEB">ID : </td>
@@ -111,7 +108,7 @@ extract($row);
       <td bgcolor="#EBEBEB">&nbsp;</td>
       <td bgcolor="#EBEBEB">&nbsp;</td>
     </tr>
-    <!-- <tr>
+    <tr>
       <td align="right" bgcolor="#EBEBEB">Password :
         <label></label></td>
       <td bgcolor="#EBEBEB"><input type="password" name="password" id="password" placeholder="ตัวเลขหรือภาษาอังกฤษเท่านั้น"/></td>
@@ -119,7 +116,7 @@ extract($row);
     <tr>
       <td bgcolor="#EBEBEB">&nbsp;</td>
       <td bgcolor="#EBEBEB">&nbsp;</td>
-    </tr> -->
+    </tr>
     <tr>
       <td align="right" bgcolor="#EBEBEB">email :
         <label></label></td>

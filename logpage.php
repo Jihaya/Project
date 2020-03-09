@@ -70,7 +70,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         table {
             border-collapse: collapse;
             width: 45%;
-            margin-left: 28%;
+            margin-left: 20%;
             margin-right: 38%;
             align: center;
         }
@@ -86,92 +86,51 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   </head>
   <body>
   <ul>
+    <li><a href="report.php">Report</a></li>
     <li style="float:right"><a href="welcome.php">Back</a></li>
   </ul>
   <h1 class="Top">Log Data</h1>
-  <div class="container" style="display: flex; height: 100px;">
-    <div style="width: 50%;">
-      <table name= "td" id="tbl_time_list" border="1">
+  <table class="td1" name= "td1" id="tbl_Cars_list" border="1">
         <tr>
-          <td>Time</td>
+            <td>Datas</td>
         </tr>
-      </table>
-    </div>
-    </br>
-    <div style="flex-grow: 1;">
-      <table class="td1" id="tbl_Cars_list" border="1">
-        <tr>
-          <td>Temp</td>
-          <td>Humid</td>
-        </tr>
-      </table>
-    </div>
-  </div>
+        <br>
+  </table>
+  <br>
+  <?php
 
-    <script>
-      var tbltime = document.getElementById('tbl_time_list');
-      var databaseReftime = firebase.database().ref('Time/');
-      var rowIndextime = 1;
-  
-      databaseReftime.once('value', function(snapshot) {
-        snapshot.forEach(function(childSnapshot) {
-        var childKeytime = childSnapshot.key;
-        var childDatatime = childSnapshot.val();
-   
-        var rowtime = tbltime.insertRow(rowIndextime);
-        var Time = rowtime.insertCell(0);
-        Time.appendChild(document.createTextNode(childDatatime));
-  
-        rowIndextime = rowIndextime + 1; //ถ้าอยากให้ข้อมูลเรียงจากเก่า - ใหม่ให้เปิด
-        });
-      });
-  </script>
-  
-    <script>
-      var tblCar = document.getElementById('tbl_Cars_list');
-      var databaseRef = firebase.database().ref('Cars/');
-      var rowIndex = 1;
-  
-      databaseRef.once('value', function(snapshot) {
-        snapshot.forEach(function(childSnapshot) {
-        var childKey = childSnapshot.key;
-        var childData = childSnapshot.val();
+    require __DIR__.'/vendor/autoload.php';
 
-        const raw = childData
+    use Kreait\Firebase\Factory;
+    use Kreait\Firebase\ServiceAccount;
 
-        const lowerCaseRaw = raw.toLowerCase()
+    // This assumes that you have placed the Firebase credentials in the same directory
+    // as this PHP file.
+    $serviceAccount = ServiceAccount::fromJsonFile(__DIR__.'/logistics-car-94e09b126562.json');
 
-        // create regular expression match rules
-        const enterChar = new RegExp('\r\n|\n', 'g')
-        const endCharGroup = new RegExp('\r\n$|\n$', 'g')
-        const singleQuote = new RegExp('\'', 'g')
+    $firebase = (new Factory)
+        ->withServiceAccount($serviceAccount)
+        ->withDatabaseUri('https://logistics-car.firebaseio.com')
+        ->create();
 
-        const rawJson = lowerCaseRaw
-            .replace(endCharGroup, '') // remove last \r\n
-            .replace(enterChar, ', ') // replace \r\n to ', '
-            .replace(singleQuote, '"') // replace ' to "
-            .trim()
+    $database = $firebase->getDatabase();
+    $reference = $database->getReference('/Cars');
 
-        // result: "from_device": "01", "temp": "32*c", "humid": "48%", "lat": "0.00000", "lon": "0.0000"
+    $snapshot = $reference->getSnapshot();
 
-        const json = JSON.parse(`{${rawJson}}`)
-        //document.writeln(rawJson);
-        // result: { from_device: '01', temp: '32*c', humid: '48%', lat: '0.00000', lon: '0.0000' }
+    $value = $snapshot->getValue();
 
-        const data = json.from_device + " " + json.temp
-   
-        var row = tblCar.insertRow(rowIndex);
-        //var Time = row.insertCell(0);
-        var Temp = row.insertCell(0);
-        var Humid = row.insertCell(1);
-        //Time.appendChild(document.createTextNode(childKey));
-        Temp.appendChild(document.createTextNode(json.temp));
-        Humid.appendChild(document.createTextNode(json.humid));
-  
-        rowIndex = rowIndex + 1; //ถ้าอยากให้ข้อมูลเรียงจากเก่า - ใหม่ให้เปิด
-        });
-      });
-  </script>
- 
-  </body>
+    $myarray = array_shift($value); //ออกค่าบนสุด
+
+    // current = ค่าแรก - end = ค่าสุดท้าย
+    $value1 = end($value);
+
+    foreach($value as $x=>$x_value)
+      {
+        echo "<table>" .$x_value ."</table>";
+        echo "<br>";
+      }
+
+  ?>
+</body>
 </html>

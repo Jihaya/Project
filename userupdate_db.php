@@ -23,8 +23,17 @@ echo "</script>";
 	//$passhash = $_POST["password"];	
  
 //ทำการปรับปรุงข้อมูลที่จะแก้ไขลงใน database 
-	
-	$sql = "UPDATE users SET  
+
+	if(empty($password)){
+		$sql = "UPDATE users SET  
+			fname='$fname' ,
+			lname='$lname' , 
+			username='$username',
+			email = '$email',
+			level = '$level'
+			WHERE id='$ID' ";
+	}else{
+		$sql = "UPDATE users SET  
 			fname='$fname' ,
 			lname='$lname' , 
 			username='$username',
@@ -32,6 +41,7 @@ echo "</script>";
 			email = '$email',
 			level = '$level'
 			WHERE id='$ID' ";
+	}
  
 $result = mysqli_query($link, $sql) or die ("Error in query: $sql " . mysqli_error());
  

@@ -4,8 +4,10 @@ session_start();
  
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: login.php");
+    header("location: Login.php");
     exit;
+    unset($_SESSION);
+    session_destroy();
 }
 ?>
  
@@ -43,13 +45,17 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         li a:hover {
             background-color: #111;
         }
+        
+        .activeout {
+            background-color: #cc0000;
+        }
     </style>
 </head>
 <body>
 <ul>
 <li><a href="register.php">Register</a></li>
-<li style="float:right"><a href="logout.php">Logout</a></li>
-<li style="float:right"><a href="welcome.php">Back</a></li>
+<li><a href="Home.php">Back</a></li>
+<li style="float:right" class="activeout"><a href="logout.php">Logout</a></li>
 </ul>
 <h3>Manage Members</h3>
 <?php

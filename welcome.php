@@ -10,6 +10,49 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     session_destroy();
 }
 ?>
+
+<?php
+
+require __DIR__.'/vendor/autoload.php';
+
+use Kreait\Firebase\Factory;
+use Kreait\Firebase\ServiceAccount;
+
+// This assumes that you have placed the Firebase credentials in the same directory
+// as this PHP file.
+$serviceAccount = ServiceAccount::fromJsonFile(__DIR__.'/logistics-car-94e09b126562.json');
+
+$firebase = (new Factory)
+    ->withServiceAccount($serviceAccount)
+    ->withDatabaseUri('https://logistics-car.firebaseio.com')
+    ->create();
+
+$database = $firebase->getDatabase();
+$reference = $database->getReference('/Cars');
+
+$snapshot = $reference->getSnapshot();
+
+$value = $snapshot->getValue();
+
+$myarray = array_shift($value); //ออกค่าบนสุด
+
+// current = ค่าแรก - end = ค่าสุดท้าย
+$value1 = end($value);
+
+$myJSON = json_encode($value1);
+
+// $myJSON1 = json_decode($myJSON);
+
+// ทำการตัดข้อมูลภายใน ' '
+$str = explode(' ',$value1);
+
+
+// echo $str[0];
+// echo "<pre>";
+// echo $str[5];
+// echo "<pre>";
+// print_r ($str);
+?>
  
 <!DOCTYPE html>
 <html lang="en">
@@ -44,6 +87,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         
         li a:hover {
             background-color: #111;
+        }
+        .activeout {
+            background-color: #cc0000;
         }
     </style>
 
@@ -81,6 +127,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         }
     </style>
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script>
         // Initialize Firebase
         var config = {
@@ -93,40 +140,27 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         };
         firebase.initializeApp(config);
     </script>
+    
+    <style>
+        .w3-btn {margin-bottom:10px;}
+    </style>
 </head>
 <body>
     <ul>
         <li><a class="active" href="home.php">Home</a></li>
-        <li style="float:right"><a href="logout.php">Logout</a></li>
+        <li style="float:right" class="activeout"><a href="logout.php">Logout</a></li>
     </ul>
 
     <div class="page-header">
-        <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to Tracking site.</h1>
+        <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to Moniter site.</h1>
     </div>
-    <div class="databox">
-        <h3>Car</h3>
-        <div class="container" style="display: flex; height: 100px;">
-            <div style="width: 50%;">
-                <table name= "td" id="tbl_time_list" border="1">
-                    <tr>
-                        <td>Time</td>
-                    </tr>
-                </table>
-            </div>
-        </br></br>
-            <div style="flex-grow: 1;">
-                <table class="td1" name= "td1" id="tbl_Cars_list" border="1">
-                    <tr>
-                        <td>Device</td>
-                        <td>Temp & Humid</td>
-                        <td>Location (lat , lon)</td>
-                    </tr>
-                </table>
-            </div>
-        </div>
+    <div clas="Car1">
+        <img src="truck.png" alt="Trulli" width="150" height="200">
+        <h4>Device 01</h4>
+        <h5>กย105</h5>
+        <button class="w3-btn w3-white w3-border w3-round-large"><a class="active" href="dashboard.php">Moniter</a></button>
     </div>
-    
-    <script>
+    <!-- <script>
         var tbltime = document.getElementById('tbl_time_list');
         var databaseReftime = firebase.database().ref("Time/");
         var rowIndex = 1;
@@ -196,6 +230,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         cellId3.appendChild(document.createTextNode(Logi));
         //celldata.appendChild(document.createTextNode(data));
     });  
-    </script>
+    </script> -->
 </body>
 </html>

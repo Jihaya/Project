@@ -254,7 +254,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 <body>
     <ul>
-        <li style="float:right"><a href="login.php">Back</a></li>
+        <li style="float:right"><a href="admin.php">Back</a></li>
     </ul>
     <div class="wrapper">
         <h2>Sign Up</h2>
@@ -278,17 +278,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 			<div class="form-group <?php echo (!empty($fname_err)) ? 'has-error' : ''; ?>">
                 <label>Frist Name</label>
                 <input type="text" name="fname" class="form-control" value="<?php echo $fname; ?>">
-                <span class="help-block"><?php echo $fname; ?></span>
+                <span class="help-block"><?php echo $fname_err; ?></span>
             </div> 
 			<div class="form-group <?php echo (!empty($lname_err)) ? 'has-error' : ''; ?>">
                 <label>Last Name</label>
                 <input type="text" name="lname" class="form-control" value="<?php echo $lname; ?>">
-                <span class="help-block"><?php echo $lname; ?></span>
+                <span class="help-block"><?php echo $lname_err; ?></span>
             </div> 
             <div class="form-group <?php echo (!empty($email_err)) ? 'has-error' : ''; ?>">
                 <label>Email</label>
                 <input type="text" name="email" class="form-control" value="<?php echo $email; ?>">
-                <span class="help-block"><?php echo $email; ?></span>
+                <span class="help-block"><?php echo $email_err; ?></span>
             </div> 
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">
