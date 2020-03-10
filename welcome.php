@@ -101,9 +101,6 @@ $str = explode(' ',$value1);
             opacity: 0.9;
             /*filter: alpha(opacity=100); /* For IE8 and earlier */
         }
-        .page-header, table{
-            background-color: lightblue;
-        }
         table{
             background-color: White;
         }
@@ -124,6 +121,14 @@ $str = explode(' ',$value1);
         }
         .td1 {
             width: 70%;
+        }
+        .header{
+            width: auto;
+            background-image: url('background.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            padding: 20px;
         }
     </style>
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
@@ -146,90 +151,26 @@ $str = explode(' ',$value1);
     </style>
 </head>
 <body>
+    <div class = "header"><img class = "logo" src="logo.png"></div>
     <ul>
         <li><a class="active" href="home.php">Home</a></li>
+        <li><font face="th sarabun new" size="6" color="White">Account : <?php echo htmlspecialchars($_SESSION["username"]); ?></font></li>
         <li style="float:right" class="activeout"><a href="logout.php">Logout</a></li>
     </ul>
 
-    <div class="page-header">
-        <h1>Hi, <b><?php echo htmlspecialchars($_SESSION["username"]); ?></b>. Welcome to Moniter site.</h1>
-    </div>
     <div clas="Car1">
-        <img src="truck.png" alt="Trulli" width="150" height="200">
+    <br>
+    <table>
+    <tr></tr>
+    <td><img src="ic.png" alt="Trulli" width="150">
         <h4>Device 01</h4>
         <h5>กย105</h5>
-        <button class="w3-btn w3-white w3-border w3-round-large"><a class="active" href="dashboard.php">Moniter</a></button>
+        <button class="w3-btn w3-white w3-border w3-round-large" ><a class="active" href="dashboard.php">Moniter</a></button></td>
+    <td><img src="ic.png" alt="Trulli" width="150">
+        <h4>Device 02</h4>
+        <h5>ทข354</h5>
+        <button class="w3-btn w3-white w3-border w3-round-large" ><a class="active" href="dashboard.php">Moniter</a></button></td>
+    </table>
     </div>
-    <!-- <script>
-        var tbltime = document.getElementById('tbl_time_list');
-        var databaseReftime = firebase.database().ref("Time/");
-        var rowIndex = 1;
-        var key = "";
-        var time = "";
-
-        databaseReftime.once("value", function(snapshot) {
-            snapshot.forEach(function(childSnapshot) {
-                var childKeytime = childSnapshot.key;
-                var childDatatime = childSnapshot.val();
-                a = childKeytime;
-                time = childDatatime;
-        });
-
-        var rowtime = tbltime.insertRow(rowIndex);
-        var cellIdtime = rowtime.insertCell(0);
-        cellIdtime.appendChild(document.createTextNode(time));
-    });  
-    </script>
-
-    <script>
-        var tblCar = document.getElementById('tbl_Cars_list');
-        var databaseRef = firebase.database().ref("Cars/");
-        var rowIndex = 1;
-        var times = "";
-        var datas = "";
-
-        databaseRef.once("value", function(snapshot) {
-            snapshot.forEach(function(childSnapshot) {
-                var childKey = childSnapshot.key;
-                var childData = childSnapshot.val();
-                a = childKey;
-                datas = childData;
-        });
-
-        const raw = datas
-
-        const lowerCaseRaw = raw.toLowerCase()
-
-        // create regular expression match rules
-        const enterChar = new RegExp('\r\n|\n', 'g')
-        const endCharGroup = new RegExp('\r\n$|\n$', 'g')
-        const singleQuote = new RegExp('\'', 'g')
-
-        const rawJson = lowerCaseRaw
-            .replace(endCharGroup, '') // remove last \r\n
-            .replace(enterChar, ', ') // replace \r\n to ', '
-            .replace(singleQuote, '"') // replace ' to "
-            .trim()
-
-        // result: "from_device": "01", "temp": "32*c", "humid": "48%", "lat": "0.00000", "lon": "0.0000"
-
-        const json = JSON.parse(`{${rawJson}}`)
-        //document.writeln(rawJson);
-        // result: { from_device: '01', temp: '32*c', humid: '48%', lat: '0.00000', lon: '0.0000' }
-
-        const Device = json.from_device
-        const data = json.temp + " " + json.humid
-        const Logi = json.lat + " , " + json.lon
-
-        var row = tblCar.insertRow(rowIndex);
-        var cellId = row.insertCell(0);
-        var cellId2 = row.insertCell(1);
-        var cellId3 = row.insertCell(2);
-        cellId.appendChild(document.createTextNode(Device));
-        cellId2.appendChild(document.createTextNode(data));
-        cellId3.appendChild(document.createTextNode(Logi));
-        //celldata.appendChild(document.createTextNode(data));
-    });  
-    </script> -->
 </body>
 </html>

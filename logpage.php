@@ -86,7 +86,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
   </head>
   <body>
   <ul>
-    <li><a href="report.php">Report</a></li>
+    <li><a target ="_blank" href="report.php">Report</a></li>
     <li style="float:right"><a href="welcome.php">Back</a></li>
   </ul>
   <h1 class="Top">Log Data</h1>

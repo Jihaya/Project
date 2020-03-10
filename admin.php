@@ -6,7 +6,7 @@ session_start();
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: Login.php");
     exit;
-    unset($_SESSION);
+    unset($_SESSION["loggedin"]);
     session_destroy();
 }
 ?>
@@ -50,6 +50,29 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             background-color: #cc0000;
         }
     </style>
+    <style>
+    table{
+            background-color: White;
+        }
+        table, td, th{  
+            border: 1px solid #ddd;
+            align: center;
+        }
+        table {
+            border-collapse: collapse;
+            width: 50%;
+            margin-left: 26%;
+            margin-right: 38%;
+            align: center;
+        }
+        th, td {
+            padding: 15px;
+            align: center;
+        }
+        .td1 {
+            width: 25%;
+        }
+    </style>
 </head>
 <body>
 <ul>
@@ -79,7 +102,7 @@ while($row = mysqli_fetch_array($result)) {
   echo "<td>" .$row["lname"] .  "</td> ";
   echo "<td>" .$row["email"] .  "</td> ";
   //แก้ไขข้อมูล
-  echo "<td><a href='userupdateform.php?id=$row[0]'>edit</a></td> ";
+  echo "<td><a type='button' href='userupdateform.php?id=$row[0]'>edit</a></td> ";
   
   //ลบข้อมูล
   echo "<td><a href='userdelete.php?id=$row[0]' onclick=\"return confirm('Do you want to delete this record? !!!')\">del</a></td> ";

@@ -16,7 +16,7 @@ require_once "config.php";
  
 // Define variables and initialize with empty values
 $username = $password = $confirm_password = $fname = $lname = $email = "";
-$username_err = $password_err = $confirm_password_err = $fname_err = $lname_err = $email = "";
+$username_err = $password_err = $confirm_password_err = $fname_err = $lname_err = $email_err = "";
  
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST"){

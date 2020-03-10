@@ -165,6 +165,7 @@ $long = json_decode($str2[9]);
                     
                     if($timeresult1 < 0){
                         echo abs($timeresult1);
+                        echo ".";
                     } else{
                         echo $timeresult1;
                         echo ".";
@@ -178,7 +179,7 @@ $long = json_decode($str2[9]);
             ?>
             </td>
     </table>
-    <a href='https://www.google.com/maps/search/?api=1&query=<?php echo $lat ?>,<?php echo $long ?>'>Check Location in Google MAP
+    <a target ="_blank" href='https://www.google.com/maps/search/?api=1&query=<?php echo $lat ?>,<?php echo $long ?>'>Check Location in Google MAP
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>   
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">

@@ -38,7 +38,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             display: block;
             color: white;
             text-align: center;
-            padding: 14px 16px;
+            padding: 20px 16px;
             text-decoration: none;
         }
         
@@ -53,7 +53,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
     <style>
         .databox{
-            margin: 35px;
+            margin-left: 28%;
+            margin-right: 38%;
+            width: 45%;
             background-color: #ffffff;
             border: 1px;
             opacity: 0.9;
@@ -86,7 +88,18 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </style>
     <style>
         body {
-            background-image: url('bghome.jpg');
+            background-color: #d1e0e0;
+        }
+        .header{
+            width: auto;
+            background-image: url('background.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            padding: 20px;
+        }
+        .icon{
+            padding-left: 4em;
         }
     </style>
     
@@ -105,28 +118,36 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     </script>
 </head>
 <body>
+<div class = "header"><img class = "logo" src="logo.png"></div>
     <ul>
-        <!-- <li><a href="updateforuser.php">แก้ไขข้อมูลส่วนตัว</a></li> -->
-        <li><a href="welcome.php">Moniter Page</a></li>
-        <li><a href="reset-password.php">Reset Password</a></li>
+        <li class="active"><a href="welcome.php">Moniter Page</a></li>
+        <li class="active"><a href="reset-password.php">Reset Password</a></li>
         <li style="float:right" class="activeout"><a href="logout.php">Logout</a></li>
     </ul>
     <div class="databox">
-        <h3>ทำไมเราจึงต้องการผักสด ?</h3>
-        <p>ปฏิเสธไม่ได้เลยว่าผู้คนนิยมเลือกผักที่สดเพื่อประกอบอาหาร 
-        ไม่ว่าจะเพื่อให้มีระยะเวลาในการเก็บรักษาที่ยาวนานกว่าผักที่ไม่สด</p>
-        <p>หรือจะด้วยรสชาติที่กรอบใหม่ 
-        อีกทั้งยังเป็นความมั่นใจว่าพวกเขาได้ทานผักคุณภาพ</p>
-        <p>หากเป็นผู้ผลิตอาหาร แน่นอนว่าผักที่สดย่อมดีกว่า
-        ไม่จำเป็นจะต้องเสียค่าเสียจ่ายจากเศษผักที่เน่าเสีย </p>
-        <p>หรือส่วนที่มีตำหนิ
-        โดยการนำไปทิ้งและไม่แม้แต่จะนำมาใช้นอกเสียจากนำไปขายเพื่อทดแทนค่าใช้จ่ายที่เสียไปจากการซื้อ</p>
+        <h3><font face="th sarabun new" size="6">ทำไมเราจึงต้องการผักสด ?</font></h3>
+        <p><font face="th sarabun new" size="5">ปฏิเสธไม่ได้เลยว่าผู้คนนิยมเลือกผักที่สดเพื่อประกอบอาหาร 
+        ไม่ว่าจะเพื่อให้มีระยะเวลาในการเก็บรักษาที่ยาวนานกว่าผักที่ไม่สดหรือจะด้วยรสชาติที่กรอบ
+        ใหม่ อีกทั้งยังเป็นความมั่นใจว่าพวกเขาได้ทานผักคุณภาพ หากเป็นผู้ผลิตอาหาร แน่นอนว่าผักที่สดย่อมดีกว่า
+        ไม่จำเป็นจะต้องเสียค่าเสียจ่ายจากเศษผักที่เน่าเสีย หรือส่วนที่มีตำหนิ
+        โดยการนำไปทิ้งและไม่แม้แต่จะนำมาใช้นอกเสียจากนำไปขายเพื่อทดแทนค่าใช้จ่ายที่เสียไป</font></p>
     </div>
 
     <div class="databox">
-        <h3>แล้วทำอย่างไรจึงจะเก็บผักสดไว้ได้นาน ?</h3>
-        <p>จัดเก็บไว้ในอุณหภูมิที่เหมาะสม</p>
-        <p>ไม่จัดเก็บผักไว้รวมกัน จะทำให้เกิดการเน่าเสียและเสื่อมสภาพเร็วขึ้น</p>
+        <h3><font face="th sarabun new" size="6">แล้วจะมั่นใจได้อย่างไรว่าผักที่ได้เลือกซื้อสดมา ?</font></h3>
+        <p><font face="th sarabun new" size="5">แม้ผู้ขายจะรับประกันว่า ผักที่เขานำมาส่งนั้นสดอย่างแน่นอน แต่ไม่มีอะไรรับประกันเลยว่าสดจริงหรือไม่</font></p>
+    </div>
+
+    <div class="databox">
+        <h3><font face="th sarabun new" size="6">ทำไมไม่ใช้บริการของเราล่ะ</font></h3>
+        <img class = "center" src="logo.png">
+        <h3><font face="th sarabun new" size="6">ระบบติดตามการขนส่งผัก</font></h3>
+        <p><font face="th sarabun new" size="5">ที่จะเป็นการรับประกันได้ว่าผักที่คุณได้รับนั้นสดใหม่ และถูกเก็บไว้ในอุณหภูมิที่ช่วยให้อายุของผักนานขึ้น อีกทั้งยังสามารถตามขณะการขนส่ง</font></p>
+        <br><br>
+        <img class = "icon" src="clock.png" width="190px">
+        <img class = "icon" src="temp.png" width="150px">
+        <img class = "icon" src="humid.png" width="190px">
+        <p><font face="th sarabun new" size="5">ที่จะเป็นการรับประกันได้ว่าผักที่คุณได้รับนั้นสดใหม่ และถูกเก็บไว้ในอุณหภูมิที่ช่วยให้อายุของผักนานขึ้น อีกทั้งยังสามารถตามขณะการขนส่ง</font></p>
     </div>
 </body>
 </html>
