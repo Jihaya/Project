@@ -220,6 +220,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         .wrapper{ width: 350px; padding: 20px; }
         .wrapper{
             margin: 30px;
+            margin:0 auto;
             background-color: #ffffff;
             border: 1px solid black;
             opacity: 0.9;
@@ -256,6 +257,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <ul>
         <li style="float:right"><a href="admin.php">Back</a></li>
     </ul>
+    <br>
     <div class="wrapper">
         <h2>Sign Up</h2>
         <p>Please fill this form to create an account.</p>

@@ -69,8 +69,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         }
         table {
             border-collapse: collapse;
+            margin:0 auto;
             width: 45%;
-            margin-left: 20%;
+            margin-left: 28%;
             margin-right: 38%;
             align: center;
         }
@@ -78,21 +79,26 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             padding: 15px;
             align: center;
         }
-        .td1 {
-            width: 60%;
+        .header{
+            width: auto;
+            background-image: url('background.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            padding: 20px;
         }
     </style>
     
   </head>
   <body>
+  <div class = "header"><img class = "logo" src="logo.png"></div>
   <ul>
     <li><a target ="_blank" href="report.php">Report</a></li>
     <li style="float:right"><a href="welcome.php">Back</a></li>
   </ul>
-  <h1 class="Top">Log Data</h1>
   <table class="td1" name= "td1" id="tbl_Cars_list" border="1">
         <tr>
-            <td>Datas</td>
+            <td>LOG Datas</td>
         </tr>
         <br>
   </table>
@@ -127,8 +133,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
     foreach($value as $x=>$x_value)
       {
-        echo "<table>" .$x_value ."</table>";
-        echo "<br>";
+        echo "<table><td>" .$x_value ."</td></table>";
       }
 
   ?>

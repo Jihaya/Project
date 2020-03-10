@@ -110,10 +110,19 @@ $long = json_decode($str2[9]);
         .td1 {
             width: 25%;
         }
+        .header{
+            width: auto;
+            background-image: url('background.png');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            padding: 20px;
+        }
     </style>
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
 </head>
 <body>
+    <div class = "header"><img class = "logo" src="logo.png"></div>
     <ul>
         <li><a class="active" href="logpage.php">LogPage</a></li>
         <li><a class="active" href="welcome.php">Back</a></li>

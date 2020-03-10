@@ -61,7 +61,10 @@ $str = explode(' ',$value1);
     <title>Welcome</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
-        body{ font: 14px sans-serif; text-align: center; }
+        body{
+            font: 14px sans-serif;
+            text-align: center;
+        }
     </style>
 
     <style>
@@ -153,8 +156,8 @@ $str = explode(' ',$value1);
 <body>
     <div class = "header"><img class = "logo" src="logo.png"></div>
     <ul>
-        <li><a class="active" href="home.php">Home</a></li>
         <li><font face="th sarabun new" size="6" color="White">Account : <?php echo htmlspecialchars($_SESSION["username"]); ?></font></li>
+        <li><a class="active" href="home.php">Home</a></li>
         <li style="float:right" class="activeout"><a href="logout.php">Logout</a></li>
     </ul>
 
