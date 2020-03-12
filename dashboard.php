@@ -98,9 +98,7 @@ $long = json_decode($str2[9]);
         }
         table {
             border-collapse: collapse;
-            width: 50%;
-            margin-left: 37%;
-            margin-right: 38%;
+            margin: auto;
             align: center;
         }
         th, td {
@@ -112,7 +110,7 @@ $long = json_decode($str2[9]);
         }
         .header{
             width: auto;
-            background-image: url('background.png');
+            background-image: url('bg2.jpg');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
@@ -138,6 +136,7 @@ $long = json_decode($str2[9]);
             <td>Time (Start)</td>
             <td>Time (Now)</td>
             <td>Time used</td>
+            <td>Status</td>
         </tr>
             <td><?php echo $str[1]; ?></td>
             <td><?php echo $tempHumid; ?></td>
@@ -184,6 +183,17 @@ $long = json_decode($str2[9]);
                     } else{
                         echo $timeresult2;
                     }
+                }
+            ?>
+            </td>
+            <td>
+            <?php 
+                if($str2[13] != "'Stop'")
+                { 
+                    echo $str[11];
+                }
+                if($str2[13] == "'Stop'"){
+                    echo $str2[13];
                 }
             ?>
             </td>

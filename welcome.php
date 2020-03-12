@@ -37,6 +37,7 @@ $value = $snapshot->getValue();
 $myarray = array_shift($value); //ออกค่าบนสุด
 
 // current = ค่าแรก - end = ค่าสุดท้าย
+$value2 = current($value);
 $value1 = end($value);
 
 $myJSON = json_encode($value1);
@@ -44,14 +45,8 @@ $myJSON = json_encode($value1);
 // $myJSON1 = json_decode($myJSON);
 
 // ทำการตัดข้อมูลภายใน ' '
-$str = explode(' ',$value1);
-
-
-// echo $str[0];
-// echo "<pre>";
-// echo $str[5];
-// echo "<pre>";
-// print_r ($str);
+$str = explode(' ',$value2);
+$str2 = explode(' ',$value1);
 ?>
  
 <!DOCTYPE html>
@@ -114,7 +109,7 @@ $str = explode(' ',$value1);
         table {
             border-collapse: collapse;
             width: 45%;
-            margin-left: 25%;
+            margin-left: 27%;
             margin-right: 38%;
             align: center;
         }
@@ -127,7 +122,7 @@ $str = explode(' ',$value1);
         }
         .header{
             width: auto;
-            background-image: url('background.png');
+            background-image: url('bg1.jpg');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
@@ -152,8 +147,25 @@ $str = explode(' ',$value1);
     <style>
         .w3-btn {margin-bottom:10px;}
     </style>
+    <script>
+        function startTime() {
+        var today = new Date();
+        var h = today.getHours();
+        var m = today.getMinutes();
+        var s = today.getSeconds();
+        m = checkTime(m);
+        s = checkTime(s);
+        document.getElementById('txt').innerHTML =
+        h + ":" + m + ":" + s;
+        var t = setTimeout(startTime, 500);
+        }
+        function checkTime(i) {
+        if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+        return i;
+        }
+    </script>
 </head>
-<body>
+<body onload="startTime()">
     <div class = "header"><img class = "logo" src="logo.png"></div>
     <ul>
         <li><font face="th sarabun new" size="6" color="White">Account : <?php echo htmlspecialchars($_SESSION["username"]); ?></font></li>
@@ -163,16 +175,59 @@ $str = explode(' ',$value1);
 
     <div clas="Car1">
     <br>
+    <div id="txt"></div>
+    <?php
+        $date = new DateTime("now", new DateTimeZone('Asia/Bangkok') );
+        echo $date->format("d-m-Y"); //\T H:i:s
+        echo "<br>";
+        $timeMooning = [0, 1, 2, 3, 4, 5, 6, 7 ,8 ,9 ,10 ,11 ,12];
+        $timeafter = [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
+        $timech = $date->format("H");
+        $timeChint = intval($timech);
+        $result_array = array_search($timeChint, $timeMooning); 
+
+        if ($result_array != False){
+            echo "รอบเช้า";
+        }
+        if($result_array != True){
+            echo "รอบบ่าย";
+        }
+    ?>
+    <br>
     <table>
     <tr></tr>
     <td><img src="ic.png" alt="Trulli" width="150">
         <h4>Device 01</h4>
         <h5>กย105</h5>
-        <button class="w3-btn w3-white w3-border w3-round-large" ><a class="active" href="dashboard.php">Moniter</a></button></td>
+        <h5>Status: <?php 
+                if($str2[13] != "'Stop'")
+                { 
+                    echo $str[11];
+                }
+                if($str2[13] == "'Stop'"){
+                    echo $str2[13];
+                }
+            ?>
+        </h5>
+        <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Moniter " onclick="window.location='dashboard.php' " />
+    </td>
     <td><img src="ic.png" alt="Trulli" width="150">
         <h4>Device 02</h4>
         <h5>ทข354</h5>
-        <button class="w3-btn w3-white w3-border w3-round-large" ><a class="active" href="dashboard.php">Moniter</a></button></td>
+        <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Moniter " onclick="window.location='dashboard.php' " />
+    </td>
+    <tr>
+    <td><img src="ic.png" alt="Trulli" width="150">
+        <h4>Device 03</h4>
+        <h5>คซ3754</h5>
+        <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Moniter " onclick="window.location='dashboard.php' " />
+    </td>
+    <td><img src="ic.png" alt="Trulli" width="150">
+        <h4>Device 04</h4>
+        <h5>กข1054</h5>
+        <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Moniter " onclick="window.location='dashboard.php' " />
+    </td>
+    </tr>
     </table>
     </div>
 </body>
