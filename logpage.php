@@ -17,18 +17,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <title>Log Data Page</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
-    <script>
-      // Initialize Firebase
-      var config = {
-          apiKey: "AIzaSyDZlLeEp_1W-pWTInUkU4YJEJxq8Kg86ds",
-          authDomain: "logistics-car.firebaseapp.com",
-          databaseURL: "https://logistics-car.firebaseio.com",
-          projectId: "logistics-car",
-          storageBucket: "logistics-car.appspot.com",
-          messagingSenderId: "1032198316609"
-      };
-      firebase.initializeApp(config);
-    </script>
     <style type="text/css">
         body{ font: 14px sans-serif; text-align: center; }
     </style>

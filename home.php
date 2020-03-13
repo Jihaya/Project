@@ -1,9 +1,9 @@
 <?php
 // Initialize the session
 session_start();
- 
-// Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
+
+//Check if the user is logged in, if not then redirect him to login page
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true && (time() - $_SESSION['loggedin'] > 1800)){
     header("location: login.php");
     exit;
     unset($_SESSION);
@@ -87,9 +87,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         }
     </style>
     <style>
-        body {
-            background-color: #d1e0e0;
-        }
         .header{
             width: auto;
             background-image: url('background.png');
@@ -124,6 +121,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <li class="active"><a href="reset-password.php">Reset Password</a></li>
         <li style="float:right" class="activeout"><a href="logout.php">Logout</a></li>
     </ul>
+    <br>
     <div class="databox">
         <h3><font face="th sarabun new" size="6">ทำไมเราจึงต้องการผักสด ?</font></h3>
         <p><font face="th sarabun new" size="5">ปฏิเสธไม่ได้เลยว่าผู้คนนิยมเลือกผักที่สดเพื่อประกอบอาหาร 
@@ -132,12 +130,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         ไม่จำเป็นจะต้องเสียค่าเสียจ่ายจากเศษผักที่เน่าเสีย หรือส่วนที่มีตำหนิ
         โดยการนำไปทิ้งและไม่แม้แต่จะนำมาใช้นอกเสียจากนำไปขายเพื่อทดแทนค่าใช้จ่ายที่เสียไป</font></p>
     </div>
-
+    <br>
     <div class="databox">
         <h3><font face="th sarabun new" size="6">แล้วจะมั่นใจได้อย่างไรว่าผักที่ได้เลือกซื้อสดมา ?</font></h3>
         <p><font face="th sarabun new" size="5">แม้ผู้ขายจะรับประกันว่า ผักที่เขานำมาส่งนั้นสดอย่างแน่นอน แต่ไม่มีอะไรรับประกันเลยว่าสดจริงหรือไม่</font></p>
     </div>
-
+    <br>
     <div class="databox">
         <h3><font face="th sarabun new" size="6">ทำไมไม่ใช้บริการของเราล่ะ</font></h3>
         <img class = "center" src="logo.png">
@@ -147,7 +145,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <img class = "icon" src="clock.png" width="190px">
         <img class = "icon" src="temp.png" width="150px">
         <img class = "icon" src="humid.png" width="190px">
-        <p><font face="th sarabun new" size="5">ที่จะเป็นการรับประกันได้ว่าผักที่คุณได้รับนั้นสดใหม่ และถูกเก็บไว้ในอุณหภูมิที่ช่วยให้อายุของผักนานขึ้น อีกทั้งยังสามารถตามขณะการขนส่ง</font></p>
+        <p><font face="th sarabun new" size="5">ไม่ว่าจะเวลาในการขนส่ง หรืออุณหภูมิ รวมถึงความชื่นในระหว่างขนส่งก็สามารถตรวจสอบได้ทันที</font></p>
     </div>
 </body>
 </html>

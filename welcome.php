@@ -1,7 +1,7 @@
 <?php
 // Initialize the session
 session_start();
- 
+
 // Check if the user is logged in, if not then redirect him to login page
 if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
@@ -109,8 +109,7 @@ $str2 = explode(' ',$value1);
         table {
             border-collapse: collapse;
             width: 45%;
-            margin-left: 27%;
-            margin-right: 38%;
+            margin: auto;
             align: center;
         }
         th, td {
@@ -131,22 +130,11 @@ $str2 = explode(' ',$value1);
     </style>
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-    <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyDZlLeEp_1W-pWTInUkU4YJEJxq8Kg86ds",
-            authDomain: "logistics-car.firebaseapp.com",
-            databaseURL: "https://logistics-car.firebaseio.com",
-            projectId: "logistics-car",
-            storageBucket: "logistics-car.appspot.com",
-            messagingSenderId: "1032198316609"
-        };
-        firebase.initializeApp(config);
-    </script>
     
     <style>
         .w3-btn {margin-bottom:10px;}
     </style>
+    
     <script>
         function startTime() {
         var today = new Date();
@@ -180,19 +168,28 @@ $str2 = explode(' ',$value1);
         $date = new DateTime("now", new DateTimeZone('Asia/Bangkok') );
         echo $date->format("d-m-Y"); //\T H:i:s
         echo "<br>";
-        $timeMooning = [0, 1, 2, 3, 4, 5, 6, 7 ,8 ,9 ,10 ,11 ,12];
-        $timeafter = [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23];
+        $timeMooning = [4, 5, 6, 7 ,8 ,9 ,10 ,11 ,12]; // [0, 1, 2, 3, 4, 5, 6, 7 ,8 ,9 ,10 ,11 ,12]
+        $timeafter = [13, 14, 15, 16, 17]; // [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+        $timeeve = [18, 19, 20, 21];
         $timech = $date->format("H");
         $timeChint = intval($timech);
-        $result_array = array_search($timeChint, $timeMooning); 
+        $result_array = array_search($timeChint, $timeMooning);
+        $result_array2 = array_search($timeChint, $timeafter);
+        $result_array3 = array_search($timeChint, $timeeve);
 
         if ($result_array != False){
             echo "รอบเช้า";
         }
-        if($result_array != True){
+        if($result_array2 != False){
             echo "รอบบ่าย";
+        }if($result_array3 != False){
+            echo "รอบเย็น";
+        }
+        else{
+            echo "ไม่อยู่ในรอบการส่ง";
         }
     ?>
+    <br>
     <br>
     <table>
     <tr></tr>
