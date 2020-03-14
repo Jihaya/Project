@@ -34,19 +34,21 @@ $snapshot = $reference->getSnapshot();
 
 $value = $snapshot->getValue();
 
-$myarray = array_shift($value); //ออกค่าบนสุด
+if(empty($value)){
+    $value = "-";
+}else{
+    $value2 = current($value);
+    $value1 = end($value);
 
-// current = ค่าแรก - end = ค่าสุดท้าย
-$value2 = current($value);
-$value1 = end($value);
+    // current = ค่าแรก - end = ค่าสุดท้าย
+    $myJSON = json_encode($value1);
 
-$myJSON = json_encode($value1);
+    // $myJSON1 = json_decode($myJSON);
 
-// $myJSON1 = json_decode($myJSON);
-
-// ทำการตัดข้อมูลภายใน ' '
-$str = explode(' ',$value2);
-$str2 = explode(' ',$value1);
+    // ทำการตัดข้อมูลภายใน ' '
+    $str = explode(' ',$value2);
+    $str2 = explode(' ',$value1);
+}
 ?>
  
 <!DOCTYPE html>
@@ -179,13 +181,15 @@ $str2 = explode(' ',$value1);
 
         if ($result_array != False){
             echo "รอบเช้า";
-        }
-        if($result_array2 != False){
+        }if($result_array = False){
+            echo "ไม่อยู่ในรอบการส่ง";
+        }if($result_array2 != False){
             echo "รอบบ่าย";
+        }if($result_array2 = False){
+            echo "ไม่อยู่ในรอบการส่ง";
         }if($result_array3 != False){
             echo "รอบเย็น";
-        }
-        else{
+        }if($result_array3 = False){
             echo "ไม่อยู่ในรอบการส่ง";
         }
     ?>
@@ -196,15 +200,19 @@ $str2 = explode(' ',$value1);
     <td><img src="ic.png" alt="Trulli" width="150">
         <h4>Device 01</h4>
         <h5>กย105</h5>
-        <h5>Status: <?php 
-                if($str2[13] != "'Stop'")
-                { 
-                    echo $str[11];
-                }
-                if($str2[13] == "'Stop'"){
-                    echo $str2[13];
-                }
-            ?>
+        <h5>Status:
+        <?php
+            if($value == "-"){
+                echo "'Stop'";
+            }
+            else if($str2[13] != "'Stop'")
+            { 
+                echo $str[11];
+            }
+            else if($str2[13] == "'Stop'"){
+                echo $str2[13];
+            }
+        ?>
         </h5>
         <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Moniter " onclick="window.location='dashboard.php' " />
     </td>

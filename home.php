@@ -99,25 +99,13 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true && (time() - 
             padding-left: 4em;
         }
     </style>
-    
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
-    <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyDZlLeEp_1W-pWTInUkU4YJEJxq8Kg86ds",
-            authDomain: "logistics-car.firebaseapp.com",
-            databaseURL: "https://logistics-car.firebaseio.com",
-            projectId: "logistics-car",
-            storageBucket: "logistics-car.appspot.com",
-            messagingSenderId: "1032198316609"
-        };
-        firebase.initializeApp(config);
-    </script>
 </head>
 <body>
 <div class = "header"><img class = "logo" src="logo.png"></div>
     <ul>
         <li class="active"><a href="welcome.php">Moniter Page</a></li>
+        <li class="active"><a href="about.php">About us</a></li>
         <li class="active"><a href="reset-password.php">Reset Password</a></li>
         <li style="float:right" class="activeout"><a href="logout.php">Logout</a></li>
     </ul>

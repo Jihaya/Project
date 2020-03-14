@@ -21,20 +21,42 @@ $snapshot = $reference->getSnapshot();
 
 $value = $snapshot->getValue();
 
-// current = ค่าแรก - end = ค่าสุดท้าย
-$value2 = current($value);
-$value1 = end($value);
+if(empty($value)){
+    $value = "-";
+    $valueem = 0;
+    $lat = json_decode($valueem);
+    $long = json_decode($valueem);
+}else{
+    // current = ค่าแรก - end = ค่าสุดท้าย
+    $value2 = current($value);
+    $value1 = end($value);
 
-$myJSON = json_encode($value1);
+    $myJSON = json_encode($value1);
 
 
-// ทำการตัดข้อมูลภายใน ' '
-$str = explode(' ',$value2);
-$str2 = explode(' ',$value1);
-$tempHumid = $str[3].' '.'&'.' '.$str[5];
-$latlon = $str[7].' '.','.' '.$str[9];
-$lat = json_decode($str2[7]);
-$long = json_decode($str2[9]);
+    // ทำการตัดข้อมูลภายใน ' '
+    $str = explode(' ',$value2);
+    $str2 = explode(' ',$value1);
+    $tempHumid = $str2[3].' '.'&'.' '.$str2[5];
+    $latlon = $str2[7].' '.','.' '.$str2[9];
+    $lat = json_decode($str2[7]);
+    $long = json_decode($str2[9]);
+}
+
+// // current = ค่าแรก - end = ค่าสุดท้าย
+// $value2 = current($value);
+// $value1 = end($value);
+
+// $myJSON = json_encode($value1);
+
+
+// // ทำการตัดข้อมูลภายใน ' '
+// $str = explode(' ',$value2);
+// $str2 = explode(' ',$value1);
+// $tempHumid = $str2[3].' '.'&'.' '.$str2[5];
+// $latlon = $str2[7].' '.','.' '.$str2[9];
+// $lat = json_decode($str2[7]);
+// $long = json_decode($str2[9]);
 
 
 ?>
@@ -138,28 +160,56 @@ $long = json_decode($str2[9]);
             <td>Time used</td>
             <td>Status</td>
         </tr>
-            <td><?php echo $str[1]; ?></td>
-            <td><?php echo $tempHumid; ?></td>
-            <td><?php echo $str[13].$str[14].$str[15]; ?></td>
-            <td>
-            <?php 
-                if($str2[13] != "'Stop'")
-                { 
-                    echo $str[13].$str[14].$str[15];
+            <td><?php
+                if($value == "-"){
+                    echo "-";
+                }else{
+                echo $str[1];
                 }
-                if($str2[13] == "'Stop'"){
+            ?></td>
+            <td><?php
+                if($value == "-"){
+                    echo "-";
+                }else{
+                    echo $tempHumid;
+            }
+            ?>
+            </td>
+
+            <td><?php
+            if($value == "-"){
+                echo "-";
+            }else{
+                echo $str[13].$str[14].$str[15];
+            }
+            ?>
+            </td>
+
+            <td>
+            <?php
+                if($value == "-"){
+                    echo "-";
+                }
+                else if($str2[13] != "'Stop'")
+                { 
+                    echo $str2[13].$str2[14].$str2[15];
+                }
+                else if($str2[13] == "'Stop'"){
                     echo $str2[15].$str2[16].$str2[17];
                 }
             ?>
             </td>
 
             <td>
-            <?php 
-                if($str2[13] != "'Stop'")
+            <?php
+                if($value == "-"){
+                    echo "-";
+                }
+                else if($str2[13] != "'Stop'")
                 { 
                     echo "Not ending the transport";
                 }
-                if($str2[13] == "'Stop'"){
+                else if($str2[13] == "'Stop'"){
                     $strTime1 = $str[13].$str[14].$str[15];
                     $timestart1 = intval($str[13]);
                     $timestart2 = intval($str[15]);
@@ -187,12 +237,15 @@ $long = json_decode($str2[9]);
             ?>
             </td>
             <td>
-            <?php 
-                if($str2[13] != "'Stop'")
+            <?php
+                if($value == "-"){
+                    echo "-";
+                }
+                else if($str2[13] != "'Stop'")
                 { 
                     echo $str[11];
                 }
-                if($str2[13] == "'Stop'"){
+                else if($str2[13] == "'Stop'"){
                     echo $str2[13];
                 }
             ?>
@@ -206,7 +259,8 @@ $long = json_decode($str2[9]);
     google.setOnLoadCallback(drawChart);
     function drawChart() {
         // สร้างตัวแปร array เก็บค่า ข้อมูล
-        var temp = <?php echo (int)$str[3]?>;
+        var temp = <?php 
+            echo (int)$str[3]?>;
         var humid = <?php echo (int)$str[5] ?>;
         var dataArray1=[
         ['Time', 'Temperature', 'Humidity'],
