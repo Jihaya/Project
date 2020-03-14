@@ -86,7 +86,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <div class = "header"><img class = "logo" src="logo.png"></div>
     <ul>
         <li><a href="register.php">Register</a></li>
-        <li><a href="home.php">Back</a></li>
         <li style="float:right" class="activeout"><a href="logout.php">Logout</a></li>
     </ul>
     <h3>Manage Members</h3>

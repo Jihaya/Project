@@ -15,7 +15,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true && (time() - 
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Home</title>
+    <title>About us</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         body{ font: 14px sans-serif; text-align: center; }
@@ -99,6 +101,36 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true && (time() - 
             padding-left: 4em;
         }
     </style>
+
+    <style>
+        .fa {
+            padding: 20px;
+            font-size: 30px;
+            width: 75px;
+            text-align: center;
+            text-decoration: none;
+            margin: 5px 2px;
+        }
+
+        .fa:hover {
+            opacity: 0.7;
+        }
+
+        .fa-facebook {
+            background: #3B5998;
+            color: white;
+        }
+
+        .fa-twitter {
+            background: #55ACEE;
+            color: white;
+        }
+
+        .fa-google {
+            background: #dd4b39;
+            color: white;
+        }
+    </style>
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
 </head>
 <body>
@@ -109,12 +141,17 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true && (time() - 
     </ul>
     <br>
     <div class="databox">
-        <h3><font face="th sarabun new" size="6">ทำไมเราจึงต้องการผักสด ?</font></h3>
-        <p><font face="th sarabun new" size="5">ปฏิเสธไม่ได้เลยว่าผู้คนนิยมเลือกผักที่สดเพื่อประกอบอาหาร 
-        ไม่ว่าจะเพื่อให้มีระยะเวลาในการเก็บรักษาที่ยาวนานกว่าผักที่ไม่สดหรือจะด้วยรสชาติที่กรอบ
-        ใหม่ อีกทั้งยังเป็นความมั่นใจว่าพวกเขาได้ทานผักคุณภาพ หากเป็นผู้ผลิตอาหาร แน่นอนว่าผักที่สดย่อมดีกว่า
-        ไม่จำเป็นจะต้องเสียค่าเสียจ่ายจากเศษผักที่เน่าเสีย หรือส่วนที่มีตำหนิ
-        โดยการนำไปทิ้งและไม่แม้แต่จะนำมาใช้นอกเสียจากนำไปขายเพื่อทดแทนค่าใช้จ่ายที่เสียไป</font></p>
+        <h3><font face="th sarabun new" size="7"><b>NextGen Logistics</b></font></h3>
+        <img class = "center" src="logo.png">
+        <p><font face="th sarabun new" size="5"><b>ระบบติดตามการขนส่งผัก</b></font></p>
+        <br>
+        <p><font face="th sarabun new" size="5">เพื่อได้รับผักที่สดโดยคุณสามารถติดตามการขนส่ง รวมถึงอุณหภูมิการจัดเก็บของผักที่ถูกเก็บรักษา</font></p>
+        <p><font face="th sarabun new" size="5"></font></p>
+    </div>
+    <div>
+        <a target ="_blank" href="https://www.facebook.com/" class="fa fa-facebook"></a>
+        <a target ="_blank" href="https://twitter.com/" class="fa fa-twitter"></a>
+        <a target ="_blank" href="https://plus.google.com/" class="fa fa-google"></a>
     </div>
 </body>
 </html>

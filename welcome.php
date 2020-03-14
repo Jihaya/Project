@@ -57,6 +57,7 @@ if(empty($value)){
     <meta charset="UTF-8">
     <title>Welcome</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <meta http-equiv="refresh" content="5" >
     <style type="text/css">
         body{
             font: 14px sans-serif;
@@ -129,6 +130,10 @@ if(empty($value)){
             background-size: cover;
             padding: 20px;
         }
+        .top{
+            width: auto;
+            background-color: #ffffcc;
+        }
     </style>
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -162,37 +167,37 @@ if(empty($value)){
         <li><a class="active" href="home.php">Home</a></li>
         <li style="float:right" class="activeout"><a href="logout.php">Logout</a></li>
     </ul>
-
-    <div clas="Car1">
     <br>
-    <div id="txt"></div>
-    <?php
-        $date = new DateTime("now", new DateTimeZone('Asia/Bangkok') );
-        echo $date->format("d-m-Y"); //\T H:i:s
-        echo "<br>";
-        $timeMooning = [4, 5, 6, 7 ,8 ,9 ,10 ,11 ,12]; // [0, 1, 2, 3, 4, 5, 6, 7 ,8 ,9 ,10 ,11 ,12]
-        $timeafter = [13, 14, 15, 16, 17]; // [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
-        $timeeve = [18, 19, 20, 21];
-        $timech = $date->format("H");
-        $timeChint = intval($timech);
-        $result_array = array_search($timeChint, $timeMooning);
-        $result_array2 = array_search($timeChint, $timeafter);
-        $result_array3 = array_search($timeChint, $timeeve);
+    <table class="top">
+    <td>
+        <div class="Car1">
+        <br>
+        <div id="txt"></div>
+        <?php
+            $date = new DateTime("now", new DateTimeZone('Asia/Bangkok') );
+            echo $date->format("d-m-Y"); //\T H:i:s
+            echo "<br>";
+            $timeMooning = [4, 5, 6, 7 ,8 ,9 ,10 ,11 ,12]; // [0, 1, 2, 3, 4, 5, 6, 7 ,8 ,9 ,10 ,11 ,12]
+            $timeafter = [13, 14, 15, 16, 17]; // [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+            $timeeve = [18, 19, 20, 21];
+            $timech = $date->format("H");
+            $timeChint = intval($timech);
+            $result_array = array_search($timeChint, $timeMooning);
+            $result_array2 = array_search($timeChint, $timeafter);
+            $result_array3 = array_search($timeChint, $timeeve);
 
-        if ($result_array != False){
-            echo "รอบเช้า";
-        }if($result_array = False){
-            echo "ไม่อยู่ในรอบการส่ง";
-        }if($result_array2 != False){
-            echo "รอบบ่าย";
-        }if($result_array2 = False){
-            echo "ไม่อยู่ในรอบการส่ง";
-        }if($result_array3 != False){
-            echo "รอบเย็น";
-        }if($result_array3 = False){
-            echo "ไม่อยู่ในรอบการส่ง";
-        }
-    ?>
+            if ($result_array != False){
+                echo "รอบเช้า";
+            }if($result_array2 != False){
+                echo "รอบบ่าย";
+            }if($result_array3 != False){
+                echo "รอบเย็น";
+            }if($result_array3 == False){
+                echo "ไม่อยู่ในรอบการส่ง";
+            }
+        ?>
+    </td>
+    </table>
     <br>
     <br>
     <table>
@@ -219,17 +224,59 @@ if(empty($value)){
     <td><img src="ic.png" alt="Trulli" width="150">
         <h4>Device 02</h4>
         <h5>ทข354</h5>
+        <h5>Status:
+        <?php
+            if($value == "-"){
+                echo "'Stop'";
+            }
+            else if($str2[13] != "'Stop'")
+            { 
+                echo $str[11];
+            }
+            else if($str2[13] == "'Stop'"){
+                echo $str2[13];
+            }
+        ?>
+        </h5>
         <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Moniter " onclick="window.location='dashboard.php' " />
     </td>
     <tr>
     <td><img src="ic.png" alt="Trulli" width="150">
         <h4>Device 03</h4>
         <h5>คซ3754</h5>
+        <h5>Status:
+        <?php
+            if($value == "-"){
+                echo "'Stop'";
+            }
+            else if($str2[13] != "'Stop'")
+            { 
+                echo $str[11];
+            }
+            else if($str2[13] == "'Stop'"){
+                echo $str2[13];
+            }
+        ?>
+        </h5>
         <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Moniter " onclick="window.location='dashboard.php' " />
     </td>
     <td><img src="ic.png" alt="Trulli" width="150">
         <h4>Device 04</h4>
         <h5>กข1054</h5>
+        <h5>Status:
+        <?php
+            if($value == "-"){
+                echo "'Stop'";
+            }
+            else if($str2[13] != "'Stop'")
+            { 
+                echo $str[11];
+            }
+            else if($str2[13] == "'Stop'"){
+                echo $str2[13];
+            }
+        ?>
+        </h5>
         <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Moniter " onclick="window.location='dashboard.php' " />
     </td>
     </tr>
