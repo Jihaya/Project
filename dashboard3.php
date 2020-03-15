@@ -15,7 +15,7 @@ $firebase = (new Factory)
     ->create();
 
 $database = $firebase->getDatabase();
-$reference = $database->getReference('/Cars');
+$reference = $database->getReference('/Cars3');
 
 $snapshot = $reference->getSnapshot();
 

@@ -20,7 +20,6 @@ echo "</script>";
 	$passhash = password_hash($password, PASSWORD_DEFAULT);
 	$email = $_POST["email"];
 	$level = $_POST["level"];
-	//$passhash = $_POST["password"];	
  
 //ทำการปรับปรุงข้อมูลที่จะแก้ไขลงใน database 
 

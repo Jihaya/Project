@@ -116,8 +116,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     if(empty($value)){
         $value = "-";
     }else{
-        $myarray = array_shift($value); //ออกค่าบนสุด
-
         // current = ค่าแรก - end = ค่าสุดท้าย
         $value1 = end($value);
 
@@ -126,17 +124,6 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             echo "<table><td>" .$x_value ."</td></table>";
         }
     }
-
-    // $myarray = array_shift($value); //ออกค่าบนสุด
-
-    // // current = ค่าแรก - end = ค่าสุดท้าย
-    // $value1 = end($value);
-
-    // foreach($value as $x=>$x_value)
-    //   {
-    //     echo "<table><td>" .$x_value ."</td></table>";
-    //   }
-
   ?>
 </body>
 </html>

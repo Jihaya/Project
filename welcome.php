@@ -29,25 +29,66 @@ $firebase = (new Factory)
 
 $database = $firebase->getDatabase();
 $reference = $database->getReference('/Cars');
+$reference2 = $database->getReference('/Cars2');
+$reference3 = $database->getReference('/Cars3');
+$reference4 = $database->getReference('/Cars4');
 
 $snapshot = $reference->getSnapshot();
+$snapshot2 = $reference2->getSnapshot();
+$snapshot3 = $reference3->getSnapshot();
+$snapshot4 = $reference4->getSnapshot();
 
 $value = $snapshot->getValue();
+$value2 = $snapshot2->getValue();
+$value3 = $snapshot3->getValue();
+$value4 = $snapshot4->getValue();
 
 if(empty($value)){
-    $value = "-";
+    $value11 = "-";
 }else{
-    $value2 = current($value);
-    $value1 = end($value);
+    $value21 = current($value);
+    $value11 = end($value);
 
     // current = ค่าแรก - end = ค่าสุดท้าย
-    $myJSON = json_encode($value1);
-
-    // $myJSON1 = json_decode($myJSON);
-
     // ทำการตัดข้อมูลภายใน ' '
-    $str = explode(' ',$value2);
-    $str2 = explode(' ',$value1);
+    $str11 = explode(' ',$value21);
+    $str21 = explode(' ',$value11);
+}
+
+if(empty($value2)){
+    $value22 = "-";
+}else{
+    $value22 = current($value);
+    $value12 = end($value);
+
+    // current = ค่าแรก - end = ค่าสุดท้าย
+    // ทำการตัดข้อมูลภายใน ' '
+    $str22 = explode(' ',$value22);
+    $str21 = explode(' ',$value12);
+}
+
+if(empty($value3)){
+    $value33 = "-";
+}else{
+    $value23 = current($value);
+    $value13 = end($value);
+
+    // current = ค่าแรก - end = ค่าสุดท้าย
+    // ทำการตัดข้อมูลภายใน ' '
+    $str33 = explode(' ',$value23);
+    $str23 = explode(' ',$value13);
+}
+
+if(empty($value4)){
+    $value44 = "-";
+}else{
+    $value24 = current($value);
+    $value14 = end($value);
+
+    // current = ค่าแรก - end = ค่าสุดท้าย
+    // ทำการตัดข้อมูลภายใน ' '
+    $str44 = explode(' ',$value24);
+    $str24 = explode(' ',$value14);
 }
 ?>
  
@@ -177,22 +218,24 @@ if(empty($value)){
             $date = new DateTime("now", new DateTimeZone('Asia/Bangkok') );
             echo $date->format("d-m-Y"); //\T H:i:s
             echo "<br>";
+            $timeall = [4, 5, 6, 7 ,8 ,9 ,10 ,11 ,12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
             $timeMooning = [4, 5, 6, 7 ,8 ,9 ,10 ,11 ,12]; // [0, 1, 2, 3, 4, 5, 6, 7 ,8 ,9 ,10 ,11 ,12]
             $timeafter = [13, 14, 15, 16, 17]; // [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
             $timeeve = [18, 19, 20, 21];
             $timech = $date->format("H");
             $timeChint = intval($timech);
-            $result_array = array_search($timeChint, $timeMooning);
-            $result_array2 = array_search($timeChint, $timeafter);
-            $result_array3 = array_search($timeChint, $timeeve);
+            $result_array = in_array($timeChint, $timeMooning);
+            $result_array2 = in_array($timeChint, $timeafter);
+            $result_array3 = in_array($timeChint, $timeeve);
+            $result_array4 = in_array($timeChint, $timeall);
 
             if ($result_array != False){
                 echo "รอบเช้า";
-            }if($result_array2 != False){
+            }else if($result_array2 != False){
                 echo "รอบบ่าย";
-            }if($result_array3 != False){
+            }else if($result_array3 != False){
                 echo "รอบเย็น";
-            }if($result_array3 == False){
+            }else if($result_array4 != False){
                 echo "ไม่อยู่ในรอบการส่ง";
             }
         ?>
@@ -210,12 +253,12 @@ if(empty($value)){
             if($value == "-"){
                 echo "'Stop'";
             }
-            else if($str2[13] != "'Stop'")
+            else if($str21[13] != "'Stop'")
             { 
-                echo $str[11];
+                echo $str11[11];
             }
-            else if($str2[13] == "'Stop'"){
-                echo $str2[13];
+            else if($str21[13] == "'Stop'"){
+                echo $str21[13];
             }
         ?>
         </h5>
@@ -229,16 +272,16 @@ if(empty($value)){
             if($value == "-"){
                 echo "'Stop'";
             }
-            else if($str2[13] != "'Stop'")
+            else if($str22[13] != "'Stop'")
             { 
-                echo $str[11];
+                echo $str22[11];
             }
-            else if($str2[13] == "'Stop'"){
-                echo $str2[13];
+            else if($str22[13] == "'Stop'"){
+                echo $str22[13];
             }
         ?>
         </h5>
-        <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Moniter " onclick="window.location='dashboard.php' " />
+        <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Moniter " onclick="window.location='dashboard2.php' " />
     </td>
     <tr>
     <td><img src="ic.png" alt="Trulli" width="150">
@@ -249,16 +292,16 @@ if(empty($value)){
             if($value == "-"){
                 echo "'Stop'";
             }
-            else if($str2[13] != "'Stop'")
+            else if($str23[13] != "'Stop'")
             { 
-                echo $str[11];
+                echo $str33[11];
             }
-            else if($str2[13] == "'Stop'"){
-                echo $str2[13];
+            else if($str23[13] == "'Stop'"){
+                echo $str23[13];
             }
         ?>
         </h5>
-        <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Moniter " onclick="window.location='dashboard.php' " />
+        <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Moniter " onclick="window.location='dashboard3.php' " />
     </td>
     <td><img src="ic.png" alt="Trulli" width="150">
         <h4>Device 04</h4>
@@ -268,12 +311,12 @@ if(empty($value)){
             if($value == "-"){
                 echo "'Stop'";
             }
-            else if($str2[13] != "'Stop'")
+            else if($str24[13] != "'Stop'")
             { 
-                echo $str[11];
+                echo $str44[11];
             }
-            else if($str2[13] == "'Stop'"){
-                echo $str2[13];
+            else if($str24[13] == "'Stop'"){
+                echo $str24[13];
             }
         ?>
         </h5>
