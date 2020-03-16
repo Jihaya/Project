@@ -109,7 +109,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <li><a href="admin.php">Manage Members</a></li>
         <?php }?>
         <li class="active"><a href="about.php">About us</a></li>
+        <?php if($_SESSION["level"] == 'user' ){?>
         <li class="active"><a href="reset-password.php">Reset Password</a></li>
+        <?php }?>
         <li style="float:right" class="activeout"><a href="logout.php">Logout</a></li>
     </ul>
     <br>
