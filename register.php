@@ -176,17 +176,18 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($username_err) && empty($password_err) && empty($confirm_password_err) && empty($fname_err) && empty($lname_err) && empty($email_err)){
         
         // Prepare an insert statement
-        $sql = "INSERT INTO users (username, password , fname , lname , email) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO users (username, password , fname , lname , email , level) VALUES (?, ?, ?, ?, ?, ?)";
          
         if($stmt = mysqli_prepare($link, $sql)){
             // Bind variables to the prepared statement as parameters
-            mysqli_stmt_bind_param($stmt, "sssss", $param_username, $param_password , $param_fname , $param_lname, $param_email);
+            mysqli_stmt_bind_param($stmt, "ssssss", $param_username, $param_password , $param_fname , $param_lname, $param_email, $param_level);
             
             // Set parameters
             $param_username = $username;
             $param_fname = $fname;
             $param_lname = $lname;
             $param_email = $email;
+            $param_level = 'user';
             $param_password = password_hash($password, PASSWORD_DEFAULT); // Creates a password hash
             
             // Attempt to execute the prepared statement
@@ -295,7 +296,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                 <label>Email</label>
                 <input type="text" name="email" class="form-control" value="<?php echo $email; ?>">
                 <span class="help-block"><?php echo $email_err; ?></span>
+            </div>
+
+            <div class="form-group">
+                <label>level</label>
+                <input disabled='disabled' type="text" name="level" class="form-control" value="user">
+                <span class="help-block"></span>
             </div> 
+            
             <div class="form-group">
                 <input type="submit" class="btn btn-primary" value="Submit">
                 <input type="reset" class="btn btn-default" value="Reset">

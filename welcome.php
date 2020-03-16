@@ -55,41 +55,41 @@ if(empty($value)){
     $str21 = explode(' ',$value11);
 }
 
-if(empty($value2)){
-    $value22 = "-";
-}else{
-    $value22 = current($value);
-    $value12 = end($value);
+// if(empty($value2)){
+//     $value22 = "-";
+// }else{
+//     $value22 = current($value2);
+//     $value12 = end($value2);
 
-    // current = ค่าแรก - end = ค่าสุดท้าย
-    // ทำการตัดข้อมูลภายใน ' '
-    $str22 = explode(' ',$value22);
-    $str21 = explode(' ',$value12);
-}
+//     // current = ค่าแรก - end = ค่าสุดท้าย
+//     // ทำการตัดข้อมูลภายใน ' '
+//     $str22 = explode(' ',$value22);
+//     $str21 = explode(' ',$value12);
+// }
 
-if(empty($value3)){
-    $value33 = "-";
-}else{
-    $value23 = current($value);
-    $value13 = end($value);
+// if(empty($value3)){
+//     $value33 = "-";
+// }else{
+//     $value23 = current($value3);
+//     $value13 = end($value3);
 
-    // current = ค่าแรก - end = ค่าสุดท้าย
-    // ทำการตัดข้อมูลภายใน ' '
-    $str33 = explode(' ',$value23);
-    $str23 = explode(' ',$value13);
-}
+//     // current = ค่าแรก - end = ค่าสุดท้าย
+//     // ทำการตัดข้อมูลภายใน ' '
+//     $str33 = explode(' ',$value23);
+//     $str23 = explode(' ',$value13);
+// }
 
-if(empty($value4)){
-    $value44 = "-";
-}else{
-    $value24 = current($value);
-    $value14 = end($value);
+// if(empty($value4)){
+//     $value44 = "-";
+// }else{
+//     $value24 = current($value4);
+//     $value14 = end($value4);
 
-    // current = ค่าแรก - end = ค่าสุดท้าย
-    // ทำการตัดข้อมูลภายใน ' '
-    $str44 = explode(' ',$value24);
-    $str24 = explode(' ',$value14);
-}
+//     // current = ค่าแรก - end = ค่าสุดท้าย
+//     // ทำการตัดข้อมูลภายใน ' '
+//     $str44 = explode(' ',$value24);
+//     $str24 = explode(' ',$value14);
+// }
 ?>
  
 <!DOCTYPE html>
@@ -98,7 +98,6 @@ if(empty($value4)){
     <meta charset="UTF-8">
     <title>Welcome</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <meta http-equiv="refresh" content="5" >
     <style type="text/css">
         body{
             font: 14px sans-serif;
@@ -206,6 +205,9 @@ if(empty($value4)){
     <ul>
         <li><font face="th sarabun new" size="6" color="White">Account : <?php echo htmlspecialchars($_SESSION["username"]); ?></font></li>
         <li><a class="active" href="home.php">Home</a></li>
+        <?php if($_SESSION["level"] == 'admin' ){?>
+        <li><a href="adddevice.php">Add Device</a></li>
+        <?php }?>
         <li style="float:right" class="activeout"><a href="logout.php">Logout</a></li>
     </ul>
     <br>
@@ -235,7 +237,7 @@ if(empty($value4)){
                 echo "รอบบ่าย";
             }else if($result_array3 != False){
                 echo "รอบเย็น";
-            }else if($result_array4 != False){
+            }else if($result_array4 != True){
                 echo "ไม่อยู่ในรอบการส่ง";
             }
         ?>
@@ -262,26 +264,17 @@ if(empty($value4)){
             }
         ?>
         </h5>
-        <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Moniter " onclick="window.location='dashboard.php' " />
+        <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Monitor " onclick="window.location='dashboard.php' " />
     </td>
     <td><img src="ic.png" alt="Trulli" width="150">
         <h4>Device 02</h4>
         <h5>ทข354</h5>
         <h5>Status:
         <?php
-            if($value == "-"){
-                echo "'Stop'";
-            }
-            else if($str22[13] != "'Stop'")
-            { 
-                echo $str22[11];
-            }
-            else if($str22[13] == "'Stop'"){
-                echo $str22[13];
-            }
+            echo "'Stop'";
         ?>
         </h5>
-        <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Moniter " onclick="window.location='dashboard2.php' " />
+        <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Monitor " onclick="window.location='dashboard2.php' " />
     </td>
     <tr>
     <td><img src="ic.png" alt="Trulli" width="150">
@@ -289,38 +282,20 @@ if(empty($value4)){
         <h5>คซ3754</h5>
         <h5>Status:
         <?php
-            if($value == "-"){
-                echo "'Stop'";
-            }
-            else if($str23[13] != "'Stop'")
-            { 
-                echo $str33[11];
-            }
-            else if($str23[13] == "'Stop'"){
-                echo $str23[13];
-            }
+            echo "'Stop'";
         ?>
         </h5>
-        <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Moniter " onclick="window.location='dashboard3.php' " />
+        <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Monitor " onclick="window.location='dashboard3.php' " />
     </td>
     <td><img src="ic.png" alt="Trulli" width="150">
         <h4>Device 04</h4>
         <h5>กข1054</h5>
         <h5>Status:
         <?php
-            if($value == "-"){
-                echo "'Stop'";
-            }
-            else if($str24[13] != "'Stop'")
-            { 
-                echo $str44[11];
-            }
-            else if($str24[13] == "'Stop'"){
-                echo $str24[13];
-            }
+            echo "'Stop'";
         ?>
         </h5>
-        <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Moniter " onclick="window.location='dashboard.php' " />
+        <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Monitor " onclick="window.location='dashboard.php' " />
     </td>
     </tr>
     </table>

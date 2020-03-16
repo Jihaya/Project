@@ -3,7 +3,7 @@
 session_start();
 
 //Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true && (time() - $_SESSION['loggedin'] > 1800)){
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     header("location: login.php");
     exit;
     unset($_SESSION);
@@ -105,6 +105,9 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true && (time() - 
 <div class = "header"><img class = "logo" src="logo.png"></div>
     <ul>
         <li class="active"><a href="welcome.php">Moniter Page</a></li>
+        <?php if($_SESSION["level"] == 'admin' ){?>
+        <li><a href="admin.php">Manage Members</a></li>
+        <?php }?>
         <li class="active"><a href="about.php">About us</a></li>
         <li class="active"><a href="reset-password.php">Reset Password</a></li>
         <li style="float:right" class="activeout"><a href="logout.php">Logout</a></li>

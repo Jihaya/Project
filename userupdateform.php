@@ -4,11 +4,9 @@
 session_start();
  
 // Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: login.php");
-    exit;
-    unset($_SESSION);
-    session_destroy();
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION["level"] === "user"){
+  header("location: home.php");
+  exit;
 }
 ?>
 
@@ -80,7 +78,7 @@ extract($row);
         }
     </style>
 <body>
-<form action="userupdate_db.php" method="post" name="updateuser" id="updateuser">
+<form action="userupdate_db.php" method="post" name="updateuser" id="updateuser" OnSubmit="return chkString();">
   <table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
     <tr>
       <td height="40" colspan="2" align="center" bgcolor="#D6D5D6"><b>Edit Information User</b></td>
@@ -95,12 +93,12 @@ extract($row);
 
     <tr>
       <td width="117" align="right" bgcolor="#EBEBEB">ชื่อ :</td>
-      <td width="583" bgcolor="#EBEBEB"><input name="fname" type="text" id="fname" value="<?=$fname;?>" size="30" required="required"  /></td>
+      <td width="583" bgcolor="#EBEBEB"><input name="fname" type="text" id="fname" value="<?=$fname;?>" size="30" required="required"/></td>
     </tr>
 
     <tr>
       <td align="right" bgcolor="#EBEBEB">สกุล<label> :</label></td>
-      <td bgcolor="#EBEBEB"><input name="lname" type="text" id="lname" value="<?=$lname;?>" size="30" required="required" "/></td>
+      <td bgcolor="#EBEBEB"><input name="lname" type="text" id="lname" value="<?=$lname;?>" size="30" required="required"/></td>
     </tr>
 
     <tr>
@@ -112,6 +110,16 @@ extract($row);
       <td align="right" bgcolor="#EBEBEB">Password :
         <label></label></td>
       <td bgcolor="#EBEBEB"><input type="password" name="password" id="password" placeholder="ตัวเลขหรือภาษาอังกฤษเท่านั้น"/></td>
+      <script language="JavaScript">
+      function chkString()
+      {
+        if(document.updateuser.password.value.length < 6)
+        {
+          alert('Password must have atleast 6 characters.');
+          return false;
+        }
+      }
+    </script>
     </tr>
 
     <tr>

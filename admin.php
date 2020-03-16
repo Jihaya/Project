@@ -1,13 +1,11 @@
 <?php
 // Initialize the session
 session_start();
- 
+
 // Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
-    header("location: Login.php");
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION["level"] === "user"){
+    header("location: home.php");
     exit;
-    unset($_SESSION["loggedin"]);
-    session_destroy();
 }
 ?>
  
@@ -85,6 +83,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <body>
     <div class = "header"><img class = "logo" src="logo.png"></div>
     <ul>
+        <li><a href="home.php">Home</a></li>
         <li><a href="register.php">Register</a></li>
         <li style="float:right" class="activeout"><a href="logout.php">Logout</a></li>
     </ul>
