@@ -219,7 +219,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             font: 14px sans-serif;
         }
         body{
-            background-image: url('/images/background.png');
+            background-image: url('images/background.png');
             margin:0 auto;  
         }
         .wrapper{ width: 350px; padding: 20px; }

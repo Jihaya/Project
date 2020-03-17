@@ -112,7 +112,7 @@ if(empty($value)){
         }
         .header{
             width: auto;
-            background-image: url('/images/bg2.jpg');
+            background-image: url('images/bg2.jpg');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
@@ -122,7 +122,7 @@ if(empty($value)){
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
 </head>
 <body>
-    <div class = "header"><img class = "logo" src="/images/logo.png"></div>
+    <div class = "header"><img class = "logo" src="images/logo.png"></div>
     <ul>
         <li><a class="active" href="logpage.php">LogPage</a></li>
         <li><a class="active" href="welcome.php">Back</a></li>

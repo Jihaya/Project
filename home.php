@@ -89,7 +89,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <style>
         .header{
             width: auto;
-            background-image: url('/images/background.png');
+            background-image: url('images/background.png');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
@@ -102,7 +102,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
 </head>
 <body>
-<div class = "header"><img class = "logo" src="/images/logo.png"></div>
+<div class = "header"><img class = "logo" src="images/logo.png"></div>
     <ul>
         <li class="active"><a href="welcome.php">Moniter Page</a></li>
         <?php if($_SESSION["level"] == 'admin' ){?>
@@ -131,13 +131,13 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <br>
     <div class="databox">
         <h3><font face="th sarabun new" size="6">ทำไมไม่ใช้บริการของเราล่ะ</font></h3>
-        <img class = "center" src="/images/logo.png">
+        <img class = "center" src="images/logo.png">
         <h3><font face="th sarabun new" size="6">ระบบติดตามการขนส่งผัก</font></h3>
         <p><font face="th sarabun new" size="5">ที่จะเป็นการรับประกันได้ว่าผักที่คุณได้รับนั้นสดใหม่ และถูกเก็บไว้ในอุณหภูมิที่ช่วยให้อายุของผักนานขึ้น อีกทั้งยังสามารถตามขณะการขนส่ง</font></p>
         <br><br>
-        <img class = "icon" src="/images/clock.png" width="190px">
-        <img class = "icon" src="/images/temp.png" width="150px">
-        <img class = "icon" src="/images/humid.png" width="190px">
+        <img class = "icon" src="images/clock.png" width="190px">
+        <img class = "icon" src="images/temp.png" width="150px">
+        <img class = "icon" src="images/humid.png" width="190px">
         <p><font face="th sarabun new" size="5">ไม่ว่าจะเวลาในการขนส่ง หรืออุณหภูมิ รวมถึงความชื่นในระหว่างขนส่งก็สามารถตรวจสอบได้ทันที</font></p>
     </div>
 </body>
