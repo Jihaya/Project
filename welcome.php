@@ -164,7 +164,7 @@ if(empty($value)){
         }
         .header{
             width: auto;
-            background-image: url('bg1.jpg');
+            background-image: url('/images/bg1.jpg');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
@@ -201,7 +201,7 @@ if(empty($value)){
     </script>
 </head>
 <body onload="startTime()">
-    <div class = "header"><img class = "logo" src="logo.png"></div>
+    <div class = "header"><img class = "logo" src="/images/logo.png"></div>
     <ul>
         <li><font face="th sarabun new" size="6" color="White">Account : <?php echo htmlspecialchars($_SESSION["username"]); ?></font></li>
         <li><a class="active" href="home.php">Home</a></li>
@@ -247,7 +247,7 @@ if(empty($value)){
     <br>
     <table>
     <tr></tr>
-    <td><img src="ic.png" alt="Trulli" width="150">
+    <td><img src="/images/ic.png" alt="Trulli" width="150">
         <h4>Device 01</h4>
         <h5>กย105</h5>
         <h5>Status:
@@ -266,7 +266,7 @@ if(empty($value)){
         </h5>
         <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Monitor " onclick="window.location='dashboard.php' " />
     </td>
-    <td><img src="ic.png" alt="Trulli" width="150">
+    <td><img src="/images/ic.png" alt="Trulli" width="150">
         <h4>Device 02</h4>
         <h5>ทข354</h5>
         <h5>Status:
@@ -277,7 +277,7 @@ if(empty($value)){
         <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Monitor " onclick="window.location='dashboard2.php' " />
     </td>
     <tr>
-    <td><img src="ic.png" alt="Trulli" width="150">
+    <td><img src="/images/ic.png" alt="Trulli" width="150">
         <h4>Device 03</h4>
         <h5>คซ3754</h5>
         <h5>Status:
@@ -287,7 +287,7 @@ if(empty($value)){
         </h5>
         <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Monitor " onclick="window.location='dashboard3.php' " />
     </td>
-    <td><img src="ic.png" alt="Trulli" width="150">
+    <td><img src="/images/ic.png" alt="Trulli" width="150">
         <h4>Device 04</h4>
         <h5>กข1054</h5>
         <h5>Status:
