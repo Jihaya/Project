@@ -72,7 +72,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION[
         }
         .header{
             width: auto;
-            background-image: url('background.png');
+            background-image: url('/images/background.png');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
@@ -81,7 +81,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION[
     </style>
 </head>
 <body>
-    <div class = "header"><img class = "logo" src="logo.png"></div>
+    <div class = "header"><img class = "logo" src="/images/logo.png"></div>
     <ul>
         <li><a href="home.php">Home</a></li>
         <li><a href="register.php">Register</a></li>

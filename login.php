@@ -115,7 +115,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             margin: auto;
             background: white;
             padding: 10px;
-            background-image: url('background.png');
+            background-image: url('/images/background.png');
         }
         .wrapper{ width: 350px; padding: 20px; }
         .wrapper{

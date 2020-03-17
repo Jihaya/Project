@@ -91,7 +91,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true && (time() - 
     <style>
         .header{
             width: auto;
-            background-image: url('background.png');
+            background-image: url('/images/background.png');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
@@ -134,7 +134,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true && (time() - 
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
 </head>
 <body>
-<div class = "header"><img class = "logo" src="logo.png"></div>
+<div class = "header"><img class = "logo" src="/images/logo.png"></div>
     <ul>
         <li class="active"><a href="home.php">Back</a></li>
         <li style="float:right" class="activeout"><a href="logout.php">Logout</a></li>
@@ -142,7 +142,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true && (time() - 
     <br>
     <div class="databox">
         <h3><font face="th sarabun new" size="7"><b>NextGen Logistics</b></font></h3>
-        <img class = "center" src="logo.png">
+        <img class = "center" src="/images/logo.png">
         <p><font face="th sarabun new" size="5"><b>ระบบติดตามการขนส่งผัก</b></font></p>
         <br>
         <p><font face="th sarabun new" size="5">เพื่อได้รับผักที่สดโดยคุณสามารถติดตามการขนส่ง รวมถึงอุณหภูมิการจัดเก็บของผักที่ถูกเก็บรักษา</font></p>
