@@ -20,7 +20,7 @@ use Kreait\Firebase\ServiceAccount;
 
 // This assumes that you have placed the Firebase credentials in the same directory
 // as this PHP file.
-$serviceAccount = ServiceAccount::fromJsonFile(__DIR__.'/logistics-car-94e09b126562.json');
+$serviceAccount = ServiceAccount::fromJsonFile(__DIR__.'/service-account.json');
 
 $firebase = (new Factory)
     ->withServiceAccount($serviceAccount)
@@ -54,50 +54,16 @@ if(empty($value)){
     $str11 = explode(' ',$value21);
     $str21 = explode(' ',$value11);
 }
-
-// if(empty($value2)){
-//     $value22 = "-";
-// }else{
-//     $value22 = current($value2);
-//     $value12 = end($value2);
-
-//     // current = ค่าแรก - end = ค่าสุดท้าย
-//     // ทำการตัดข้อมูลภายใน ' '
-//     $str22 = explode(' ',$value22);
-//     $str21 = explode(' ',$value12);
-// }
-
-// if(empty($value3)){
-//     $value33 = "-";
-// }else{
-//     $value23 = current($value3);
-//     $value13 = end($value3);
-
-//     // current = ค่าแรก - end = ค่าสุดท้าย
-//     // ทำการตัดข้อมูลภายใน ' '
-//     $str33 = explode(' ',$value23);
-//     $str23 = explode(' ',$value13);
-// }
-
-// if(empty($value4)){
-//     $value44 = "-";
-// }else{
-//     $value24 = current($value4);
-//     $value14 = end($value4);
-
-//     // current = ค่าแรก - end = ค่าสุดท้าย
-//     // ทำการตัดข้อมูลภายใน ' '
-//     $str44 = explode(' ',$value24);
-//     $str24 = explode(' ',$value14);
-// }
 ?>
  
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Welcome</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style type="text/css">
         body{
             font: 14px sans-serif;
@@ -164,7 +130,7 @@ if(empty($value)){
         }
         .header{
             width: auto;
-            background-image: url('/images/bg1.jpg');
+            background-image: url('images/bg1.jpg');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
@@ -181,7 +147,7 @@ if(empty($value)){
     <style>
         .w3-btn {margin-bottom:10px;}
     </style>
-    
+
     <script>
         function startTime() {
         var today = new Date();
@@ -201,7 +167,7 @@ if(empty($value)){
     </script>
 </head>
 <body onload="startTime()">
-    <div class = "header"><img class = "logo" src="/images/logo.png"></div>
+    <div class = "header"><img class = "logo" src="images/logo.png"></div>
     <ul>
         <li><font face="th sarabun new" size="6" color="White">Account : <?php echo htmlspecialchars($_SESSION["username"]); ?></font></li>
         <li><a class="active" href="home.php">Home</a></li>
@@ -245,9 +211,9 @@ if(empty($value)){
     </table>
     <br>
     <br>
-    <table>
+    <!-- <table>
     <tr></tr>
-    <td><img src="/images/ic.png" alt="Trulli" width="150">
+    <td><img src="images/ic.png" alt="Trulli" width="150">
         <h4>Device 01</h4>
         <h5>กย105</h5>
         <h5>Status:
@@ -266,7 +232,7 @@ if(empty($value)){
         </h5>
         <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Monitor " onclick="window.location='dashboard.php' " />
     </td>
-    <td><img src="/images/ic.png" alt="Trulli" width="150">
+    <td><img src="images/ic.png" alt="Trulli" width="150">
         <h4>Device 02</h4>
         <h5>ทข354</h5>
         <h5>Status:
@@ -277,7 +243,7 @@ if(empty($value)){
         <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Monitor " onclick="window.location='dashboard2.php' " />
     </td>
     <tr>
-    <td><img src="/images/ic.png" alt="Trulli" width="150">
+    <td><img src="images/ic.png" alt="Trulli" width="150">
         <h4>Device 03</h4>
         <h5>คซ3754</h5>
         <h5>Status:
@@ -287,7 +253,8 @@ if(empty($value)){
         </h5>
         <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Monitor " onclick="window.location='dashboard3.php' " />
     </td>
-    <td><img src="/images/ic.png" alt="Trulli" width="150">
+
+    <td><img src="images/ic.png" alt="Trulli" width="150">
         <h4>Device 04</h4>
         <h5>กข1054</h5>
         <h5>Status:
@@ -300,5 +267,49 @@ if(empty($value)){
     </tr>
     </table>
     </div>
+    <div> -->
+    
+    <?php
+        //1. เชื่อมต่อ database: 
+        include('config.php');  //ไฟล์เชื่อมต่อกับ database ที่เราได้สร้างไว้ก่อนหน้านี้
+        
+        //2. query ข้อมูลจากตาราง users: 
+        $query = "SELECT * FROM device ORDER BY id ASC" or die("Error:" . mysqli_error());
+        //3.เก็บข้อมูลที่ query ออกมาไว้ในตัวแปร result . 
+        $result = mysqli_query($link, $query);
+        //4 . แสดงข้อมูลที่ query ออกมา โดยใช้ตารางในการจัดข้อมูล: 
+        
+        echo "<table border='1' align='center' width='500'>";
+        //หัวข้อตาราง
+        echo "<tr align='center' bgcolor='#CCCCCC'><td>Device ID</td><td>Vehicle Registration</td><td>Monitor Site</td><td>Status</td><td>edit</td><td>delete</td>";
+        while($row = mysqli_fetch_array($result)) { 
+        echo "<tr>";
+        echo "<td>" .$row["id"] .  "</td> "; 
+        echo "<td>" .$row["carnum"] .  "</td> ";
+        echo "<td><a href='dashboard.php'>Click here</a></td>";
+        if($value2 == "-"){
+            echo "'Stop'";
+        }
+        else if($str21[13] != "'Stop'")
+        {
+            echo "<td><i class='fa fa-circle' style='font-size:24px;color:green;'></i></td>";
+            
+        }
+        else if($str21[13] == "'Stop'"){
+            echo "<td><i class='fa fa-circle' style='font-size:24px;color:red;'></i></td>";
+        }
+        //แก้ไขข้อมูล
+        echo "<td><a type='button' href='editdevice.php?id=$row[0]'>edit</a></td> ";
+        
+        //ลบข้อมูล
+        echo "<td><a href='deldevice.php?id=$row[0]' onclick=\"return confirm('Do you want to delete this record? !!!')\">del</a></td> ";
+        echo "</tr>";
+        }
+        echo "</table>";
+        //5. close connection
+        mysqli_close($link);
+    ?>
+    </div>
+    <style></style>
 </body>
 </html>

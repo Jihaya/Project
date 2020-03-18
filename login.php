@@ -65,7 +65,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                             if($level =="admin"){ //ถ้าเป็น admin ให้กระโดดไปหน้า admin.php
  
-                                Header("Location: admin.php");
+                                Header("Location: home.php");
          
                             }else {
 
