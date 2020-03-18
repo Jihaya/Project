@@ -100,7 +100,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 
     // This assumes that you have placed the Firebase credentials in the same directory
     // as this PHP file.
-    $serviceAccount = ServiceAccount::fromJsonFile(__DIR__.'/logistics-car-94e09b126562.json');
+    $serviceAccount = ServiceAccount::fromJsonFile(__DIR__.'/service-account.json');
 
     $firebase = (new Factory)
         ->withServiceAccount($serviceAccount)

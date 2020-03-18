@@ -59,6 +59,7 @@ if(empty($value)){
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Welcome</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
@@ -183,7 +184,7 @@ if(empty($value)){
         <br>
         <div id="txt"></div>
         <?php
-            $date = new DateTime("now", new DateTimeZone('Asia/Bangkok') );
+            $date = new DateTime("now",  new DateTimeZone('Asia/Bangkok') );
             echo $date->format("d-m-Y"); //\T H:i:s
             echo "<br>";
             $timeall = [4, 5, 6, 7 ,8 ,9 ,10 ,11 ,12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
@@ -279,7 +280,7 @@ if(empty($value)){
         $result = mysqli_query($link, $query);
         //4 . แสดงข้อมูลที่ query ออกมา โดยใช้ตารางในการจัดข้อมูล: 
         
-        echo "<table border='1' align='center' width='500'>";
+        echo "<table id='table' border='1' align='center' width='500'>";
         //หัวข้อตาราง
         echo "<tr align='center' bgcolor='#CCCCCC'><td>Device ID</td><td>Vehicle Registration</td><td>Monitor Site</td><td>Status</td><td>edit</td><td>delete</td>";
         while($row = mysqli_fetch_array($result)) { 
