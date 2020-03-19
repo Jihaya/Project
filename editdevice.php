@@ -81,7 +81,7 @@ extract($row);
 <form action="editdevice_db.php" method="post" name="updateuser" id="updateuser" OnSubmit="return chkString();">
   <table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
     <tr>
-      <td height="40" colspan="2" align="center" bgcolor="#D6D5D6"><b>Edit Information User</b></td>
+      <td height="40" colspan="2" align="center" bgcolor="#D6D5D6"><b>Edit Device</b></td>
     </tr>
     <tr>
       <td align="right" bgcolor="#EBEBEB">ID : </td>
@@ -98,7 +98,12 @@ extract($row);
 
     <tr>
       <td width="117" align="right" bgcolor="#EBEBEB">Status   :</td>
-      <td width="583" bgcolor="#EBEBEB"><input name="status" type="text" id="status" value="<?=$status;?>" size="30" required="required"/></td>
+      <td width="583" bgcolor="#EBEBEB">
+      <select id="status" name="status" value="<?=$status;?>">
+        <option type="text" size="30" >Ready</option>
+        <option type="text" size="30" >Repair</option>
+      </select>
+      </td>
     </tr>
 
     <tr>

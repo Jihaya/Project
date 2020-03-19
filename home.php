@@ -49,6 +49,14 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         .activeout {
             background-color: #cc0000;
         }
+        li {
+            border-right: 1px solid #bbb;
+        }
+
+        li:last-child {
+            border-right: none;
+        }
+
     </style>
 
     <style>
@@ -59,31 +67,19 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
             background-color: #ffffff;
             border: 1px;
             opacity: 0.9;
+
             /*filter: alpha(opacity=100); /* For IE8 and earlier */
         }
         .page-header, table{
             background-color: lightblue;
+            
         }
-        table{
-            background-color: White;
+        a{
+           font-size:16px;
         }
-        table, td, th{  
-            border: 1px solid #ddd;
-            align: center;
-        }
-        table {
-            border-collapse: collapse;
-            width: 45%;
-            margin-left: 25%;
-            margin-right: 38%;
-            align: center;
-        }
-        th, td {
-            padding: 15px;
-            align: center;
-        }
-        .td1 {
-            width: 70%;
+        ul{
+            box-shadow: 5px 10px 16px #888888;
+
         }
     </style>
     <style>
@@ -98,23 +94,26 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         .icon{
             padding-left: 4em;
         }
+        .active {
+        background-color: #4CAF50;
+        }
     </style>
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
 </head>
 <body>
 <div class = "header"><img class = "logo" src="images/logo.png"></div>
     <ul>
-        <li class="active"><a href="welcome.php">Moniter Page</a></li>
+        <li class="active"><a href="welcome.php">Monitor Page</a></li>
         <?php if($_SESSION["level"] == 'admin' ){?>
         <li><a href="admin.php">Manage Members</a></li>
         <?php }?>
-        <li class="active"><a href="about.php">About us</a></li>
+        <li class="active2"><a href="about.php">About us</a></li>
         <?php if($_SESSION["level"] == 'user' ){?>
         <li class="active"><a href="reset-password.php">Reset Password</a></li>
         <?php }?>
         <li style="float:right" class="activeout"><a href="logout.php">Logout</a></li>
     </ul>
-    <br>
+    <br><br>
     <div class="databox">
         <h3><font face="th sarabun new" size="6">ทำไมเราจึงต้องการผักสด ?</font></h3>
         <p><font face="th sarabun new" size="5">ปฏิเสธไม่ได้เลยว่าผู้คนนิยมเลือกผักที่สดเพื่อประกอบอาหาร 
