@@ -206,23 +206,19 @@ if(empty($value)){
             $date = new DateTime("now",  new DateTimeZone('Asia/Bangkok') );
             echo $date->format("d-m-Y"); //\T H:i:s
             echo "<br>";
-            $timeall = [4, 5, 6, 7 ,8 ,9 ,10 ,11 ,12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
+            $timeall = [4, 5, 6, 7 ,8 ,9 ,10 ,11 ,12, 13, 14, 15, 16, 17, 18];
             $timeMooning = [4, 5, 6, 7 ,8 ,9 ,10 ,11 ,12]; // [0, 1, 2, 3, 4, 5, 6, 7 ,8 ,9 ,10 ,11 ,12]
             $timeafter = [13, 14, 15, 16, 17]; // [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
-            $timeeve = [18, 19, 20, 21];
             $timech = $date->format("H");
             $timeChint = intval($timech);
             $result_array = in_array($timeChint, $timeMooning);
             $result_array2 = in_array($timeChint, $timeafter);
-            $result_array3 = in_array($timeChint, $timeeve);
             $result_array4 = in_array($timeChint, $timeall);
 
             if ($result_array != False){
                 echo "รอบเช้า";
             }else if($result_array2 != False){
                 echo "รอบบ่าย";
-            }else if($result_array3 != False){
-                echo "รอบเย็น";
             }else if($result_array4 != True){
                 echo "ไม่อยู่ในรอบการส่ง";
             }
@@ -230,65 +226,6 @@ if(empty($value)){
     </td>
     </table>
     <br>
-    <br>
-    <!-- <table>
-    <tr></tr>
-    <td><img src="images/ic.png" alt="Trulli" width="150">
-        <h4>Device 01</h4>
-        <h5>กย105</h5>
-        <h5>Status:
-        <?php
-            if($value == "-"){
-                echo "'Stop'";
-            }
-            else if($str21[13] != "'Stop'")
-            { 
-                echo $str11[11];
-            }
-            else if($str21[13] == "'Stop'"){
-                echo $str21[13];
-            }
-        ?>
-        </h5>
-        <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Monitor " onclick="window.location='dashboard.php' " />
-    </td>
-    <td><img src="images/ic.png" alt="Trulli" width="150">
-        <h4>Device 02</h4>
-        <h5>ทข354</h5>
-        <h5>Status:
-        <?php
-            echo "'Stop'";
-        ?>
-        </h5>
-        <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Monitor " onclick="window.location='dashboard2.php' " />
-    </td>
-    <tr>
-    <td><img src="images/ic.png" alt="Trulli" width="150">
-        <h4>Device 03</h4>
-        <h5>คซ3754</h5>
-        <h5>Status:
-        <?php
-            echo "'Stop'";
-        ?>
-        </h5>
-        <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Monitor " onclick="window.location='dashboard3.php' " />
-    </td>
-
-    <td><img src="images/ic.png" alt="Trulli" width="150">
-        <h4>Device 04</h4>
-        <h5>กข1054</h5>
-        <h5>Status:
-        <?php
-            echo "'Stop'";
-        ?>
-        </h5>
-        <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Monitor " onclick="window.location='dashboard.php' " />
-    </td>
-    </tr>
-    </table>
-    </div>
-    <div> -->
-    
     <?php
         //1. เชื่อมต่อ database: 
         include('config.php');  //ไฟล์เชื่อมต่อกับ database ที่เราได้สร้างไว้ก่อนหน้านี้

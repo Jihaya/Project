@@ -7,7 +7,7 @@ use Kreait\Firebase\ServiceAccount;
 
 // This assumes that you have placed the Firebase credentials in the same directory
 // as this PHP file.
-$serviceAccount = ServiceAccount::fromJsonFile(__DIR__.'/logistics-car-94e09b126562.json');
+$serviceAccount = ServiceAccount::fromJsonFile(__DIR__.'/service-account.json');
 
 $firebase = (new Factory)
     ->withServiceAccount($serviceAccount)
@@ -15,7 +15,7 @@ $firebase = (new Factory)
     ->create();
 
 $database = $firebase->getDatabase();
-$reference = $database->getReference('/Cars');
+$reference = $database->getReference('/Cars4');
 
 $snapshot = $reference->getSnapshot();
 
@@ -28,17 +28,79 @@ if(empty($value)){
     $long = json_decode($valueem);
 }else{
     // current = ค่าแรก - end = ค่าสุดท้าย
-    $value2 = current($value);
-    $value1 = end($value);
+    // $value2 = current($value);
+    // $value1 = end($value);
 
-    // ทำการตัดข้อมูลภายใน ' '
-    $str = explode(' ',$value2);
-    $str2 = explode(' ',$value1);
-    $tempHumid = $str2[3].' '.'&'.' '.$str2[5];
-    $latlon = $str2[7].' '.','.' '.$str2[9];
-    $lat = json_decode($str2[7]);
-    $long = json_decode($str2[9]);
+    // // ทำการตัดข้อมูลภายใน ' '
+    // $str = explode(' ',$value2);
+    // $str2 = explode(' ',$value1);
+    // $tempHumid = $str2[3].' '.'&'.' '.$str2[5];
+    // $latlon = $str2[7].' '.','.' '.$str2[9];
+    // $lat = json_decode($str2[7]);
+    // $long = json_decode($str2[9]);
 }
+
+$temp = [];
+$humid = [];
+$c = 0;
+$arrcount = []; // หยุดที่ค่า Stop คึอ ตำแหน่งที่ 9 ค่าที่ 10
+$arrcount2 = [];
+$arrcount3 = [];
+
+// รอบแรกที่จะหยุด
+foreach($value as $x=>$x_value){
+    array_push($arrcount, $x_value);
+    $str = explode(' ',$x_value);
+
+    if($str[13] === "'Stop'"){
+        $c = $c + 1;
+        break;
+    }
+}
+// ค่าแรก
+$cut1arrcount = current($arrcount);
+$cut2arrcount = end($arrcount);
+$str1 = explode(' ',$cut1arrcount);
+$str11 = explode(' ',$cut2arrcount);
+
+// หยุดหารอบสองค่าแรก
+foreach($value as $x=>$x_value){
+    array_push($arrcount, $x_value);
+    $str = explode(' ',$x_value);
+
+    array_push($temp, $str[3]);
+    array_push($humid, $str[5]);
+    if($str[13] === "'Stop'"){
+        $c = $c + 1;
+        break;
+    }
+}
+
+// ค่าที่เอามาเทียบ
+foreach($value as $x=>$x_value){
+    array_push($arrcount2, $x_value);
+    $str = explode(' ',$x_value);
+}
+
+$c2 = []; // ค่าแรกในรอบที่ 2
+//print_r ($arrcount2[count($temp)]); // ได้ตำแหน่งสุดท้ายของตัวแรก ที่จะเป็นรอบเริ่มของตัวสอง
+$c2 = explode(' ', $arrcount2[count($temp)]);
+
+// รอบที่ 2
+$arrstop = [];
+foreach($value as $x=>$x_value){
+    array_push($arrcount3, $x_value);
+    $str = explode(' ',$x_value);
+    for($i = 0; $i <= count($temp) -1; $i++){
+        unset($arrcount3[$i]);
+    }
+}
+$cut1arrcount3 = current($arrcount3);
+$cut2arrcount3 = end($arrcount3);
+$str2 = explode(' ',$cut1arrcount3);
+$str22 = explode(' ',$cut2arrcount3);
+
+
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +108,6 @@ if(empty($value)){
 <head>
 <title>Moniter Datas</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-<meta http-equiv="refresh" content="5" >
     <style type="text/css">
         body{ font: 14px sans-serif; text-align: center; }
     </style>
@@ -77,6 +138,22 @@ if(empty($value)){
         }
         .activeout {
             background-color: #cc0000;
+        }
+        li {
+            border-right: 1px solid #bbb;
+        }
+        li:last-child {
+            border-right: none;
+        }
+        a{
+            font-size:16px;
+        }
+        ul{
+            box-shadow: 5px 10px 16px #888888;
+
+        }
+        .active {
+            background-color: #4CAF50;
         }
     </style>
 
@@ -112,7 +189,7 @@ if(empty($value)){
         }
         .header{
             width: auto;
-            background-image: url('/images/bg2.jpg');
+            background-image: url('images/bg2.jpg');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
@@ -122,11 +199,10 @@ if(empty($value)){
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
 </head>
 <body>
-    <div class = "header"><img class = "logo" src="/images/logo.png"></div>
+    <div class = "header"><img class = "logo" src="images/logo.png"></div>
     <ul>
         <li><a class="active" href="logpage.php">LogPage</a></li>
-        <li><a class="active" href="welcome.php">Back</a></li>
-        <li style="float:right" class="activeout"><a href="logout.php">Logout</a></li>
+        <li style="float:right"><a class="active" href="welcome.php">Back</a></li>
     </ul>
     <div style="margin:auto;width:100%;">
     <div id="chart_div" style="margin:auto;width:600px;height:400px;"></div>  
@@ -134,104 +210,151 @@ if(empty($value)){
     <table class="td1" name= "td1" id="tbl_Cars_list" border="1">
         <tr>
             <td>Device</td>
-            <td>Temp(C*) & Humid(%)</td>
+            <td>Temp(°C)</td>
+            <td>Humid(%)</td>
             <td>Time (Start)</td>
             <td>Time (Now)</td>
-            <td>Time used (minute)</td>
+            <td>Time used</td>
             <td>Status</td>
         </tr>
-            <td><?php
+            <td>
+            <?php //device id
                 if($value == "-"){
                     echo "-";
                 }else{
                 echo $str[1];
                 }
-            ?></td>
-            <td><?php
+            ?>
+            </td>
+
+            <td>
+            <?php //temp
                 if($value == "-"){
                     echo "-";
-                }else{
-                    echo $tempHumid;
+                }if($c = 1){
+                    echo $c2[3];
+                }
+            ?>
+            </td>
+
+            <td>
+            <?php //humid
+            if($value == "-"){
+                echo "-";
+            }else if($c = 0){
+                echo $c2[5];
+            }else if($c = 1){
+                echo $c2[5];
             }
             ?>
             </td>
 
-            <td><?php
+            <td><?php //time start
             if($value == "-"){
                 echo "-";
-            }else{
-                echo $str[13].$str[14].$str[15];
+            }else if($c = 1){
+                echo $c2[13].$c2[14].$c2[15];
             }
             ?>
             </td>
 
             <td>
-            <?php
+            <?php //time stop
                 if($value == "-"){
                     echo "-";
                 }
-                else if($str2[13] != "'Stop'")
+                else if($c = 0)
                 { 
                     echo $str2[13].$str2[14].$str2[15];
                 }
-                else if($str2[13] == "'Stop'"){
-                    echo $str2[15].$str2[16].$str2[17];
+                else if($c = 1){
+                    echo $str22[15].$str22[16].$str22[17];
                 }
             ?>
             </td>
 
             <td>
-            <?php
+            <?php // time use
                 if($value == "-"){
                     echo "-";
-                }
-                else if($str2[13] != "'Stop'")
-                { 
-                    echo "Not ending the transport";
-                }
-                else if($str2[13] == "'Stop'"){
-                    $strTime1 = $str[13].$str[14].$str[15];
-                    $timestart1 = intval($str[13]);
-                    $timestart2 = intval($str[15]);
+                }else if($c = 0){
+                    if($str1[13] != "'Stop'"){
+                        echo "Not ending the transport";
+                    }else if($str11[13] == "'Stop'"){
+                        $strTime1 = $str1[13].$str1[14].$str1[15];
+                        $timestart1 = intval($str1[13]);
+                        $timestart2 = intval($str1[15]);
 
-                    $strTime2 = $str2[15].$str2[16].$str2[17];
-                    $timeend1 = intval($str2[15]);
-                    $timeend2 = intval($str2[17]);
+                        $strTime2 = $str11[15].$str11[16].$str11[17];
+                        $timeend1 = intval($str11[15]);
+                        $timeend2 = intval($str11[17]);
 
-                    $timeresult1 = $timestart1 - $timeend1;
-                    $timeresult2 = $timestart2 - $timeend2;
-                    
-                    if($timeresult1 < 0){
-                        echo abs($timeresult1);
-                        echo ".";
-                    } else{
-                        echo $timeresult1;
-                        echo ".";
+                        $timeresult1 = $timestart1 - $timeend1;
+                        $timeresult2 = $timestart2 - $timeend2;
+                        if($timeresult1 < 0){
+                            echo abs($timeresult1);
+                            echo ".";
+                        }else{
+                            echo $timeresult1;
+                            echo ".";
+                        }
+                        if($timeresult2 < 0){
+                            echo abs($timeresult2);
+                        }else{
+                            echo $timeresult2;
+                        }
                     }
-                    if($timeresult2 < 0){
-                        echo abs($timeresult2);
-                    } else{
-                        echo $timeresult2;
+                }else if ($c = 1){
+                    if($str22[13] != "'Stop'"){
+                        echo "Not ending the transport";
+                    }else if($str22[13] == "'Stop'"){
+                        $strTime1 = $str2[13].$str2[14].$str2[15];
+                        $timestart1 = intval($str2[13]);
+                        $timestart2 = intval($str2[15]);
+
+                        $strTime2 = $str22[15].$str22[16].$str22[17];
+                        $timeend1 = intval($str22[15]);
+                        $timeend2 = intval($str22[17]);
+
+                        $timeresult1 = $timestart1 - $timeend1;
+                        $timeresult2 = $timestart2 - $timeend2;
+                        if($timeresult1 < 0){
+                            echo abs($timeresult1);
+                            echo ".";
+                        } else{
+                            echo $timeresult1;
+                            echo ".";
+                        }
+                        if($timeresult2 < 0){
+                            echo abs($timeresult2);
+                        }else{
+                            echo $timeresult2;
+                        }
                     }
                 }
             ?>
             </td>
             <td>
-            <?php
+            <?php // status
                 if($value == "-"){
                     echo "-";
-                }
-                else if($str2[13] != "'Stop'")
-                { 
-                    echo $str[11];
-                }
-                else if($str2[13] == "'Stop'"){
-                    echo $str2[13];
+                }elseif($c = 0){
+                    if($str11[13] != "'Stop'"){
+                        echo $str1[13];
+                    }elseif($str11[13] == "'Stop'"){
+                        echo $str11[13];
+                    }
+                }elseif($c = 1){
+                    if($str22[13] != "'Stop'"){
+                        echo $str2[11];
+                    }elseif($str22[13] == "'Stop'"){
+                        echo $str22[13];
+                    }
                 }
             ?>
             </td>
     </table>
-    <a target ="_blank" href='https://www.google.com/maps/search/?api=1&query=<?php echo $lat ?>,<?php echo $long ?>'>Check Location in Google MAP
+    <a target ="_blank" href='https://www.google.com/maps/search/?api=1&query=<?php echo $lat ?>,<?php echo $long ?>'>Check Location in Google MAP</a>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>   
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
@@ -266,6 +389,6 @@ if(empty($value)){
         chart.draw(data, options); // สร้างกราฟ
         
     }
-    </script>       
+    </script>   
 </body>
 </html>
