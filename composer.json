@@ -1,7 +1,8 @@
 {
     "require": {
         "kreait/firebase-php": "4.35",
-        "tecnickcom/tcpdf": "^6.3"
+        "tecnickcom/tcpdf": "^6.3",
+        "mpdf/mpdf": "^8.0"
     }
 
 }
