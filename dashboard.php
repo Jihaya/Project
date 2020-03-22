@@ -15,7 +15,7 @@ $firebase = (new Factory)
     ->create();
 
 $database = $firebase->getDatabase();
-$reference = $database->getReference('/Cars4');
+$reference = $database->getReference('/Car5');
 
 $snapshot = $reference->getSnapshot();
 
@@ -72,6 +72,7 @@ foreach($value as $x=>$x_value){
     array_push($humid, $str[5]);
     if($str[13] === "'Stop'"){
         $c = $c + 1;
+        $cstop = $c;
         break;
     }
 }
@@ -79,15 +80,20 @@ foreach($value as $x=>$x_value){
 // ค่าที่เอามาเทียบ
 foreach($value as $x=>$x_value){
     array_push($arrcount2, $x_value);
-    $str = explode(' ',$x_value);
+    $strch = explode(' ',$x_value);
 }
 
 $c2 = []; // ค่าแรกในรอบที่ 2
-//print_r ($arrcount2[count($temp)]); // ได้ตำแหน่งสุดท้ายของตัวแรก ที่จะเป็นรอบเริ่มของตัวสอง
-$c2 = explode(' ', $arrcount2[count($temp)]);
+if($strch[13] == "'Stop'"){
 
+}
+if($c == 2){
 // รอบที่ 2
 $arrstop = [];
+if(empty($arrcount2[count($temp)])){
+    
+}elseif (!empty($arrcount2[count($temp)])) {
+    $c2 = explode(' ', $arrcount2[count($temp)]);
 foreach($value as $x=>$x_value){
     array_push($arrcount3, $x_value);
     $str = explode(' ',$x_value);
@@ -99,8 +105,20 @@ $cut1arrcount3 = current($arrcount3);
 $cut2arrcount3 = end($arrcount3);
 $str2 = explode(' ',$cut1arrcount3);
 $str22 = explode(' ',$cut2arrcount3);
-
-
+}
+// $c2 = explode(' ', $arrcount2[count($temp)]);
+// foreach($value as $x=>$x_value){
+//     array_push($arrcount3, $x_value);
+//     $str = explode(' ',$x_value);
+//     for($i = 0; $i <= count($temp) -1; $i++){
+//         unset($arrcount3[$i]);
+//     }
+// }
+// $cut1arrcount3 = current($arrcount3);
+// $cut2arrcount3 = end($arrcount3);
+// $str2 = explode(' ',$cut1arrcount3);
+// $str22 = explode(' ',$cut2arrcount3);
+}
 ?>
 
 <!DOCTYPE html>
@@ -231,8 +249,13 @@ $str22 = explode(' ',$cut2arrcount3);
             <?php //temp
                 if($value == "-"){
                     echo "-";
-                }if($c = 1){
-                    echo $c2[3];
+                }if($c = 3){
+                    if(empty($arrcount2[count($temp)]))
+                    {
+                        echo $str11[3];
+                    }elseif(!empty($arrcount2[count($temp)])){
+                        echo $str22[3];
+                    }
                 }
             ?>
             </td>
@@ -241,10 +264,10 @@ $str22 = explode(' ',$cut2arrcount3);
             <?php //humid
             if($value == "-"){
                 echo "-";
-            }else if($c = 0){
-                echo $c2[5];
-            }else if($c = 1){
-                echo $c2[5];
+            }if(empty($arrcount2[count($temp)])){
+                echo $str11[5];
+            }if(!empty($arrcount2[count($temp)])){
+                    echo $str22[5];
             }
             ?>
             </td>
@@ -252,8 +275,10 @@ $str22 = explode(' ',$cut2arrcount3);
             <td><?php //time start
             if($value == "-"){
                 echo "-";
-            }else if($c = 1){
-                echo $c2[13].$c2[14].$c2[15];
+            }else if(empty($arrcount2[count($temp)])){
+                    echo $str1[13].$str1[14].$str1[15];
+            }elseif(!empty($arrcount2[count($temp)])){
+                    echo $str2[13].$str2[14].$str2[15];
             }
             ?>
             </td>
@@ -262,12 +287,14 @@ $str22 = explode(' ',$cut2arrcount3);
             <?php //time stop
                 if($value == "-"){
                     echo "-";
+                }if($c = 2){
+                    if(empty($arrcount2[count($temp)]))
+                    {
+                        echo $str11[15].$str11[16].$str11[17];
+                    }
                 }
-                else if($c = 0)
-                { 
-                    echo $str2[13].$str2[14].$str2[15];
-                }
-                else if($c = 1){
+                if(!empty($arrcount2[count($temp)]))
+                {
                     echo $str22[15].$str22[16].$str22[17];
                 }
             ?>
@@ -277,37 +304,36 @@ $str22 = explode(' ',$cut2arrcount3);
             <?php // time use
                 if($value == "-"){
                     echo "-";
-                }else if($c = 0){
-                    if($str1[13] != "'Stop'"){
-                        echo "Not ending the transport";
-                    }else if($str11[13] == "'Stop'"){
-                        $strTime1 = $str1[13].$str1[14].$str1[15];
-                        $timestart1 = intval($str1[13]);
-                        $timestart2 = intval($str1[15]);
+                }else if ($c = 2){
+                    if(empty($arrcount2[count($temp)])){
+                        //echo $str11[15].$str11[16].$str11[17];
+                        if($str11[13] != "'Stop'"){
+                            echo "Not ending the transport";
+                        }elseif($str11[13] == "'Stop'"){
+                            $strTime1 = $str1[13].$str1[14].$str1[15];
+                            $timestart1 = intval($str1[13]);
+                            $timestart2 = intval($str1[15]);
 
-                        $strTime2 = $str11[15].$str11[16].$str11[17];
-                        $timeend1 = intval($str11[15]);
-                        $timeend2 = intval($str11[17]);
+                            $strTime2 = $str11[15].$str11[16].$str11[17];
+                            $timeend1 = intval($str11[15]);
+                            $timeend2 = intval($str11[17]);
 
-                        $timeresult1 = $timestart1 - $timeend1;
-                        $timeresult2 = $timestart2 - $timeend2;
-                        if($timeresult1 < 0){
-                            echo abs($timeresult1);
-                            echo ".";
-                        }else{
-                            echo $timeresult1;
-                            echo ".";
+                            $timeresult1 = $timestart1 - $timeend1;
+                            $timeresult2 = $timestart2 - $timeend2;
+                            if($timeresult1 < 0){
+                                echo abs($timeresult1);
+                                echo ".";
+                            } else{
+                                echo $timeresult1;
+                                echo ".";
+                            }
+                            if($timeresult2 < 0){
+                                echo abs($timeresult2);
+                            }else{
+                                echo $timeresult2;
+                            }
                         }
-                        if($timeresult2 < 0){
-                            echo abs($timeresult2);
-                        }else{
-                            echo $timeresult2;
-                        }
-                    }
-                }else if ($c = 1){
-                    if($str22[13] != "'Stop'"){
-                        echo "Not ending the transport";
-                    }else if($str22[13] == "'Stop'"){
+                    }elseif(!empty($arrcount2[count($temp)])){
                         $strTime1 = $str2[13].$str2[14].$str2[15];
                         $timestart1 = intval($str2[13]);
                         $timestart2 = intval($str2[15]);
@@ -338,13 +364,13 @@ $str22 = explode(' ',$cut2arrcount3);
             <?php // status
                 if($value == "-"){
                     echo "-";
-                }elseif($c = 0){
+                }elseif(empty($arrcount2[count($temp)])){
                     if($str11[13] != "'Stop'"){
                         echo $str1[13];
                     }elseif($str11[13] == "'Stop'"){
                         echo $str11[13];
                     }
-                }elseif($c = 1){
+                }elseif(!empty($arrcount2[count($temp)])){
                     if($str22[13] != "'Stop'"){
                         echo $str2[11];
                     }elseif($str22[13] == "'Stop'"){
