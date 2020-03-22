@@ -62,6 +62,8 @@ $cut1arrcount = current($arrcount);
 $cut2arrcount = end($arrcount);
 $str1 = explode(' ',$cut1arrcount);
 $str11 = explode(' ',$cut2arrcount);
+$lat = json_decode($str11[7]);
+$long = json_decode($str11[9]);
 
 // หยุดหารอบสองค่าแรก
 foreach($value as $x=>$x_value){
@@ -105,6 +107,8 @@ $cut1arrcount3 = current($arrcount3);
 $cut2arrcount3 = end($arrcount3);
 $str2 = explode(' ',$cut1arrcount3);
 $str22 = explode(' ',$cut2arrcount3);
+$lat = json_decode($str22[7]);
+$long = json_decode($str22[9]);
 }
 // $c2 = explode(' ', $arrcount2[count($temp)]);
 // foreach($value as $x=>$x_value){
@@ -215,6 +219,13 @@ $str22 = explode(' ',$cut2arrcount3);
         }
     </style>
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+    <style>
+       /* Set the size of the div element that contains the map */
+      #map {
+        height: 400px;  /* The height is 400 pixels */
+        width: 25%;  /* The width is the width of the web page */
+       }
+    </style>
 </head>
 <body>
     <div class = "header"><img class = "logo" src="images/logo.png"></div>
@@ -415,6 +426,30 @@ $str22 = explode(' ',$cut2arrcount3);
         chart.draw(data, options); // สร้างกราฟ
         
     }
-    </script>   
+    </script>
+
+<h3>Google Maps</h3>
+    The div element for the map
+<div id="map"></div>
+<script>
+// Initialize and add the map
+function initMap() {
+  // The location of Uluru
+  var uluru = {lat: <?php echo $lat ?>, lng: <?php echo $long ?>};
+  // The map, centered at Uluru
+  var map = new google.maps.Map(
+      document.getElementById('map'), {zoom: 17, center: uluru});
+  // The marker, positioned at Uluru
+  var marker = new google.maps.Marker({position: uluru, map: map});
+}
+</script>
+    <!--Load the API from the specified URL
+    * The async attribute allows the browser to render the page while the API loads
+    * The key parameter will contain your own API key (which is not needed for this tutorial)
+    * The callback parameter executes the initMap() function -->
+   
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZlLeEp_1W-pWTInUkU4YJEJxq8Kg86ds&callback=initMap">
+</script>
 </body>
 </html>
