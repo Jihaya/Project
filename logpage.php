@@ -212,11 +212,10 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <?php
     for($i=0; $i < count($temperature); $i++){
         echo "<tr><td>".$device[$i]."</td>"."<td>".$temperature[$i]."</td>"."<td>".$humidity[$i]."</td>"."<td>".$timearray[$i]."</tr></td>";
-        //echo "<td>".$temperature[$i]."</td>";
-        //echo "<td>".$humidity[$i]."</td>";
     }
     ?>
     </tr>
 </table>
+<br><br>
 </body>
 </html>

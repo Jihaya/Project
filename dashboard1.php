@@ -111,7 +111,6 @@ if(empty($value)){
 // $str2 = explode(' ',$cut1arrcount3);
 // $str22 = explode(' ',$cut2arrcount3);
 $time = "$str11[15]$str11[16]$str11[17]";
-echo $time;
 }
 ?>
 
@@ -208,6 +207,11 @@ echo $time;
             background-size: cover;
             padding: 20px;
         }
+        map{
+            align: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
     </style>
     <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
     <style>
@@ -233,7 +237,7 @@ echo $time;
             <td>Temp(°C)</td>
             <td>Humid(%)</td>
             <td>Time (Start)</td>
-            <td>Time (Now)</td>
+            <td>Time (Stop)</td>
             <td>Time used</td>
             <td>Status</td>
         </tr>
@@ -340,10 +344,10 @@ echo $time;
                             $timeresult2 = $timestart2 - $timeend2;
                             if($timeresult1 < 0){
                                 echo abs($timeresult1);
-                                echo ".";
+                                echo ":";
                             } else{
                                 echo $timeresult1;
-                                echo ".";
+                                echo ":";
                             }
                             if($timeresult2 < 0){
                                 echo abs($timeresult2);
@@ -367,10 +371,10 @@ echo $time;
                             $timeresult2 = $timestart2 - $timeend2;
                             if($timeresult1 < 0){
                                 echo abs($timeresult1);
-                                echo ".";
+                                echo ":";
                             } else{
                                 echo $timeresult1;
-                                echo ".";
+                                echo ":";
                             }
                             if($timeresult2 < 0){
                                 echo abs($timeresult2);
@@ -402,7 +406,7 @@ echo $time;
             ?>
             </td>
     </table>
-    <a target ="_blank" href='https://www.google.com/maps/search/?api=1&query=<?php echo $lat ?>,<?php echo $long ?>'>Check Location in Google MAP</a>
+    <!-- <a target ="_blank" href='https://www.google.com/maps/search/?api=1&query=<?php echo $lat ?>,<?php echo $long ?>'>Check Location in Google MAP</a> -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>   
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script type="text/javascript">
@@ -442,26 +446,27 @@ echo $time;
 
 <h3>Google Maps</h3>
     The div element for the map
-<div id="map"></div>
-<script>
-// Initialize and add the map
-function initMap() {
-  // The location of Uluru
-  var uluru = {lat: <?php echo $lat ?>, lng: <?php echo $long ?>};
-  // The map, centered at Uluru
-  var map = new google.maps.Map(
-      document.getElementById('map'), {zoom: 17, center: uluru});
-  // The marker, positioned at Uluru
-  var marker = new google.maps.Marker({position: uluru, map: map});
-}
-</script>
-    <!--Load the API from the specified URL
-    * The async attribute allows the browser to render the page while the API loads
-    * The key parameter will contain your own API key (which is not needed for this tutorial)
-    * The callback parameter executes the initMap() function -->
-   
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZlLeEp_1W-pWTInUkU4YJEJxq8Kg86ds&callback=initMap">
-</script>
+<div id="map" style="margin:auto;width:600px;height:400px;">
+    <script>
+    // Initialize and add the map
+    function initMap() {
+    // The location of Uluru
+    var uluru = {lat: <?php echo $lat ?>, lng: <?php echo $long ?>};
+    // The map, centered at Uluru
+    var map = new google.maps.Map(
+        document.getElementById('map'), {zoom: 17, center: uluru});
+    // The marker, positioned at Uluru
+    var marker = new google.maps.Marker({position: uluru, map: map});
+    }
+    </script>
+        <!--Load the API from the specified URL
+        * The async attribute allows the browser to render the page while the API loads
+        * The key parameter will contain your own API key (which is not needed for this tutorial)
+        * The callback parameter executes the initMap() function -->
+
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZlLeEp_1W-pWTInUkU4YJEJxq8Kg86ds&callback=initMap">
+    </script>
+</div>
 </body>
 </html>
