@@ -244,7 +244,7 @@ if(empty($value)){
         echo "<tr>";
         echo "<td>" .$row["id"] .  "</td> "; 
         echo "<td>" .$row["carnum"] .  "</td> ";
-        echo "<td><a href='dashboard.php'>Click here</a></td>";
+        echo "<td><a href='dashboard",$row["id"],".php'>Click here</a></td>";
         if($value2 == "-"){
             echo "'Stop'";
         }

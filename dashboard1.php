@@ -24,91 +24,79 @@ $value = $snapshot->getValue();
 if(empty($value)){
     $value = "-";
     $valueem = 0;
-    $lat = json_decode($valueem);
-    $long = json_decode($valueem);
+    $lat = json_decode(0);
+    $long = json_decode(0);
 }else{
-    // current = ค่าแรก - end = ค่าสุดท้าย
-    // $value2 = current($value);
-    // $value1 = end($value);
-
-    // // ทำการตัดข้อมูลภายใน ' '
-    // $str = explode(' ',$value2);
-    // $str2 = explode(' ',$value1);
-    // $tempHumid = $str2[3].' '.'&'.' '.$str2[5];
-    // $latlon = $str2[7].' '.','.' '.$str2[9];
-    // $lat = json_decode($str2[7]);
-    // $long = json_decode($str2[9]);
-}
-
-$temp = [];
-$humid = [];
-$c = 0;
-$arrcount = []; // หยุดที่ค่า Stop คึอ ตำแหน่งที่ 9 ค่าที่ 10
-$arrcount2 = [];
-$arrcount3 = [];
-
-// รอบแรกที่จะหยุด
-foreach($value as $x=>$x_value){
-    array_push($arrcount, $x_value);
-    $str = explode(' ',$x_value);
-
-    if($str[13] === "'Stop'"){
-        $c = $c + 1;
-        break;
-    }
-}
-// ค่าแรก
-$cut1arrcount = current($arrcount);
-$cut2arrcount = end($arrcount);
-$str1 = explode(' ',$cut1arrcount);
-$str11 = explode(' ',$cut2arrcount);
-$lat = json_decode($str11[7]);
-$long = json_decode($str11[9]);
-
-// หยุดหารอบสองค่าแรก
-foreach($value as $x=>$x_value){
-    array_push($arrcount, $x_value);
-    $str = explode(' ',$x_value);
-
-    array_push($temp, $str[3]);
-    array_push($humid, $str[5]);
-    if($str[13] === "'Stop'"){
-        $c = $c + 1;
-        $cstop = $c;
-        break;
-    }
-}
-
-// ค่าที่เอามาเทียบ
-foreach($value as $x=>$x_value){
-    array_push($arrcount2, $x_value);
-    $strch = explode(' ',$x_value);
-}
-
-$c2 = []; // ค่าแรกในรอบที่ 2
-if($strch[13] == "'Stop'"){
-
-}
-if($c == 2){
-// รอบที่ 2
-$arrstop = [];
-if(empty($arrcount2[count($temp)])){
+    $temp = [];
+    $humid = [];
+    $c = 0;
+    $arrcount = []; // หยุดที่ค่า Stop คึอ ตำแหน่งที่ 9 ค่าที่ 10
+    $arrcount2 = [];
+    $arrcount3 = [];
     
-}elseif (!empty($arrcount2[count($temp)])) {
-    $c2 = explode(' ', $arrcount2[count($temp)]);
-foreach($value as $x=>$x_value){
-    array_push($arrcount3, $x_value);
-    $str = explode(' ',$x_value);
-    for($i = 0; $i <= count($temp) -1; $i++){
-        unset($arrcount3[$i]);
+    
+    // รอบแรกที่จะหยุด
+    foreach($value as $x=>$x_value){
+        array_push($arrcount, $x_value);
+        $str = explode(' ',$x_value);
+    
+        if($str[13] === "'Stop'"){
+            $c = $c + 1;
+            break;
+        }
     }
-}
-$cut1arrcount3 = current($arrcount3);
-$cut2arrcount3 = end($arrcount3);
-$str2 = explode(' ',$cut1arrcount3);
-$str22 = explode(' ',$cut2arrcount3);
-$lat = json_decode($str22[7]);
-$long = json_decode($str22[9]);
+    // ค่าแรก
+    $cut1arrcount = current($arrcount);
+    $cut2arrcount = end($arrcount);
+    $str1 = explode(' ',$cut1arrcount);
+    $str11 = explode(' ',$cut2arrcount);
+    $lat = json_decode($str11[7]);
+    $long = json_decode($str11[9]);
+    
+    // หยุดหารอบสองค่าแรก
+    foreach($value as $x=>$x_value){
+        array_push($arrcount, $x_value);
+        $str = explode(' ',$x_value);
+    
+        array_push($temp, $str[3]);
+        array_push($humid, $str[5]);
+        if($str[13] === "'Stop'"){
+            $c = $c + 1;
+            $cstop = $c;
+            break;
+        }
+    }
+    // ค่าที่เอามาเทียบ
+    foreach($value as $x=>$x_value){
+        array_push($arrcount2, $x_value);
+        $strch = explode(' ',$x_value);
+    }
+    
+    $c2 = []; // ค่าแรกในรอบที่ 2
+    if($strch[13] == "'Stop'"){
+    
+    }
+    if($c == 2){
+    // รอบที่ 2
+    $arrstop = [];
+    if(empty($arrcount2[count($temp)])){
+        
+    }elseif (!empty($arrcount2[count($temp)])) {
+        $c2 = explode(' ', $arrcount2[count($temp)]);
+    foreach($value as $x=>$x_value){
+        array_push($arrcount3, $x_value);
+        $str = explode(' ',$x_value);
+        for($i = 0; $i <= count($temp) -1; $i++){
+            unset($arrcount3[$i]);
+        }
+    }
+    $cut1arrcount3 = current($arrcount3);
+    $cut2arrcount3 = end($arrcount3);
+    $str2 = explode(' ',$cut1arrcount3);
+    $str22 = explode(' ',$cut2arrcount3);
+    $lat = json_decode($str22[7]);
+    $long = json_decode($str22[9]);
+    }
 }
 // $c2 = explode(' ', $arrcount2[count($temp)]);
 // foreach($value as $x=>$x_value){
@@ -129,6 +117,7 @@ $long = json_decode($str22[9]);
 <html>
 <head>
 <title>Moniter Datas</title>
+<meta http-equiv="refresh" content="5" >
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         body{ font: 14px sans-serif; text-align: center; }
@@ -260,12 +249,14 @@ $long = json_decode($str22[9]);
             <?php //temp
                 if($value == "-"){
                     echo "-";
-                }if($c = 3){
-                    if(empty($arrcount2[count($temp)]))
-                    {
-                        echo $str11[3];
-                    }elseif(!empty($arrcount2[count($temp)])){
-                        echo $str22[3];
+                }if($value != "-"){
+                    if($c = 3){
+                        if(empty($arrcount2[count($temp)]))
+                        {
+                            echo $str11[3];
+                        }elseif(!empty($arrcount2[count($temp)])){
+                            echo $str22[3];
+                        }
                     }
                 }
             ?>
@@ -275,10 +266,12 @@ $long = json_decode($str22[9]);
             <?php //humid
             if($value == "-"){
                 echo "-";
-            }if(empty($arrcount2[count($temp)])){
-                echo $str11[5];
-            }if(!empty($arrcount2[count($temp)])){
-                    echo $str22[5];
+            }if($value != "-"){
+                if(empty($arrcount2[count($temp)])){
+                    echo $str11[5];
+                }if(!empty($arrcount2[count($temp)])){
+                        echo $str22[5];
+                }
             }
             ?>
             </td>
@@ -286,10 +279,12 @@ $long = json_decode($str22[9]);
             <td><?php //time start
             if($value == "-"){
                 echo "-";
-            }else if(empty($arrcount2[count($temp)])){
+            }if($value != "-"){
+                if(empty($arrcount2[count($temp)])){
                     echo $str1[13].$str1[14].$str1[15];
-            }elseif(!empty($arrcount2[count($temp)])){
+                }elseif(!empty($arrcount2[count($temp)])){
                     echo $str2[13].$str2[14].$str2[15];
+            }
             }
             ?>
             </td>
@@ -298,15 +293,26 @@ $long = json_decode($str22[9]);
             <?php //time stop
                 if($value == "-"){
                     echo "-";
-                }if($c = 2){
-                    if(empty($arrcount2[count($temp)]))
+                }if($value != "-"){
+                    if($c = 2){
+                        if(empty($arrcount2[count($temp)]))
+                        {
+                            if($str11[13] != "'Stop'"){
+                                echo $str11[13].$str11[14].$str11[15];
+                            }
+                            else{
+                                echo $str11[15].$str11[16].$str11[17];
+                            }
+                        }
+                    }if(!empty($arrcount2[count($temp)]))
                     {
-                        echo $str11[15].$str11[16].$str11[17];
+                        if($str22[13] != "'Stop'"){
+                            echo $str22[13].$str22[14].$str22[15];
+                        }
+                        else{
+                            echo $str22[15].$str22[16].$str22[17];
+                        }
                     }
-                }
-                if(!empty($arrcount2[count($temp)]))
-                {
-                    echo $str22[15].$str22[16].$str22[17];
                 }
             ?>
             </td>
@@ -317,7 +323,6 @@ $long = json_decode($str22[9]);
                     echo "-";
                 }else if ($c = 2){
                     if(empty($arrcount2[count($temp)])){
-                        //echo $str11[15].$str11[16].$str11[17];
                         if($str11[13] != "'Stop'"){
                             echo "Not ending the transport";
                         }elseif($str11[13] == "'Stop'"){
@@ -345,27 +350,31 @@ $long = json_decode($str22[9]);
                             }
                         }
                     }elseif(!empty($arrcount2[count($temp)])){
-                        $strTime1 = $str2[13].$str2[14].$str2[15];
-                        $timestart1 = intval($str2[13]);
-                        $timestart2 = intval($str2[15]);
+                        if($str22[13] != "'Stop'"){
+                            echo "Not ending the transport";
+                        }elseif($str22[13] == "'Stop'"){
+                            $strTime1 = $str2[13].$str2[14].$str2[15];
+                            $timestart1 = intval($str2[13]);
+                            $timestart2 = intval($str2[15]);
 
-                        $strTime2 = $str22[15].$str22[16].$str22[17];
-                        $timeend1 = intval($str22[15]);
-                        $timeend2 = intval($str22[17]);
+                            $strTime2 = $str22[15].$str22[16].$str22[17];
+                            $timeend1 = intval($str22[15]);
+                            $timeend2 = intval($str22[17]);
 
-                        $timeresult1 = $timestart1 - $timeend1;
-                        $timeresult2 = $timestart2 - $timeend2;
-                        if($timeresult1 < 0){
-                            echo abs($timeresult1);
-                            echo ".";
-                        } else{
-                            echo $timeresult1;
-                            echo ".";
-                        }
-                        if($timeresult2 < 0){
-                            echo abs($timeresult2);
-                        }else{
-                            echo $timeresult2;
+                            $timeresult1 = $timestart1 - $timeend1;
+                            $timeresult2 = $timestart2 - $timeend2;
+                            if($timeresult1 < 0){
+                                echo abs($timeresult1);
+                                echo ".";
+                            } else{
+                                echo $timeresult1;
+                                echo ".";
+                            }
+                            if($timeresult2 < 0){
+                                echo abs($timeresult2);
+                            }else{
+                                echo $timeresult2;
+                            }
                         }
                     }
                 }
@@ -377,7 +386,7 @@ $long = json_decode($str22[9]);
                     echo "-";
                 }elseif(empty($arrcount2[count($temp)])){
                     if($str11[13] != "'Stop'"){
-                        echo $str1[13];
+                        echo $str1[11];
                     }elseif($str11[13] == "'Stop'"){
                         echo $str11[13];
                     }
