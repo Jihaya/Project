@@ -164,28 +164,59 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         ->create();
 
     $database = $firebase->getDatabase();
-    $reference = $database->getReference('/Cars');
+    $reference = $database->getReference('/Cars4');
     $snapshot = $reference->getSnapshot();
     $value = $snapshot->getValue();
 
     $device = [];
     $temperature = [];
+    $humidity = [];
+    $timearray = [];
     //แปลง array เป็น str
     //array_push($device, $strend[1]);
     $strdevice = implode($device);
-
+    echo $strdevice;
     if(empty($value)){
         $value = "-";
     }else{
         //current = ค่าแรก - end = ค่าสุดท้าย
-        $valuecurrent = current($value);
+        $valuecurrent = end($value);
         $strend = explode(' ',$valuecurrent);
     foreach($value as $x=>$x_value)
-    { 
+    {
         $str = explode(' ',$x_value);
-        array_push($temperature, $strend[3]);
+        array_push($device, $str[1]);
+        array_push($temperature, $str[3]);
+        array_push($humidity, $str[5]);
+            if($str[13] != "'Stop'"){
+                $time = $str[13].$str[14].$str[15];
+                array_push($timearray, $time);
+            }
+            if($str[13] == "'Stop'"){
+                $time = $str[15].$str[16].$str[17];
+                array_push($timearray, $time);
+            }
         }
     }
   ?>
+<br><br>
+<table id="customers">
+    <tr>
+      <th>Device ID</th>
+      <th>temperature</th>
+      <th>humidity</th>
+      <th>Time</th>
+    </tr>
+    
+    <tr>
+    <?php
+    for($i=0; $i < count($temperature); $i++){
+        echo "<tr><td>".$device[$i]."</td>"."<td>".$temperature[$i]."</td>"."<td>".$humidity[$i]."</td>"."<td>".$timearray[$i]."</tr></td>";
+        //echo "<td>".$temperature[$i]."</td>";
+        //echo "<td>".$humidity[$i]."</td>";
+    }
+    ?>
+    </tr>
+</table>
 </body>
 </html>

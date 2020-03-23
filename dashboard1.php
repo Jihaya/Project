@@ -110,6 +110,8 @@ if(empty($value)){
 // $cut2arrcount3 = end($arrcount3);
 // $str2 = explode(' ',$cut1arrcount3);
 // $str22 = explode(' ',$cut2arrcount3);
+$time = "$str11[15]$str11[16]$str11[17]";
+echo $time;
 }
 ?>
 
@@ -284,7 +286,7 @@ if(empty($value)){
                     echo $str1[13].$str1[14].$str1[15];
                 }elseif(!empty($arrcount2[count($temp)])){
                     echo $str2[13].$str2[14].$str2[15];
-            }
+                }
             }
             ?>
             </td>
@@ -410,9 +412,10 @@ if(empty($value)){
         // สร้างตัวแปร array เก็บค่า ข้อมูล
         var temp = <?php echo (int)$str[3]?>;
         var humid = <?php echo (int)$str[5] ?>;
+        var timegra = <?php echo (int)$str22[15].(int)($str22[16]).(int)$str22[17]  ?>;
         var dataArray1=[
         ['Time', 'Temperature', 'Humidity'],
-        ['Now', temp , humid],           
+        [timegra, temp , humid],           
         ];
             
         // แปลงข้อมูลจาก array สำหรับใช้ในการสร้าง กราฟ
