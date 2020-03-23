@@ -1,72 +1,62 @@
--- phpMyAdmin SQL Dump
--- version 5.0.1
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Mar 09, 2020 at 06:35 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.1
+/*
+SQLyog Community v12.4.3 (64 bit)
+MySQL - 10.1.35-MariaDB : Database - mydb
+*********************************************************************
+*/
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
+/*!40101 SET NAMES utf8 */;
 
+/*!40101 SET SQL_MODE=''*/;
 
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`mydb` /*!40100 DEFAULT CHARACTER SET utf8 */;
 
---
--- Database: `mydb`
---
+USE `mydb`;
 
--- --------------------------------------------------------
+/*Table structure for table `device` */
 
---
--- Table structure for table `users`
---
+DROP TABLE IF EXISTS `device`;
+
+CREATE TABLE `device` (
+  `id` int(4) NOT NULL,
+  `carnum` varchar(6) DEFAULT NULL,
+  `status` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+/*Data for the table `device` */
+
+insert  into `device`(`id`,`carnum`,`status`) values 
+(1,'กย105','Ready'),
+(2,'ทส345','Ready');
+
+/*Table structure for table `users` */
+
+DROP TABLE IF EXISTS `users`;
 
 CREATE TABLE `users` (
-  `id` int(100) NOT NULL,
-  `username` varchar(50) NOT NULL,
+  `id` int(100) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `fname` varchar(255) NOT NULL,
   `lname` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
-  `level` varchar(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `level` varchar(5) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
---
--- Dumping data for table `users`
---
+/*Data for the table `users` */
 
-INSERT INTO `users` (`id`, `username`, `password`, `fname`, `lname`, `email`, `level`) VALUES
-(1, 'admin', '123456', 'admin', 'admin', '', 'A'),
-(2, 'aaa', '$2y$10$qukIoG7PpiVvw/cUb4UqH.tYnrPj/0QJwZKFFnfHMxtY.Warln.cK', 'aa', 'aaa', '', 'U');
+insert  into `users`(`id`,`username`,`password`,`fname`,`lname`,`email`,`level`) values 
+(1,'admin','$2y$10$l2TlMOefA79j5nGZ7QjpK.luV588siRYVf/Rlro2Y0RQcHX5lu54m','admin','admin','admin@gmail.com','admin'),
+(4,'aaa','$2y$10$w6.Iy6MQio9SPOAzlKgxcO1IDoFZC33UidJefrDXqptIoi1wr0vzS','aaa','aaa','aa@gmail.com','user'),
+(7,'ddd','$2y$10$/C2qs3FLgEtsfz2qaA/pVurNVWKaL5tYquxHQ/kycfYLB6U9RAG9S','ddd','ddd','dd@gmail.com','user'),
+(8,'rrr','$2y$10$M5gBXITnR4HB2hdcjcCQ5e3Jq852Vlt2gXmNZggJsYD3szbXuT.Jy','rrr','rrr','rr@rr.com','user');
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
