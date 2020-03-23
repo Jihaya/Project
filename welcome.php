@@ -20,7 +20,7 @@ use Kreait\Firebase\ServiceAccount;
 
 // This assumes that you have placed the Firebase credentials in the same directory
 // as this PHP file.
-$serviceAccount = ServiceAccount::fromJsonFile(__DIR__.'/logistics-car-94e09b126562.json');
+$serviceAccount = ServiceAccount::fromJsonFile(__DIR__.'/service-account.json');
 
 $firebase = (new Factory)
     ->withServiceAccount($serviceAccount)
@@ -54,50 +54,18 @@ if(empty($value)){
     $str11 = explode(' ',$value21);
     $str21 = explode(' ',$value11);
 }
-
-// if(empty($value2)){
-//     $value22 = "-";
-// }else{
-//     $value22 = current($value2);
-//     $value12 = end($value2);
-
-//     // current = ค่าแรก - end = ค่าสุดท้าย
-//     // ทำการตัดข้อมูลภายใน ' '
-//     $str22 = explode(' ',$value22);
-//     $str21 = explode(' ',$value12);
-// }
-
-// if(empty($value3)){
-//     $value33 = "-";
-// }else{
-//     $value23 = current($value3);
-//     $value13 = end($value3);
-
-//     // current = ค่าแรก - end = ค่าสุดท้าย
-//     // ทำการตัดข้อมูลภายใน ' '
-//     $str33 = explode(' ',$value23);
-//     $str23 = explode(' ',$value13);
-// }
-
-// if(empty($value4)){
-//     $value44 = "-";
-// }else{
-//     $value24 = current($value4);
-//     $value14 = end($value4);
-
-//     // current = ค่าแรก - end = ค่าสุดท้าย
-//     // ทำการตัดข้อมูลภายใน ' '
-//     $str44 = explode(' ',$value24);
-//     $str24 = explode(' ',$value14);
-// }
 ?>
  
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.0/jquery.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Type" content="text/html">
     <title>Welcome</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style type="text/css">
         body{
             font: 14px sans-serif;
@@ -132,6 +100,24 @@ if(empty($value)){
         .activeout {
             background-color: #cc0000;
         }
+
+        li {
+            border-right: 1px solid #bbb;
+        }
+        li:last-child {
+            border-right: none;
+        }
+        a{
+           font-size:16px;
+        }
+        ul{
+            box-shadow: 5px 10px 16px #888888;
+
+        }
+        .active {
+            background-color: #4CAF50;
+        }
+
     </style>
 
     <style>
@@ -164,7 +150,7 @@ if(empty($value)){
         }
         .header{
             width: auto;
-            background-image: url('/images/bg1.jpg');
+            background-image: url('images/bg1.jpg');
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
@@ -181,7 +167,7 @@ if(empty($value)){
     <style>
         .w3-btn {margin-bottom:10px;}
     </style>
-    
+
     <script>
         function startTime() {
         var today = new Date();
@@ -201,9 +187,9 @@ if(empty($value)){
     </script>
 </head>
 <body onload="startTime()">
-    <div class = "header"><img class = "logo" src="/images/logo.png"></div>
+    <div class = "header"><img class = "logo" src="images/logo.png"></div>
     <ul>
-        <li><font face="th sarabun new" size="6" color="White">Account : <?php echo htmlspecialchars($_SESSION["username"]); ?></font></li>
+        <li><font face="th sarabun new" size="6" color="White">Account : <?php echo htmlspecialchars($_SESSION["username"]); ?>&nbsp;</font></li>
         <li><a class="active" href="home.php">Home</a></li>
         <?php if($_SESSION["level"] == 'admin' ){?>
         <li><a href="adddevice.php">Add Device</a></li>
@@ -217,26 +203,22 @@ if(empty($value)){
         <br>
         <div id="txt"></div>
         <?php
-            $date = new DateTime("now", new DateTimeZone('Asia/Bangkok') );
+            $date = new DateTime("now",  new DateTimeZone('Asia/Bangkok') );
             echo $date->format("d-m-Y"); //\T H:i:s
             echo "<br>";
-            $timeall = [4, 5, 6, 7 ,8 ,9 ,10 ,11 ,12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
+            $timeall = [4, 5, 6, 7 ,8 ,9 ,10 ,11 ,12, 13, 14, 15, 16, 17, 18];
             $timeMooning = [4, 5, 6, 7 ,8 ,9 ,10 ,11 ,12]; // [0, 1, 2, 3, 4, 5, 6, 7 ,8 ,9 ,10 ,11 ,12]
             $timeafter = [13, 14, 15, 16, 17]; // [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
-            $timeeve = [18, 19, 20, 21];
             $timech = $date->format("H");
             $timeChint = intval($timech);
             $result_array = in_array($timeChint, $timeMooning);
             $result_array2 = in_array($timeChint, $timeafter);
-            $result_array3 = in_array($timeChint, $timeeve);
             $result_array4 = in_array($timeChint, $timeall);
 
             if ($result_array != False){
                 echo "รอบเช้า";
             }else if($result_array2 != False){
                 echo "รอบบ่าย";
-            }else if($result_array3 != False){
-                echo "รอบเย็น";
             }else if($result_array4 != True){
                 echo "ไม่อยู่ในรอบการส่ง";
             }
@@ -244,61 +226,50 @@ if(empty($value)){
     </td>
     </table>
     <br>
-    <br>
-    <table>
-    <tr></tr>
-    <td><img src="/images/ic.png" alt="Trulli" width="150">
-        <h4>Device 01</h4>
-        <h5>กย105</h5>
-        <h5>Status:
-        <?php
-            if($value == "-"){
-                echo "'Stop'";
-            }
-            else if($str21[13] != "'Stop'")
-            { 
-                echo $str11[11];
-            }
-            else if($str21[13] == "'Stop'"){
-                echo $str21[13];
-            }
-        ?>
-        </h5>
-        <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Monitor " onclick="window.location='dashboard.php' " />
-    </td>
-    <td><img src="/images/ic.png" alt="Trulli" width="150">
-        <h4>Device 02</h4>
-        <h5>ทข354</h5>
-        <h5>Status:
-        <?php
+    <?php
+        //1. เชื่อมต่อ database: 
+        include('config.php');  //ไฟล์เชื่อมต่อกับ database ที่เราได้สร้างไว้ก่อนหน้านี้
+        
+        //2. query ข้อมูลจากตาราง users: 
+        $query = "SELECT * FROM device ORDER BY id ASC" or die("Error:" . mysqli_error());
+        //3.เก็บข้อมูลที่ query ออกมาไว้ในตัวแปร result . 
+        $result = mysqli_query($link, $query);
+        //4 . แสดงข้อมูลที่ query ออกมา โดยใช้ตารางในการจัดข้อมูล: 
+        
+        echo "<table id='table' border='1' align='center' width='500'>";
+        //หัวข้อตาราง
+        echo "<tr align='center' bgcolor='#CCCCCC'><td>Device ID</td><td>Vehicle Registration</td><td>Monitor Site</td><td>Status</td><td>Car Status</td>";
+        if($_SESSION["level"] == 'admin' ){echo "<td>edit</td><td>delete</td>";};
+        while($row = mysqli_fetch_array($result)) { 
+        echo "<tr>";
+        echo "<td>" .$row["id"] .  "</td> "; 
+        echo "<td>" .$row["carnum"] .  "</td> ";
+        echo "<td><a href='dashboard",$row["id"],".php'>Click here</a></td>";
+        if($value2 == "-"){
             echo "'Stop'";
-        ?>
-        </h5>
-        <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Monitor " onclick="window.location='dashboard2.php' " />
-    </td>
-    <tr>
-    <td><img src="/images/ic.png" alt="Trulli" width="150">
-        <h4>Device 03</h4>
-        <h5>คซ3754</h5>
-        <h5>Status:
-        <?php
-            echo "'Stop'";
-        ?>
-        </h5>
-        <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Monitor " onclick="window.location='dashboard3.php' " />
-    </td>
-    <td><img src="/images/ic.png" alt="Trulli" width="150">
-        <h4>Device 04</h4>
-        <h5>กข1054</h5>
-        <h5>Status:
-        <?php
-            echo "'Stop'";
-        ?>
-        </h5>
-        <input class="w3-btn w3-white w3-border w3-round-large" type="button" value=" Monitor " onclick="window.location='dashboard.php' " />
-    </td>
-    </tr>
-    </table>
+        }
+        else if($str21[13] != "'Stop'")
+        {
+            echo "<td><i class='fa fa-circle' style='font-size:24px;color:green;'></i></td>";
+            
+        }
+        else if($str21[13] == "'Stop'"){
+            echo "<td><i class='fa fa-circle' style='font-size:24px;color:red;'></i></td>";
+        }
+        echo "<td>" .$row["status"] .  "</td> ";
+        //แก้ไขข้อมูล
+        if($_SESSION["level"] == 'admin' ){
+        echo "<td><a type='button' href='editdevice.php?id=$row[0]'>edit</a></td> ";
+        
+        //ลบข้อมูล
+        echo "<td><a href='deldevice.php?id=$row[0]' onclick=\"return confirm('Do you want to delete this record? !!!')\">del</a></td> ";
+        echo "</tr>";}
+        }
+        echo "</table>";
+        //5. close connection
+        mysqli_close($link);
+    ?>
     </div>
+    <style></style>
 </body>
 </html>

@@ -65,7 +65,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
                             if($level =="admin"){ //ถ้าเป็น admin ให้กระโดดไปหน้า admin.php
  
-                                Header("Location: admin.php");
+                                Header("Location: home.php");
          
                             }else {
 
@@ -115,7 +115,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             margin: auto;
             background: white;
             padding: 10px;
-            background-image: url('/images/background.png');
+            background-image: url('images/background.png');
         }
         .wrapper{ width: 350px; padding: 20px; }
         .wrapper{
