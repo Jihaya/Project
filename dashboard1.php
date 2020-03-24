@@ -15,7 +15,7 @@ $firebase = (new Factory)
     ->create();
 
 $database = $firebase->getDatabase();
-$reference = $database->getReference('/Car5');
+$reference = $database->getReference('/Car1');
 
 $snapshot = $reference->getSnapshot();
 
@@ -29,11 +29,13 @@ if(empty($value)){
 }else{
     $temp = [];
     $humid = [];
+    $temperature = [];
+    $humidity = [];
     $c = 0;
     $arrcount = []; // หยุดที่ค่า Stop คึอ ตำแหน่งที่ 9 ค่าที่ 10
     $arrcount2 = [];
     $arrcount3 = [];
-    
+    $timearr = [];
     
     // รอบแรกที่จะหยุด
     foreach($value as $x=>$x_value){
@@ -52,6 +54,18 @@ if(empty($value)){
     $str11 = explode(' ',$cut2arrcount);
     $lat = json_decode($str11[7]);
     $long = json_decode($str11[9]);
+    if($str11[13] != "'Stop'"){
+        array_push($timearr, $str11[13].":".$str11[15]);
+    }else{
+        array_push($timearr, $str11[15].":".$str11[17]);
+    }
+    $dataPoints1 = array(
+        array("label"=> $timearr, "y"=> $str[3]),
+    );
+    
+    $dataPoints2 = array(
+        array("label"=> $timearr, "y"=> $str11[5]),
+    );
     
     // หยุดหารอบสองค่าแรก
     foreach($value as $x=>$x_value){
@@ -77,40 +91,40 @@ if(empty($value)){
     
     }
     if($c == 2){
-    // รอบที่ 2
-    $arrstop = [];
-    if(empty($arrcount2[count($temp)])){
-        
-    }elseif (!empty($arrcount2[count($temp)])) {
-        $c2 = explode(' ', $arrcount2[count($temp)]);
-    foreach($value as $x=>$x_value){
-        array_push($arrcount3, $x_value);
-        $str = explode(' ',$x_value);
-        for($i = 0; $i <= count($temp) -1; $i++){
-            unset($arrcount3[$i]);
+        // รอบที่ 2
+        $arrstop = [];
+        $timearr = [];
+        if(empty($arrcount2[count($temp)])){
+            
+        }elseif (!empty($arrcount2[count($temp)])) {
+            $c2 = explode(' ', $arrcount2[count($temp)]);
+            foreach($value as $x=>$x_value){
+                array_push($arrcount3, $x_value);
+                $str = explode(' ',$x_value);
+                for($i = 0; $i <= count($temp) -1; $i++){
+                    unset($arrcount3[$i]);
+                }
+            }
+            $cut1arrcount3 = current($arrcount3);
+            $cut2arrcount3 = end($arrcount3);
+            $str2 = explode(' ',$cut1arrcount3);
+            $str22 = explode(' ',$cut2arrcount3);
+            $lat = json_decode($str22[7]);
+            $long = json_decode($str22[9]);
+            if($str22[13] != "'Stop'"){
+                array_push($timearr, $str22[13].":".$str22[15]);
+            }else{
+                array_push($timearr, $str22[15].":".$str22[17]);
+            }
+            $dataPoints1 = array(
+                array("label"=> $timearr, "y"=> $str22[3]),
+            );
+            
+            $dataPoints2 = array(
+                array("label"=> $timearr, "y"=> $str22[5]),
+            );
         }
     }
-    $cut1arrcount3 = current($arrcount3);
-    $cut2arrcount3 = end($arrcount3);
-    $str2 = explode(' ',$cut1arrcount3);
-    $str22 = explode(' ',$cut2arrcount3);
-    $lat = json_decode($str22[7]);
-    $long = json_decode($str22[9]);
-    }
-}
-// $c2 = explode(' ', $arrcount2[count($temp)]);
-// foreach($value as $x=>$x_value){
-//     array_push($arrcount3, $x_value);
-//     $str = explode(' ',$x_value);
-//     for($i = 0; $i <= count($temp) -1; $i++){
-//         unset($arrcount3[$i]);
-//     }
-// }
-// $cut1arrcount3 = current($arrcount3);
-// $cut2arrcount3 = end($arrcount3);
-// $str2 = explode(' ',$cut1arrcount3);
-// $str22 = explode(' ',$cut2arrcount3);
-$time = "$str11[15]$str11[16]$str11[17]";
 }
 ?>
 
@@ -118,7 +132,6 @@ $time = "$str11[15]$str11[16]$str11[17]";
 <html>
 <head>
 <title>Moniter Datas</title>
-<meta http-equiv="refresh" content="5" >
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         body{ font: 14px sans-serif; text-align: center; }
@@ -228,8 +241,11 @@ $time = "$str11[15]$str11[16]$str11[17]";
         <li><a class="active" href="logpage.php">LogPage</a></li>
         <li style="float:right"><a class="active" href="welcome.php">Back</a></li>
     </ul>
+
+    <br><br>
     <div style="margin:auto;width:100%;">
-    <div id="chart_div" style="margin:auto;width:600px;height:400px;"></div>  
+    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
     <br><br>
     <table class="td1" name= "td1" id="tbl_Cars_list" border="1">
         <tr>
@@ -406,47 +422,13 @@ $time = "$str11[15]$str11[16]$str11[17]";
             ?>
             </td>
     </table>
-    <!-- <a target ="_blank" href='https://www.google.com/maps/search/?api=1&query=<?php echo $lat ?>,<?php echo $long ?>'>Check Location in Google MAP</a> -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>   
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-    google.load("visualization", "1", {packages:["corechart"]});
-    google.setOnLoadCallback(drawChart);
-    function drawChart() {
-        // สร้างตัวแปร array เก็บค่า ข้อมูล
-        var temp = <?php echo (int)$str[3]?>;
-        var humid = <?php echo (int)$str[5] ?>;
-        var timegra = <?php echo (int)$str22[15].(int)($str22[16]).(int)$str22[17]  ?>;
-        var dataArray1=[
-        ['Time', 'Temperature', 'Humidity'],
-        [timegra, temp , humid],           
-        ];
-            
-        // แปลงข้อมูลจาก array สำหรับใช้ในการสร้าง กราฟ
-        var data = google.visualization.arrayToDataTable(dataArray1);
-    
-        // ตั้งค่าต่างๆ ของกราฟ
-        var options = { 
-            title: "Temp&Humid",
-            hAxis: {titleTextStyle: {color: 'red'}},
-            vAxis: {titleTextStyle: {color: 'blue'}},
-            width: 600,
-            height: 400,
-            bar: {groupWidth: "50%"},
-            legend: { position: 'right', maxLines: 3 },
-            tooltip: { trigger: 'select' }
-        };
-    
-        // สร้างกราฟแนวตั้ง แสดงใน div id = chart_div
-        var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
-        chart.draw(data, options); // สร้างกราฟ
-        
-    }
-    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
+
 
 <h3>Google Maps</h3>
     The div element for the map
-<div id="map" style="margin:auto;width:600px;height:400px;">
+<div id="map" style="margin:auto;width:600px;height:500px;">
     <script>
     // Initialize and add the map
     function initMap() {
@@ -468,5 +450,53 @@ $time = "$str11[15]$str11[16]$str11[17]";
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZlLeEp_1W-pWTInUkU4YJEJxq8Kg86ds&callback=initMap">
     </script>
 </div>
+
+<script>
+window.onload = function () {
+ 
+var chart = new CanvasJS.Chart("chartContainer", {
+	animationEnabled: true,
+	theme: "light2",
+	title:{
+		text: "Temperature and Humidity"
+	},
+	legend:{
+		cursor: "pointer",
+		verticalAlign: "center",
+		horizontalAlign: "right",
+		itemclick: toggleDataSeries
+	},
+	data: [{
+		type: "column",
+		name: "Temperature",
+		indexLabel: "{y}",
+		yValueFormatString: "#.##",
+		showInLegend: true,
+		dataPoints: <?php echo json_encode($dataPoints1, JSON_NUMERIC_CHECK); ?>
+	},{
+		type: "column",
+		name: "Humidity",
+		indexLabel: "{y}",
+		yValueFormatString: "#.##",
+		showInLegend: true,
+		dataPoints: <?php echo json_encode($dataPoints2, JSON_NUMERIC_CHECK); ?>
+	}]
+});
+chart.render();
+ 
+function toggleDataSeries(e){
+	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+		e.dataSeries.visible = false;
+	}
+	else{
+		e.dataSeries.visible = true;
+	}
+	chart.render();
+}
+ 
+}
+</script>
+</head>
+<body>
 </body>
 </html>
