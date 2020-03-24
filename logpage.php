@@ -26,7 +26,7 @@ $firebase = (new Factory)
     ->create();
 
 $database = $firebase->getDatabase();
-$reference = $database->getReference('/Cars4');
+$reference = $database->getReference('/Car1');
 $snapshot = $reference->getSnapshot();
 $value = $snapshot->getValue();
 
@@ -147,7 +147,10 @@ if(empty($value)){
     // รอบที่ 2
     $arrstop = [];
     if(empty($arrcount2[count($temp)])){
-        
+        $lat2 = json_decode(0);
+        $long2 = json_decode(0);
+        $lat22 = json_decode(0);
+        $long22 = json_decode(0);
     }elseif (!empty($arrcount2[count($temp)])) {
         $c2 = explode(' ', $arrcount2[count($temp)]);
         foreach($value as $x=>$x_value){
@@ -362,16 +365,16 @@ function toggleDataSeries(e){
   <div class = "header"><img class = "logo" src="images/logo.png"></div>
   <ul>
     <li><a target ="_blank" href="report.php">Report</a></li>
-    <li style="float:right"><a href="welcome.php">Back</a></li>
+    <li style="float:right"><a href="dashboard1.php">Back</a></li>
   </ul>
 <br><br>
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
 <p>*หากปรากฏ 'Stop' ด้านหน้าเวลา หมายถึงสิ้นสุดรอบการส่งในครั้งนั้น</p>
-<p>**หมายเลขด้านหน้า 'Stop' คือรอบที่สิ้นสุดการขนส่ง</p>
+<p>**หมายเลขด้านหน้า 'Stop' หมายถึงรอบการขนส่งที่สิ้นสุด</p>
 <br><br><br>
 
-<div id="map" style="margin:auto;width:600px;height:400px;"></div>
+<div id="map" style="margin:auto;width:600px;height:500px;"></div>
     <script>
       var jsonObj = [{"location":"Start Around1", "lat": "<?php echo $lat1?>", "lng": "<?php echo $long1?>"},
 			  {"location":"Stop Around1", "lat": "<?php echo $lat11?>", "lng": "<?php echo $long11?>"},
@@ -380,7 +383,7 @@ function toggleDataSeries(e){
 
       function initMap() {
 			var mapOptions = {
-			  center: {lat: 13.847860, lng: 100.604274},
+			  center: {lat: <?php echo $lat11; ?>, lng: <?php echo $long11; ?>},
 			  zoom: 15,
 			}
 				

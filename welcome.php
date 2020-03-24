@@ -244,17 +244,19 @@ if(empty($value)){
         echo "<tr>";
         echo "<td>" .$row["id"] .  "</td> "; 
         echo "<td>" .$row["carnum"] .  "</td> ";
-        echo "<td><a href='dashboard",$row["id"],".php'>Click here</a></td>";
+        // echo "<td><a href='dashboard",$row["id"],".php'>Click here</a></td>";
         if($value2 == "-"){
             echo "'Stop'";
         }
-        else if($str21[13] != "'Stop'")
+        else if($row["status"] != "Ready")
         {
-            echo "<td><i class='fa fa-circle' style='font-size:24px;color:green;'></i></td>";
+            echo "<td><a>Click here</a></td>";
+            echo "<td><i class='fa fa-circle' style='font-size:24px;color:red;'></i></td>";
             
         }
-        else if($str21[13] == "'Stop'"){
-            echo "<td><i class='fa fa-circle' style='font-size:24px;color:red;'></i></td>";
+        else if($row["status"] == "Ready"){
+            echo "<td><a href='dashboard",$row["id"],".php'>Click here</a></td>";
+            echo "<td><i class='fa fa-circle' style='font-size:24px;color:green;'></i></td>";
         }
         echo "<td>" .$row["status"] .  "</td> ";
         //แก้ไขข้อมูล
