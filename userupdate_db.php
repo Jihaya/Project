@@ -18,7 +18,8 @@ echo "</script>";
 	$username = $_POST["username"];
 	$password = $_POST["password"];	
 	$passhash = password_hash($password, PASSWORD_DEFAULT);
-	$email = $_POST["email"];
+	$address = $_POST["address"];
+	$tel = $_POST["tel"];
 	$level = $_POST["level"];
  
 //ทำการปรับปรุงข้อมูลที่จะแก้ไขลงใน database 
@@ -28,7 +29,8 @@ echo "</script>";
 			fname='$fname' ,
 			lname='$lname' , 
 			username='$username',
-			email = '$email',
+			tel = '$tel',
+			address = '$address',
 			level = '$level'
 			WHERE id='$ID' ";
 	}else{
@@ -36,8 +38,9 @@ echo "</script>";
 			fname='$fname' ,
 			lname='$lname' , 
 			username='$username',
+			tel = '$tel',
 			password='$passhash', 
-			email = '$email',
+			address = '$address',
 			level = '$level'
 			WHERE id='$ID' ";
 	}

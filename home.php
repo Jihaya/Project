@@ -9,6 +9,14 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     unset($_SESSION);
     session_destroy();
 }
+
+//1. เชื่อมต่อ database: 
+include('config.php');  //ไฟล์เชื่อมต่อกับ database ที่เราได้สร้างไว้ก่อนหน้านี้
+//2. query ข้อมูลจากตาราง users:
+$query = "SELECT * FROM users WHERE username = '".$_SESSION['username']."' " or die("Error:" . mysqli_error()); 
+//3.เก็บข้อมูลที่ query ออกมาไว้ในตัวแปร result . 
+$result = mysqli_query($link, $query); 
+//4 . แสดงข้อมูลที่ query ออกมา โดยใช้ตารางในการจัดข้อมูล: 
 ?>
  
 <!DOCTYPE html>
@@ -104,12 +112,12 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <div class = "header"><img class = "logo" src="images/logo.png"></div>
     <ul>
         <li class="active"><a href="welcome.php">Monitor Page</a></li>
-        <?php if($_SESSION["level"] == 'admin' ){?>
+        <?php if($_SESSION["level"] == 'a' ){?>
         <li><a href="admin.php">Manage Members</a></li>
         <?php }?>
         <li class="active2"><a href="about.php">About us</a></li>
-        <?php if($_SESSION["level"] == 'user' ){?>
-        <li class="active"><a href="reset-password.php">Reset Password</a></li>
+        <?php if($_SESSION["level"] == 'u' ){?>
+        <li class="active"><a href="reset-password">Reset Password</a></li>
         <?php }?>
         <li style="float:right" class="activeout"><a href="logout.php">Logout</a></li>
     </ul>

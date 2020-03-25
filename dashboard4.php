@@ -15,7 +15,7 @@ $firebase = (new Factory)
     ->create();
 
 $database = $firebase->getDatabase();
-$reference = $database->getReference('/Cars4');
+$reference = $database->getReference('/Device4');
 
 $snapshot = $reference->getSnapshot();
 
@@ -238,7 +238,7 @@ if(empty($value)){
 <body>
     <div class = "header"><img class = "logo" src="images/logo.png"></div>
     <ul>
-        <li><a class="active" href="logpage.php">LogPage</a></li>
+        <li><a class="active" href="logpage4.php">LogPage</a></li>
         <li style="float:right"><a class="active" href="welcome.php">Back</a></li>
     </ul>
 

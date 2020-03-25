@@ -4,7 +4,7 @@
 session_start();
  
 // Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION["level"] === "user"){
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION["level"] === "u"){
   header("location: home.php");
   exit;
 }
@@ -113,7 +113,10 @@ extract($row);
       <script language="JavaScript">
       function chkString()
       {
-        if(document.updateuser.password.value.length < 6)
+        if(document.updateuser.password.value.length = " "){
+          return true;
+        }
+        else if(document.updateuser.password.value.length < 6)
         {
           alert('Password must have atleast 6 characters.');
           return false;
@@ -123,9 +126,15 @@ extract($row);
     </tr>
 
     <tr>
-      <td align="right" bgcolor="#EBEBEB">email :
+      <td align="right" bgcolor="#EBEBEB">address :
         <label></label></td>
-      <td bgcolor="#EBEBEB"><input type="email" name="email" id="email" value="<?=$email;?>" required/></td>
+      <td bgcolor="#EBEBEB"><input type="address" name="address" id="address" value="<?=$address;?>" required/></td>
+    </tr>
+
+    <tr>
+      <td align="right" bgcolor="#EBEBEB">Tel :
+        <label></label></td>
+      <td bgcolor="#EBEBEB"><input type="tel" name="tel" id="tel" value="<?=$tel;?>" required/></td>
     </tr>
 
     <tr>

@@ -1,4 +1,5 @@
 <?php
+include('config.php');  //ไฟล์เชื่อมต่อกับ database ที่เราได้สร้างไว้ก่อนหน้านี้
 
 require __DIR__.'/vendor/autoload.php';
 
@@ -15,7 +16,7 @@ $firebase = (new Factory)
     ->create();
 
 $database = $firebase->getDatabase();
-$reference = $database->getReference('/Car1');
+$reference = $database->getReference('/Device1');
 
 $snapshot = $reference->getSnapshot();
 
@@ -238,7 +239,7 @@ if(empty($value)){
 <body>
     <div class = "header"><img class = "logo" src="images/logo.png"></div>
     <ul>
-        <li><a class="active" href="logpage.php">LogPage</a></li>
+        <li><a class="active" href="logpage1.php">LogPage</a></li>
         <li style="float:right"><a class="active" href="welcome.php">Back</a></li>
     </ul>
 

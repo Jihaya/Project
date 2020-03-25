@@ -20,6 +20,7 @@ echo "alert('Error Contact Admin !!');";
 echo "window.location = 'welcome.php'; "; 
 echo "</script>"; 
 }
+
  
 //รับค่าไอดีที่จะแก้ไข
 $ID = mysqli_real_escape_string($link,$_GET['id']);
@@ -92,12 +93,17 @@ extract($row);
     </tr>
 
     <tr>
-      <td width="117" align="right" bgcolor="#EBEBEB">Vehicle Registration   :</td>
+      <td width="117" align="right" bgcolor="#EBEBEB">Device ID :</td>
+      <td width="583" bgcolor="#EBEBEB"><input name="deviceid" type="text" id="deviceid" value="<?=$deviceid;?>" size="30" required="required"/></td>
+    </tr>
+
+    <tr>
+      <td width="117" align="right" bgcolor="#EBEBEB">Vehicle Registration :</td>
       <td width="583" bgcolor="#EBEBEB"><input name="carnum" type="text" id="carnum" value="<?=$carnum;?>" size="30" required="required"/></td>
     </tr>
 
     <tr>
-      <td width="117" align="right" bgcolor="#EBEBEB">Status   :</td>
+      <td width="117" align="right" bgcolor="#EBEBEB">Status :</td>
       <td width="583" bgcolor="#EBEBEB">
       <select id="status" name="status" value="<?=$status;?>">
         <option type="text" size="30" >Ready</option>
