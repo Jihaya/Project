@@ -209,7 +209,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 <div>
    <form name="form1" method="post" action="savedevice.php">
     <label for="id">Deiver Id</label>
-    <input type="text" id="id" name="id" placeholder="Deiver Id"required>
+    <input type="text" id="deviceid" name="deviceid" placeholder="Deiver Id"required>
     <br>
     <label for="num">Car Number</label>
     <input type="text" id="number" name="number" placeholder="Number ID"required>

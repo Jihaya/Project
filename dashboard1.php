@@ -27,6 +27,13 @@ if(empty($value)){
     $valueem = 0;
     $lat = json_decode(0);
     $long = json_decode(0);
+    $dataPoints1 = array(
+        array("label"=> "0:00", "y"=> "0"),
+    );
+    
+    $dataPoints2 = array(
+        array("label"=> "0:00", "y"=> "0"),
+    );
 }else{
     $temp = [];
     $humid = [];
@@ -134,6 +141,33 @@ if(empty($value)){
 <head>
 <title>Moniter Datas</title>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+<script type="text/javascript">
+    function doRefresh(){
+        $("#tbl_Cars_list").load("LOG.php");
+    }
+
+    $(function() {
+        setInterval(doRefresh, 3000);
+    });
+
+    function doRefresh1(){
+        $("#map").load("LOG2.php");
+    }
+
+    $(function() {
+        setInterval(doRefresh1, 3000);
+    });
+
+    function doRefresh2(){
+        $("#chartContainer").load("LOG3.php");
+    }
+
+    $(function() {
+        setInterval(doRefresh2, 3000);
+    });
+</script>
     <style type="text/css">
         body{ font: 14px sans-serif; text-align: center; }
     </style>
@@ -239,6 +273,7 @@ if(empty($value)){
 <body>
     <div class = "header"><img class = "logo" src="images/logo.png"></div>
     <ul>
+        <li><a class="active" href="home.php">Home</a></li>
         <li><a class="active" href="logpage1.php">LogPage</a></li>
         <li style="float:right"><a class="active" href="welcome.php">Back</a></li>
     </ul>
@@ -321,10 +356,10 @@ if(empty($value)){
                         if(empty($arrcount2[count($temp)]))
                         {
                             if($str11[13] != "'Stop'"){
-                                echo $str11[13].$str11[14].$str11[15];
+                                echo "-";
                             }
                             else{
-                                echo $str11[15].$str11[16].$str11[17];
+                                echo "-";
                             }
                         }
                     }if(!empty($arrcount2[count($temp)]))
@@ -423,9 +458,6 @@ if(empty($value)){
             ?>
             </td>
     </table>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-
-
 
 <h3>Google Maps</h3>
     The div element for the map
@@ -497,7 +529,5 @@ function toggleDataSeries(e){
  
 }
 </script>
-</head>
-<body>
 </body>
 </html>

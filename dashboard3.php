@@ -238,6 +238,7 @@ if(empty($value)){
 <body>
     <div class = "header"><img class = "logo" src="images/logo.png"></div>
     <ul>
+        <li><a class="active" href="home.php">Home</a></li>
         <li><a class="active" href="logpage3.php">LogPage</a></li>
         <li style="float:right"><a class="active" href="welcome.php">Back</a></li>
     </ul>
@@ -320,10 +321,10 @@ if(empty($value)){
                         if(empty($arrcount2[count($temp)]))
                         {
                             if($str11[13] != "'Stop'"){
-                                echo $str11[13].$str11[14].$str11[15];
+                                echo "-";
                             }
                             else{
-                                echo $str11[15].$str11[16].$str11[17];
+                                echo "-";
                             }
                         }
                     }if(!empty($arrcount2[count($temp)]))

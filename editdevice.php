@@ -87,7 +87,7 @@ extract($row);
     <tr>
       <td align="right" bgcolor="#EBEBEB">ID : </td>
       <td bgcolor="#EBEBEB">
-        <p><input type="text" name="id" value="<?php echo $ID; ?>"/>
+        <p><input type="text" name="id" value="<?php echo $ID; ?>" disabled='disabled'/>
         <input type="hidden" name="id" value="<?php echo $ID; ?>" />
       </td>
     </tr>
