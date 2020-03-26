@@ -309,7 +309,7 @@ setInterval(function () {
             <a class="active" href="home.php">Home</a>
           </li>
           <li>
-            <a class="active" href="logpage1.php">LogPage</a>
+            <a class="active" href="logpage4.php">LogPage</a>
           </li>
           <li style="float:right">
             <a class="active" href="welcome.php">Back</a>
