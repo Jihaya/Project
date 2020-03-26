@@ -1,4 +1,6 @@
 <?php
+include('config.php');  //ไฟล์เชื่อมต่อกับ database ที่เราได้สร้างไว้ก่อนหน้านี้
+
 require __DIR__.'/vendor/autoload.php';
 
 use Kreait\Firebase\Factory;
@@ -14,17 +16,25 @@ $firebase = (new Factory)
     ->create();
 
 $database = $firebase->getDatabase();
-$reference = $database->getReference('/Device1');
+$reference = $database->getReference('/Device2');
 
 $snapshot = $reference->getSnapshot();
 
 $value = $snapshot->getValue();
-
+$dataPoints = array();
 if(empty($value)){
     $value = "-";
     $valueem = 0;
     $lat = json_decode(0);
     $long = json_decode(0);
+    $dataPoints1 = array(
+        array("label"=> "0:00", "y"=> "0"),
+    );
+    array_push($dataPoints, $dataPoints1);
+    $dataPoints2 = array(
+        array("label"=> "0:00", "y"=> "0"),
+    );
+    array_push($dataPoints, $dataPoints2);
 }else{
     $temp = [];
     $humid = [];
@@ -51,21 +61,21 @@ if(empty($value)){
     $cut2arrcount = end($arrcount);
     $str1 = explode(' ',$cut1arrcount);
     $str11 = explode(' ',$cut2arrcount);
-    $lat = json_decode($str11[7]);
-    $long = json_decode($str11[9]);
     if($str11[13] != "'Stop'"){
-        array_push($timearr, $str11[13].":".$str11[15]);
-    }else{
-        array_push($timearr, $str11[15].":".$str11[17]);
+        $timearr = $str11[13].$str11[14].$str11[15];
+    }else if($str11[13] == "'Stop'"){
+        $timearr = $str11[15].$str11[16].$str11[17];
     }
+
     $dataPoints1 = array(
-        array("label"=> $timearr, "y"=> $str[3]),
+        array("label"=> $timearr, "y"=> $str11[3]),
     );
-    
+    array_push($dataPoints, $dataPoints1);
     $dataPoints2 = array(
         array("label"=> $timearr, "y"=> $str11[5]),
     );
-    
+    array_push($dataPoints, $dataPoints2);
+
     // หยุดหารอบสองค่าแรก
     foreach($value as $x=>$x_value){
         array_push($arrcount, $x_value);
@@ -115,63 +125,18 @@ if(empty($value)){
             }else{
                 array_push($timearr, $str22[15].":".$str22[17]);
             }
-            $dataPoints1 = array(
-                array("label"=> $timearr, "y"=> $str22[3]),
-            );
-            
-            $dataPoints2 = array(
-                array("label"=> $timearr, "y"=> $str22[5]),
-            );
+
+                $dataPoints1 = array(
+                    array("label"=> $timearr, "y"=> $str22[3]),
+                );
+                $dataPoints = array();
+                array_push($dataPoints, $dataPoints1);
+                $dataPoints2 = array(
+                    array("label"=> $timearr, "y"=> $str22[5]),
+                );
+                array_push($dataPoints, $dataPoints2);
         }
     }
 }
+echo json_encode($dataPoints, JSON_NUMERIC_CHECK);
 ?>
-
-<!-- <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script> -->
-
-<script>
-window.onload = function () {
- 
-var chart = new CanvasJS.Chart("chartContainer", {
-	animationEnabled: true,
-	theme: "light2",
-	title:{
-		text: "Temperature and Humidity"
-	},
-	legend:{
-		cursor: "pointer",
-		verticalAlign: "center",
-		horizontalAlign: "right",
-		itemclick: toggleDataSeries
-	},
-	data: [{
-		type: "column",
-		name: "Temperature",
-		indexLabel: "{y}",
-		yValueFormatString: "#.##",
-		showInLegend: true,
-		dataPoints: <?php echo json_encode($dataPoints1, JSON_NUMERIC_CHECK); ?>
-	},{
-		type: "column",
-		name: "Humidity",
-		indexLabel: "{y}",
-		yValueFormatString: "#.##",
-		showInLegend: true,
-		dataPoints: <?php echo json_encode($dataPoints2, JSON_NUMERIC_CHECK); ?>
-	}]
-});
-chart.render();
- 
-function toggleDataSeries(e){
-	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-		e.dataSeries.visible = false;
-	}
-	else{
-		e.dataSeries.visible = true;
-	}
-	chart.render();
-}
- 
-}
-</script>

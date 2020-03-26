@@ -82,13 +82,12 @@ $result = mysqli_query($link, $query);
             background-color: lightblue;
             
         }
-        a{
-           font-size:16px;
-        }
-        ul{
-            box-shadow: 5px 10px 16px #888888;
-
-        }
+            a{
+            font-size:16px;
+            }
+            ul{
+                box-shadow: 5px 10px 16px #888888;
+            }
     </style>
     <style>
         .header{
@@ -111,13 +110,13 @@ $result = mysqli_query($link, $query);
 <body>
 <div class = "header"><img class = "logo" src="images/logo.png"></div>
     <ul>
-        <li class="active"><a href="welcome.php">Monitor Page</a></li>
+        <li class="active"><a href="welcome.php">Monitor Site</a></li>
         <?php if($_SESSION["level"] == 'a' ){?>
-        <li><a href="admin.php">Manage Members</a></li>
+        <li><a class="active" href="admin.php">Manage Members</a></li>
         <?php }?>
-        <li class="active2"><a href="about.php">About us</a></li>
+        <li class="active"><a href="about.php">About us</a></li>
         <?php if($_SESSION["level"] == 'u' ){?>
-        <li class="active"><a href="reset-password">Reset Password</a></li>
+        <li class="active"><a href="edit_profile.php">Edit Profile</a></li>
         <?php }?>
         <li style="float:right" class="activeout"><a href="logout.php">Logout</a></li>
     </ul>
