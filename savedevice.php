@@ -1,5 +1,5 @@
 <?php 
-	$id = $_POST['id'];
+	$deviceid = $_POST['deviceid'];
     $carnum = $_POST['number'];
 	
 	
@@ -16,8 +16,8 @@
 	    die("Connection failed: " . $conn->connect_error);
 	}  
 
-	$sql = "INSERT INTO device (id, carnum)
-	VALUES ('".$id."', '".$carnum."')";
+	$sql = "INSERT INTO device (deviceid, carnum)
+	VALUES ('".$deviceid."', '".$carnum."')";
 
 	if ($conn->query($sql) === TRUE) {
 	    echo "New record created successfully";

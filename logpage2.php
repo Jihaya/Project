@@ -26,7 +26,7 @@ $firebase = (new Factory)
     ->create();
 
 $database = $firebase->getDatabase();
-$reference = $database->getReference('/Car2');
+$reference = $database->getReference('/Device2');
 $snapshot = $reference->getSnapshot();
 $value = $snapshot->getValue();
 
@@ -364,7 +364,8 @@ function toggleDataSeries(e){
   <body>
   <div class = "header"><img class = "logo" src="images/logo.png"></div>
   <ul>
-    <li><a target ="_blank" href="report.php">Report</a></li>
+    <li><a class="active" href="home.php">Home</a></li>
+    <li><a target ="_blank" href="report2.php">Report</a></li>
     <li style="float:right"><a href="dashboard1.php">Back</a></li>
   </ul>
 <br><br>

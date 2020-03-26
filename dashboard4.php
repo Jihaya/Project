@@ -1,4 +1,5 @@
 <?php
+include('config.php');  //ไฟล์เชื่อมต่อกับ database ที่เราได้สร้างไว้ก่อนหน้านี้
 
 require __DIR__.'/vendor/autoload.php';
 
@@ -15,7 +16,7 @@ $firebase = (new Factory)
     ->create();
 
 $database = $firebase->getDatabase();
-$reference = $database->getReference('/Cars4');
+$reference = $database->getReference('/Device4');
 
 $snapshot = $reference->getSnapshot();
 
@@ -26,6 +27,13 @@ if(empty($value)){
     $valueem = 0;
     $lat = json_decode(0);
     $long = json_decode(0);
+    $dataPoints1 = array(
+        array("label"=> "0:00", "y"=> "0"),
+    );
+    
+    $dataPoints2 = array(
+        array("label"=> "0:00", "y"=> "0"),
+    );
 }else{
     $temp = [];
     $humid = [];
@@ -127,17 +135,34 @@ if(empty($value)){
     }
 }
 ?>
-
 <!DOCTYPE html>
 <html>
-<head>
-<title>Moniter Datas</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
-    <style type="text/css">
+  <head>
+    <title>Moniter Datas</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+      <script src="http://code.jquery.com/jquery-3.1.1.js"></script>
+      <script type="text/javascript">
+    function doRefresh(){
+        $("#tbl_Cars_list").load("LOGIV.php");
+    }
+
+    $(function() {
+        setInterval(doRefresh, 5000);
+    });
+
+    function doRefresh1(){
+        $("#map").load("LOG2IV.php");
+    }
+
+    $(function() {
+        setInterval(doRefresh1, 5000);
+    });
+</script>
+      <style type="text/css">
         body{ font: 14px sans-serif; text-align: center; }
     </style>
-
-    <style>
+      <style>
         ul {
             list-style-type: none;
             margin: 0;
@@ -181,8 +206,7 @@ if(empty($value)){
             background-color: #4CAF50;
         }
     </style>
-
-    <style>
+      <style>
         .databox{
             margin: 30px;
             background-color: #ffffff;
@@ -234,41 +258,90 @@ if(empty($value)){
         width: 25%;  /* The width is the width of the web page */
        }
     </style>
-</head>
-<body>
-    <div class = "header"><img class = "logo" src="images/logo.png"></div>
-    <ul>
-        <li><a class="active" href="logpage.php">LogPage</a></li>
-        <li style="float:right"><a class="active" href="welcome.php">Back</a></li>
-    </ul>
+      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+      <script type="text/javascript">
+    function getData()
+        {
+                    $.ajax({
+                        url: "getdataIV.php",
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data) {
+                                // var obj = JSON && JSON.parse(data) || $.parseJSON(data);
+                                console.log(data);
+                                var time = ""+data[0][0]['label'];
+                                var temp = ""+data[0][0]['y'];
+                                var humid = ""+data[1][0]['y'];
+      google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawChart);
 
-    <br><br>
-    <div style="margin:auto;width:100%;">
-    <div id="chartContainer" style="height: 370px; width: 100%;"></div>
-    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
-    <br><br>
-    <table class="td1" name= "td1" id="tbl_Cars_list" border="1">
-        <tr>
-            <td>Device</td>
-            <td>Temp(°C)</td>
-            <td>Humid(%)</td>
-            <td>Time (Start)</td>
-            <td>Time (Stop)</td>
-            <td>Time used</td>
-            <td>Status</td>
-        </tr>
-            <td>
-            <?php //device id
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['Time', 'Temp', 'Humid'],
+          [time, temp, humid],
+        ]);
+
+        var options = {
+          chart: {
+            title: 'Temp & Humid',
+          }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+      }
+    }
+                    });
+
+}
+setInterval(function () {
+    getData();
+                  }, 3000);
+    </script>
+    </head>
+    <body>
+      <div class = "header">
+        <img class = "logo" src="images/logo.png">
+        </div>
+        <ul>
+          <li>
+            <a class="active" href="home.php">Home</a>
+          </li>
+          <li>
+            <a class="active" href="logpage1.php">LogPage</a>
+          </li>
+          <li style="float:right">
+            <a class="active" href="welcome.php">Back</a>
+          </li>
+        </ul>
+        <br>
+          <br>
+            <div style="margin:auto;width:100%;">
+              <div id="columnchart_material" style="width: 800px; height: 500px; margin: 0 auto;"></div>
+              <br>
+                <br>
+                  <table class="td1" name= "td1" id="tbl_Cars_list" border="1">
+                    <tr>
+                      <td>Device</td>
+                      <td>Temp(°C)</td>
+                      <td>Humid(%)</td>
+                      <td>Time (Start)</td>
+                      <td>Time (Stop)</td>
+                      <td>Time used</td>
+                      <td>Status</td>
+                    </tr>
+                    <td>
+                      <?php //device id
                 if($value == "-"){
                     echo "-";
                 }else{
                 echo $str[1];
                 }
             ?>
-            </td>
-
-            <td>
-            <?php //temp
+                    </td>
+                    <td>
+                      <?php //temp
                 if($value == "-"){
                     echo "-";
                 }if($value != "-"){
@@ -282,10 +355,9 @@ if(empty($value)){
                     }
                 }
             ?>
-            </td>
-
-            <td>
-            <?php //humid
+                    </td>
+                    <td>
+                      <?php //humid
             if($value == "-"){
                 echo "-";
             }if($value != "-"){
@@ -296,9 +368,9 @@ if(empty($value)){
                 }
             }
             ?>
-            </td>
-
-            <td><?php //time start
+                    </td>
+                    <td>
+                      <?php //time start
             if($value == "-"){
                 echo "-";
             }if($value != "-"){
@@ -309,10 +381,9 @@ if(empty($value)){
                 }
             }
             ?>
-            </td>
-
-            <td>
-            <?php //time stop
+                    </td>
+                    <td>
+                      <?php //time stop
                 if($value == "-"){
                     echo "-";
                 }if($value != "-"){
@@ -320,10 +391,10 @@ if(empty($value)){
                         if(empty($arrcount2[count($temp)]))
                         {
                             if($str11[13] != "'Stop'"){
-                                echo $str11[13].$str11[14].$str11[15];
+                                echo "-";
                             }
                             else{
-                                echo $str11[15].$str11[16].$str11[17];
+                                echo "-";
                             }
                         }
                     }if(!empty($arrcount2[count($temp)]))
@@ -337,10 +408,9 @@ if(empty($value)){
                     }
                 }
             ?>
-            </td>
-
-            <td>
-            <?php // time use
+                    </td>
+                    <td>
+                      <?php // time use
                 if($value == "-"){
                     echo "-";
                 }else if ($c = 2){
@@ -401,9 +471,9 @@ if(empty($value)){
                     }
                 }
             ?>
-            </td>
-            <td>
-            <?php // status
+                    </td>
+                    <td>
+                      <?php // status
                 if($value == "-"){
                     echo "-";
                 }elseif(empty($arrcount2[count($temp)])){
@@ -420,83 +490,33 @@ if(empty($value)){
                     }
                 }
             ?>
-            </td>
-    </table>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-
-
-
-<h3>Google Maps</h3>
+                    </td>
+                  </table>
+                  <h3>Google Maps</h3>
     The div element for the map
-<div id="map" style="margin:auto;width:600px;height:500px;">
-    <script>
+
+                  <div id="map" style="margin:auto;width:600px;height:500px;">
+                    <script>
     // Initialize and add the map
     function initMap() {
     // The location of Uluru
-    var uluru = {lat: <?php echo $lat ?>, lng: <?php echo $long ?>};
+    var uluru = {lat: 
+                      <?php echo $lat ?>, lng: 
+                      <?php echo $long ?>};
     // The map, centered at Uluru
     var map = new google.maps.Map(
         document.getElementById('map'), {zoom: 17, center: uluru});
     // The marker, positioned at Uluru
     var marker = new google.maps.Marker({position: uluru, map: map});
     }
-    </script>
-        <!--Load the API from the specified URL
+    
+                    </script>
+                    <!--Load the API from the specified URL
         * The async attribute allows the browser to render the page while the API loads
         * The key parameter will contain your own API key (which is not needed for this tutorial)
         * The callback parameter executes the initMap() function -->
-
-    <script async defer
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZlLeEp_1W-pWTInUkU4YJEJxq8Kg86ds&callback=initMap">
-    </script>
-</div>
-
-<script>
-window.onload = function () {
- 
-var chart = new CanvasJS.Chart("chartContainer", {
-	animationEnabled: true,
-	theme: "light2",
-	title:{
-		text: "Temperature and Humidity"
-	},
-	legend:{
-		cursor: "pointer",
-		verticalAlign: "center",
-		horizontalAlign: "right",
-		itemclick: toggleDataSeries
-	},
-	data: [{
-		type: "column",
-		name: "Temperature",
-		indexLabel: "{y}",
-		yValueFormatString: "#.##",
-		showInLegend: true,
-		dataPoints: <?php echo json_encode($dataPoints1, JSON_NUMERIC_CHECK); ?>
-	},{
-		type: "column",
-		name: "Humidity",
-		indexLabel: "{y}",
-		yValueFormatString: "#.##",
-		showInLegend: true,
-		dataPoints: <?php echo json_encode($dataPoints2, JSON_NUMERIC_CHECK); ?>
-	}]
-});
-chart.render();
- 
-function toggleDataSeries(e){
-	if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
-		e.dataSeries.visible = false;
-	}
-	else{
-		e.dataSeries.visible = true;
-	}
-	chart.render();
-}
- 
-}
-</script>
-</head>
-<body>
-</body>
-</html>
+                    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZlLeEp_1W-pWTInUkU4YJEJxq8Kg86ds&callback=initMap"></script>
+                  </div>
+                </body>
+              </html>

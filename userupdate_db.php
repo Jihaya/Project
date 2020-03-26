@@ -18,6 +18,8 @@ echo "</script>";
 	$username = $_POST["username"];
 	$password = $_POST["password"];	
 	$passhash = password_hash($password, PASSWORD_DEFAULT);
+	$address = $_POST["address"];
+	$tel = $_POST["tel"];
 	$email = $_POST["email"];
 	$level = $_POST["level"];
  
@@ -28,17 +30,21 @@ echo "</script>";
 			fname='$fname' ,
 			lname='$lname' , 
 			username='$username',
-			email = '$email',
-			level = '$level'
+			tel = '$tel',
+			address = '$address',
+			level = '$level',
+			email = '$email'
 			WHERE id='$ID' ";
 	}else{
 		$sql = "UPDATE users SET  
 			fname='$fname' ,
 			lname='$lname' , 
 			username='$username',
+			tel = '$tel',
 			password='$passhash', 
-			email = '$email',
-			level = '$level'
+			address = '$address',
+			level = '$level',
+			email = '$email'
 			WHERE id='$ID' ";
 	}
  

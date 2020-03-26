@@ -61,9 +61,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                             // Store data in session variables
                             $_SESSION["loggedin"] = true;
                             $_SESSION["username"] = $username;
+                            $_SESSION["id"] = $id;
                             $_SESSION["level"] = $level;
 
-                            if($level =="admin"){ //ถ้าเป็น admin ให้กระโดดไปหน้า admin.php
+                            if($level =="a"){ //ถ้าเป็น admin ให้กระโดดไปหน้า admin.php
  
                                 Header("Location: home.php");
          
@@ -72,7 +73,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                 Header("Location: home.php");
 
                             }
-                            if ($level =="user"){  //ถ้าเป็น member ให้กระโดดไปหน้า home.php
+                            if ($level =="u"){  //ถ้าเป็น member ให้กระโดดไปหน้า home.php
  
                                 Header("Location: home.php");
          

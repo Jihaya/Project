@@ -15,13 +15,15 @@ echo "</script>";
     $ID = $_POST["id"];
 	$carnum = $_POST["carnum"];
 	$status = $_POST["status"];
+	$textid = $_POST["deviceid"];
 
 //ทำการปรับปรุงข้อมูลที่จะแก้ไขลงใน database 
 
 		$sql = "UPDATE device SET  
 			id='$ID' ,
 			carnum='$carnum' , 
-            status='$status'
+            status='$status',
+			deviceid='$textid'
 			WHERE id='$ID'
             ";
  

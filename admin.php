@@ -3,7 +3,7 @@
 session_start();
 
 // Check if the user is logged in, if not then redirect him to login page
-if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION["level"] === "user"){
+if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION["level"] === "u"){
     header("location: home.php");
     exit;
 }
@@ -43,13 +43,29 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION[
         li a:hover {
             background-color: #111;
         }
-        
         .activeout {
             background-color: #cc0000;
         }
+
+        li {
+            border-right: 1px solid #bbb;
+        }
+        li:last-child {
+            border-right: none;
+        }
+        a{
+           font-size:16px;
+        }
+        ul{
+            box-shadow: 5px 10px 16px #888888;
+
+        }
+        .active {
+            background-color: #4CAF50;
+        }
     </style>
     <style>
-    table{
+        table{
             background-color: White;
         }
         table, td, th{  
@@ -78,13 +94,19 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION[
             background-size: cover;
             padding: 20px;
         }
+        .icon{
+            padding-left: 4em;
+        }
+        .active {
+            background-color: #4CAF50;
+        }
     </style>
 </head>
 <body>
     <div class = "header"><img class = "logo" src="images/logo.png"></div>
     <ul>
-        <li><a href="home.php">Home</a></li>
-        <li><a href="register.php">Register</a></li>
+        <li><a class="active" href="home.php">Home</a></li>
+        <li><a class="active" href="registerA.php">Register</a></li>
         <li style="float:right" class="activeout"><a href="logout.php">Logout</a></li>
     </ul>
     <h3>Manage Members</h3>
@@ -100,13 +122,15 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true || $_SESSION[
     
     echo "<table border='1' align='center' width='500'>";
     //หัวข้อตาราง
-    echo "<tr align='center' bgcolor='#CCCCCC'><td>id</td><td>username</td><td>ชื่อ</td><td>นามสกุล</td><td>email</td><td>แก้ไข</td><td>ลบ</td></tr>";
+    echo "<tr align='center' bgcolor='#CCCCCC'><td>id</td><td>username</td><td>ชื่อ</td><td>นามสกุล</td><td>ที่อยู่</td><td>Tel.</td><td>Email</td><td>แก้ไข</td><td>ลบ</td></tr>";
     while($row = mysqli_fetch_array($result)) { 
     echo "<tr>";
     echo "<td>" .$row["id"] .  "</td> "; 
     echo "<td>" .$row["username"] .  "</td> ";  
     echo "<td>" .$row["fname"] .  "</td> ";
     echo "<td>" .$row["lname"] .  "</td> ";
+    echo "<td>" .$row["address"] .  "</td> ";
+    echo "<td>" .$row["tel"] .  "</td> ";
     echo "<td>" .$row["email"] .  "</td> ";
     //แก้ไขข้อมูล
     echo "<td><a type='button' href='userupdateform.php?id=$row[0]'>edit</a></td> ";

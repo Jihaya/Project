@@ -191,9 +191,8 @@ if(empty($value)){
     <ul>
         <li><font face="th sarabun new" size="6" color="White">Account : <?php echo htmlspecialchars($_SESSION["username"]); ?>&nbsp;</font></li>
         <li><a class="active" href="home.php">Home</a></li>
-        <?php if($_SESSION["level"] == 'admin' ){?>
-        <li><a href="adddevice.php">Add Device</a></li>
-        <?php }?>
+        <li><a class="active" href="adddevice.php">Add Device</a></li>
+        <li><a target ="_blank" class="active" href="reportall.php">Report All</a></li>
         <li style="float:right" class="activeout"><a href="logout.php">Logout</a></li>
     </ul>
     <br>
@@ -239,12 +238,11 @@ if(empty($value)){
         echo "<table id='table' border='1' align='center' width='500'>";
         //หัวข้อตาราง
         echo "<tr align='center' bgcolor='#CCCCCC'><td>Device ID</td><td>Vehicle Registration</td><td>Monitor Site</td><td>Status</td><td>Car Status</td>";
-        if($_SESSION["level"] == 'admin' ){echo "<td>edit</td><td>delete</td>";};
+        echo "<td>edit</td><td>delete</td>";
         while($row = mysqli_fetch_array($result)) { 
         echo "<tr>";
-        echo "<td>" .$row["id"] .  "</td> "; 
+        echo "<td>" .$row["deviceid"] .  "</td> "; 
         echo "<td>" .$row["carnum"] .  "</td> ";
-        // echo "<td><a href='dashboard",$row["id"],".php'>Click here</a></td>";
         if($value2 == "-"){
             echo "'Stop'";
         }
@@ -255,17 +253,16 @@ if(empty($value)){
             
         }
         else if($row["status"] == "Ready"){
-            echo "<td><a href='dashboard",$row["id"],".php'>Click here</a></td>";
+            echo "<td><a href='dashboard",$row["deviceid"],".php'>Click here</a></td>";
             echo "<td><i class='fa fa-circle' style='font-size:24px;color:green;'></i></td>";
         }
         echo "<td>" .$row["status"] .  "</td> ";
         //แก้ไขข้อมูล
-        if($_SESSION["level"] == 'admin' ){
         echo "<td><a type='button' href='editdevice.php?id=$row[0]'>edit</a></td> ";
         
         //ลบข้อมูล
         echo "<td><a href='deldevice.php?id=$row[0]' onclick=\"return confirm('Do you want to delete this record? !!!')\">del</a></td> ";
-        echo "</tr>";}
+        echo "</tr>";
         }
         echo "</table>";
         //5. close connection
