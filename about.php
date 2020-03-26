@@ -145,12 +145,14 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
         <p><font face="th sarabun new" size="5"><b>ระบบติดตามการขนส่งผัก</b></font></p>
         <br>
         <p><font face="th sarabun new" size="5">เพื่อได้รับผักที่สดโดยคุณสามารถติดตามการขนส่ง รวมถึงอุณหภูมิการจัดเก็บของผักที่ถูกเก็บรักษา</font></p>
+        <p><font face="th sarabun new" size="5">Tel. 091-520-1025</font></p>
+        <p><font face="th sarabun new" size="5">หรือ</font></p>
         <p><font face="th sarabun new" size="5"></font></p>
     </div>
     <div>
         <a target ="_blank" href="https://www.facebook.com/" class="fa fa-facebook"></a>
         <a target ="_blank" href="https://twitter.com/" class="fa fa-twitter"></a>
-        <a target ="_blank" href="https://plus.google.com/" class="fa fa-google"></a>
+        <a target ="_blank" href="https://gmail.    com/" class="fa fa-google"></a>
     </div>
 </body>
 </html>

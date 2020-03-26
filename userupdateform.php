@@ -128,13 +128,19 @@ extract($row);
     <tr>
       <td align="right" bgcolor="#EBEBEB">address :
         <label></label></td>
-      <td bgcolor="#EBEBEB"><input type="address" name="address" id="address" value="<?=$address;?>" required/></td>
+      <td bgcolor="#EBEBEB"><textarea name="address" type="text" id="address" cols="30" rows="4" value="<?php echo $address;?>" required><?php echo $address;?></textarea></td>
     </tr>
 
     <tr>
       <td align="right" bgcolor="#EBEBEB">Tel :
         <label></label></td>
       <td bgcolor="#EBEBEB"><input type="tel" name="tel" id="tel" value="<?=$tel;?>" required/></td>
+    </tr>
+
+    <tr>
+      <td align="right" bgcolor="#EBEBEB">email :
+        <label></label></td>
+      <td bgcolor="#EBEBEB"><input type="email" name="email" id="email" value="<?=$email;?>" required/></td>
     </tr>
 
     <tr>

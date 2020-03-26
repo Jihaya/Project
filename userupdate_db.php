@@ -20,6 +20,7 @@ echo "</script>";
 	$passhash = password_hash($password, PASSWORD_DEFAULT);
 	$address = $_POST["address"];
 	$tel = $_POST["tel"];
+	$email = $_POST["email"];
 	$level = $_POST["level"];
  
 //ทำการปรับปรุงข้อมูลที่จะแก้ไขลงใน database 
@@ -31,7 +32,8 @@ echo "</script>";
 			username='$username',
 			tel = '$tel',
 			address = '$address',
-			level = '$level'
+			level = '$level',
+			email = '$email'
 			WHERE id='$ID' ";
 	}else{
 		$sql = "UPDATE users SET  
@@ -41,7 +43,8 @@ echo "</script>";
 			tel = '$tel',
 			password='$passhash', 
 			address = '$address',
-			level = '$level'
+			level = '$level',
+			email = '$email'
 			WHERE id='$ID' ";
 	}
  

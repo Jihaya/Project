@@ -191,7 +191,8 @@ if(empty($value)){
     <ul>
         <li><font face="th sarabun new" size="6" color="White">Account : <?php echo htmlspecialchars($_SESSION["username"]); ?>&nbsp;</font></li>
         <li><a class="active" href="home.php">Home</a></li>
-        <li><a href="adddevice.php">Add Device</a></li>
+        <li><a class="active" href="adddevice.php">Add Device</a></li>
+        <li><a target ="_blank" class="active" href="reportall.php">Report All</a></li>
         <li style="float:right" class="activeout"><a href="logout.php">Logout</a></li>
     </ul>
     <br>
