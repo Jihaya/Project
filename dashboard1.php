@@ -284,6 +284,7 @@ if(empty($value)){
         var options = {
           chart: {
             title: 'Temp & Humid',
+            subtitle: 'Unit',
           }
         };
 
@@ -394,13 +395,13 @@ setInterval(function () {
                                 echo "-";
                             }
                             else{
-                                echo "-";
+                                echo $str11[15].$str11[16].$str11[17];
                             }
                         }
                     }if(!empty($arrcount2[count($temp)]))
                     {
                         if($str22[13] != "'Stop'"){
-                            echo $str22[13].$str22[14].$str22[15];
+                            echo "-";
                         }
                         else{
                             echo $str22[15].$str22[16].$str22[17];
@@ -518,5 +519,6 @@ setInterval(function () {
                     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZlLeEp_1W-pWTInUkU4YJEJxq8Kg86ds&callback=initMap"></script>
                   </div>
+                  <br><br>
                 </body>
               </html>

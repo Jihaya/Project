@@ -182,6 +182,11 @@
                 <td>&nbsp;Tel. :</td>
                 <td><input name="tel" type="text" id="tel" value="<?php echo $tel;?>"></td>
             </tr>
+
+            <tr>
+                <td>&nbsp;Email :</td>
+                <td><input name="email" type="text" id="email" value="<?php echo $email;?>"></td>
+            </tr>
             </tbody>
         </table>
         <br>

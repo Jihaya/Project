@@ -166,29 +166,30 @@ if(empty($value)){
       $cut2arrcount3 = current($arrcount3);
       $str21 = explode(' ',$cut1arrcount3);
       $str22 = explode(' ',$cut2arrcount3);
+
       if($str22[13] == "'Stop'"){
-        $timeend = $str11[15].$str11[16].$str11[17];
-        $strTime1 = $str1[13].$str1[14].$str1[15];
-        $timestart1 = intval($str1[13]);
-        $timestart2 = intval($str1[15]);
+        $timeend2 = $str22[15].$str22[16].$str22[17];
+        $strTime12 = $c2[13].$c2[14].$c2[15];
+        $timestart12 = intval($c2[13]);
+        $timestart22 = intval($c2[15]);
       
-        $strTime2 = $str11[15].$str11[16].$str11[17];
-        $timeend1 = intval($str11[15]);
-        $timeend2 = intval($str11[17]);
+        $strTime22 = $str22[15].$str22[16].$str22[17];
+        $timeend12 = intval($str22[15]);
+        $timeend22 = intval($str22[17]);
       
-        $timeresult1 = $timestart1 - $timeend1;
-        $timeresult2 = $timestart2 - $timeend2;
+        $timeresult12 = $timestart12 - $timeend12;
+        $timeresult22 = $timestart22 - $timeend22;
                         
-        if($timeresult1 < 0){
-            $result1 = abs($timeresult1);
+        if($timeresult12 < 0){
+            $result12 = abs($timeresult12);
         } else{
-            $result1 = $timeresult1;
+            $result12 = $timeresult12;
             // echo ".";
         }
-        if($timeresult2 < 0){
-            $result2 = abs($timeresult2);
+        if($timeresult22 < 0){
+            $result22 = abs($timeresult22);
         } else{
-            $result2 = $timeresult2;
+            $result22 = $timeresult22;
         }
       }
       if(count($temp2)) {
@@ -318,27 +319,27 @@ if(empty($value2)){
       $str21II = explode(' ',$cut1arrcount3II);
       $str22II = explode(' ',$cut2arrcount3II);
       if($str22II[13] == "'Stop'"){
-        $timeendII = $str11II[15].$str11II[16].$str11II[17];
-        $strTime1II = $str1II[13].$str1II[14].$str1II[15];
-        $timestart1II = intval($str1II[13]);
-        $timestart2II = intval($str1II[15]);
+        $timeendII = $str22II[15].$str22II[16].$str22II[17];
+        $strTime12II = $c2II[13].$c2II[14].$c2II[15];
+        $timestart12II = intval($c2II[13]);
+        $timestart22II = intval($c2II[15]);
       
-        $strTime2II = $str11II[15].$str11II[16].$str11II[17];
-        $timeend1II = intval($str11II[15]);
-        $timeend2II = intval($str11II[17]);
+        $strTime22II = $str22II[15].$str22II[16].$str22II[17];
+        $timeend12II = intval($str22II[15]);
+        $timeend22II = intval($str22II[17]);
       
-        $timeresult1II = $timestart1II - $timeend1II;
-        $timeresult2II = $timestart2II - $timeend2II;
+        $timeresult12II = $timestart12II - $timeend12II;
+        $timeresult22II = $timestart22II - $timeend22II;
                         
-        if($timeresult1II < 0){
-            $result1II = abs($timeresult1II);
+        if($timeresult12II < 0){
+            $result12II = abs($timeresult12II);
         } else{
-            $result1II = $timeresult1II;
+            $result12II = $timeresult12II;
         }
-        if($timeresult2II < 0){
-            $result2II = abs($timeresult2II);
+        if($timeresult22II < 0){
+            $result22II = abs($timeresult22II);
         } else{
-            $result2II = $timeresult2II;
+            $result22II = $timeresult22II;
         }
       }
       if(count($temp2II)) {
@@ -468,27 +469,27 @@ if(empty($value3)){
       $str21III = explode(' ',$cut1arrcount3III);
       $str22III = explode(' ',$cut2arrcount3III);
       if($str22III[13] == "'Stop'"){
-        $timeendIII = $str11III[15].$str11III[16].$str11III[17];
-        $strTime1III = $str1III[13].$str1III[14].$str1III[15];
-        $timestart1III = intval($str1III[13]);
-        $timestart2III = intval($str1III[15]);
+        $timeendIII = $str22III[15].$str22III[16].$str22III[17];
+        $strTime1III = $c2III[13].$c2III[14].$c2III[15];
+        $timestart12III = intval($c2III[13]);
+        $timestart22III = intval($c2III[15]);
       
-        $strTime2III = $str11III[15].$str11III[16].$str11III[17];
-        $timeend1III = intval($str11III[15]);
-        $timeend2III = intval($str11III[17]);
+        $strTime22III = $str22III[15].$str22III[16].$str22III[17];
+        $timeend12III = intval($str22III[15]);
+        $timeend22III = intval($str22III[17]);
       
-        $timeresult1III = $timestart1III - $timeend1III;
-        $timeresult2III = $timestart2III - $timeend2III;
+        $timeresult12III = $timestart12III - $timeend12III;
+        $timeresult22III = $timestart22III - $timeend22III;
                         
-        if($timeresult1III < 0){
-            $result1III = abs($timeresult1III);
+        if($timeresult12III < 0){
+            $result12III = abs($timeresult12III);
         } else{
-            $result1III = $timeresult1III;
+            $result12III = $timeresult12III;
         }
-        if($timeresult2III < 0){
-            $result2III = abs($timeresult2III);
+        if($timeresult22III < 0){
+            $result22III = abs($timeresult22III);
         } else{
-            $result2III = $timeresult2III;
+            $result22III = $timeresult22III;
         }
       }
       if(count($temp2III)) {
@@ -618,27 +619,27 @@ if(empty($value4)){
       $str21IV = explode(' ',$cut1arrcount3IV);
       $str22IV = explode(' ',$cut2arrcount3IV);
       if($str22IV[13] == "'Stop'"){
-        $timeendIV = $str11IV[15].$str11IV[16].$str11IV[17];
-        $strTime1IV = $str1IV[13].$str1IV[14].$str1IV[15];
-        $timestart1IV = intval($str1IV[13]);
-        $timestart2IV = intval($str1IV[15]);
+        $timeend2IV = $str22IV[15].$str22IV[16].$str22IV[17];
+        $strTime12IV = $c2IV[13].$c2IV[14].$c2IV[15];
+        $timestart12IV = intval($c2IV[13]);
+        $timestart22IV = intval($c2IV[15]);
       
-        $strTime2IV = $str11IV[15].$str11IV[16].$str11IV[17];
-        $timeend1IV = intval($str11IV[15]);
-        $timeend2IV = intval($str11IV[17]);
+        $strTime22IV = $str22IV[15].$str22IV[16].$str22IV[17];
+        $timeend12IV = intval($str22IV[15]);
+        $timeend22IV = intval($str22IV[17]);
       
-        $timeresult1IV = $timestart1IV - $timeend1IV;
-        $timeresult2IV = $timestart2IV - $timeend2IV;
+        $timeresult12IV = $timestart12IV - $timeend12IV;
+        $timeresult22IV = $timestart22IV - $timeend22IV;
                         
-        if($timeresult1IV < 0){
-            $result1IV = abs($timeresult1IV);
+        if($timeresult12IV < 0){
+            $result12IV = abs($timeresult12IV);
         } else{
-            $result1IV = $timeresult1IV;
+            $result12IV = $timeresult12IV;
         }
-        if($timeresult2IV < 0){
-            $result2IV = abs($timeresult2IV);
+        if($timeresult22IV < 0){
+            $result22IV = abs($timeresult22IV);
         } else{
-            $result2IV = $timeresult2IV;
+            $result22IV = $timeresult22IV;
         }
       }
       if(count($temp2IV)) {
@@ -695,16 +696,10 @@ tr:nth-child(even) {
 <h3>Issue date : <?php $date = new DateTime("now",  new DateTimeZone('Asia/Bangkok') );
             echo $date->format("d/m/Y");?> &nbsp; Time : <?php echo $date->format("H:i");?></h3>
 <hr>
-<h3>Delivery cycle :
-<?php
-  if(empty($arrcount2[count($temp)])){
-    echo $c = $c - 1;
-  }elseif(!empty($arrcount2[count($temp)])){
-    echo $c;
-} ?> around</h3>
+<h3>Device 1</h3>
 <table>
   <tr>
-    <th>Deive</th>
+    <th>Around</th>
     <th>Average Temp</th>
     <th>Aaverage humid</th>
     <th>Transportation time</th>
@@ -713,7 +708,16 @@ tr:nth-child(even) {
   </tr>
   <tr>
     <td>
-    <?php echo $str[1] ?></td>
+    <?php
+    if($value == "-"){
+      echo "-";
+    }if(empty($arrcount2[count($temp)])){
+      echo abs($c - 1);
+    }elseif(!empty($arrcount2[count($temp)])){
+      echo $c - 1;
+    }
+    ?>
+    </td>
     <td>
     <?php //temp
       if($value == "-"){
@@ -747,39 +751,61 @@ tr:nth-child(even) {
     </td>
     <td>
     <?php
-      echo $str1[13].$str1[14].$str1[15]."-".$str11[15].$str11[16].$str11[17];
+      if($value == "-"){
+        echo "-";
+      }
+      if($str11[13] != "'Stop'"){
+        echo $str1[13].$str1[14].$str1[15]." "."-"." "."Not the end";
+      }else{
+        echo $str1[13].$str1[14].$str1[15]."-".$str11[15].$str11[16].$str11[17];
+      }
     ?>
     </td>
     <td>
-    <?php echo $result1.":".$result2; ?>
+    <?php
+    if($value == "-"){
+      echo "-";
+    }
+    if($str11[13] != "'Stop'"){
+      echo "Not the end";
+    }else{
+      echo $result1.":".$result2;
+    }
+    ?>
     </td>
-    <td><p>Around 1</p></td>
+    <td><p></p></td>
   </tr>
 </table>
 <br><br>
 <?php
+  if($value == "-"){
+    echo "-";
+  }
   if($c = 3){
     if(!empty($arrcount2[count($temp)])){
-      echo "<table>";
-      echo "<tr><th>Deive</th><th>Average Temp</th><th>Aaverage humid</th><th>Transportation time</th><th>Time spent</th><th>Note</th></tr>";
-      echo "<tr><td>".$str[1]."</td>"."<td>".number_format($averagetemp2, 2)."</td><td>".number_format($averagehumid2, 2)."</td><td>".
-      $c2[13].$c2[14].$c2[15]."-".$str22[15].$str22[16].$str22[17]."</td><td>".$result1.":".$result2."</td><td><p>Around 2</p></td></tr>";
-      echo "</table>";
+      if($str22[13] != "'Stop'")
+      { 
+        echo "<table>";
+        echo "<tr><th>Around</th><th>Average Temp</th><th>Aaverage humid</th><th>Transportation time</th><th>Time spent</th><th>Note</th></tr>";
+        echo "<tr><td>2</td>"."<td>".number_format($averagetemp2, 2)."</td><td>".number_format($averagehumid2, 2)."</td><td>".
+        $c2[13].$c2[14].$c2[15]."-"."Not the end","</td><td>"."Not the end"."</td><td></td></tr>";
+        echo "</table>";
+      }else{
+        echo "<table>";
+        echo "<tr><th>Around</th><th>Average Temp</th><th>Aaverage humid</th><th>Transportation time</th><th>Time spent</th><th>Note</th></tr>";
+        echo "<tr><td>2</td>"."<td>".number_format($averagetemp2, 2)."</td><td>".number_format($averagehumid2, 2)."</td><td>".
+        $c2[13].$c2[14].$c2[15]."-".$str22[15].$str22[16].$str22[17],"</td><td>".$result1.":".$result2."</td><td></td></tr>";
+        echo "</table>";
+      }
     }
   }
 ?>
 
 <!-- Device 2 -->
-<h3>Delivery cycle :
-<?php
-  if(empty($arrcount2II[count($tempII)])){
-    echo $cII = $cII - 1;
-  }elseif(!empty($arrcount2II[count($tempII)])){
-    echo $cII;
-} ?> around</h3>
+<h3>Device 2</h3>
 <table>
   <tr>
-    <th>Deive</th>
+    <th>Around</th>
     <th>Average Temp</th>
     <th>Aaverage humid</th>
     <th>Transportation time</th>
@@ -788,7 +814,16 @@ tr:nth-child(even) {
   </tr>
   <tr>
     <td>
-    <?php echo $strII[1] ?></td>
+    <?php
+    if($value2 == "-"){
+      echo "-";
+    }if(empty($arrcount2II[count($tempII)])){
+      echo abs($cII - 1);
+    }elseif(!empty($arrcount2II[count($tempII)])){
+      echo $cII - 1;
+    }
+    ?>
+    </td>
     <td>
     <?php //temp
       if($value2 == "-"){
@@ -822,39 +857,60 @@ tr:nth-child(even) {
     </td>
     <td>
     <?php
-      echo $str1II[13].$str1II[14].$str1II[15]."-".$str11II[15].$str11II[16].$str11II[17];
+      if($value2 == "-"){
+        echo "-";
+      }
+      if($str11II[13] != "'Stop'"){
+        echo $str1II[13].$str1II[14].$str1II[15]." "."-"." "."Not the end";
+      }else{
+        echo $str1II[13].$str1II[14].$str1II[15]."-".$str11II[15].$str11II[16].$str11II[17];
+      }
     ?>
     </td>
     <td>
-    <?php echo $result1II.":".$result2II; ?>
+    <?php
+    if($value2 == "-"){
+      echo "-";
+    }if($str11II[13] != "'Stop'"){
+      echo "Not the end";
+    }else{
+      echo $result1II.":".$result2II;
+    }
+    ?>
     </td>
-    <td><p>Around 1</p></td>
+    <td></td>
   </tr>
 </table>
 <br><br>
 <?php
+  if($value2 == "-"){
+    echo "-";
+  }
   if($cII = 3){
     if(!empty($arrcount2II[count($tempII)])){
-      echo "<table>";
-      echo "<tr><th>Deive</th><th>Average Temp</th><th>Aaverage humid</th><th>Transportation time</th><th>Time spent</th><th>Note</th></tr>";
-      echo "<tr><td>".$strII[1]."</td>"."<td>".number_format($averagetemp2II, 2)."</td><td>".number_format($averagehumid2II, 2)."</td><td>".
-      $c2II[13].$c2II[14].$c2II[15]."-".$str22II[15].$str22II[16].$str22II[17]."</td><td>".$result1II.":".$result2II."</td><td><p>Around 2</p></td></tr>";
-      echo "</table>";
+      if($str22II[13] != "'Stop'"){
+        echo "<table>";
+        echo "<tr><th>Around</th><th>Average Temp</th><th>Aaverage humid</th><th>Transportation time</th><th>Time spent</th><th>Note</th></tr>";
+        echo "<tr><td>2</td>"."<td>".number_format($averagetemp2II, 2)."</td><td>".number_format($averagehumid2II, 2)."</td><td>".
+        $c2II[13].$c2II[14].$c2II[15]."-"."Not the end","</td><td>"."Not the end"."</td><td></td></tr>";
+        echo "</table>";
+      }else{
+        echo "<table>";
+        echo "<tr><th>Around</th><th>Average Temp</th><th>Aaverage humid</th><th>Transportation time</th><th>Time spent</th><th>Note</th></tr>";
+        echo "<tr><td>2</td>"."<td>".number_format($averagetemp2II, 2)."</td><td>".number_format($averagehumid2II, 2)."</td><td>".
+        $c2II[13].$c2II[14].$c2II[15]."-".$str22II[15].$str22II[16].$str22II[17]."</td><td>".$result12II.":".$result22II."</td><td></td></tr>";
+        echo "</table>";
+      }
     }
   }
 ?>
+
 <br><br>
 <!-- Device 3 -->
-<h3>Delivery cycle :
-<?php
-  if(empty($arrcount2III[count($tempIII)])){
-    echo $cIII = $cIII - 1;
-  }elseif(!empty($arrcount2III[count($tempIII)])){
-    echo $cIII;
-} ?> around</h3>
+<h3>Device 3</h3>
 <table>
   <tr>
-    <th>Deive</th>
+    <th>Around</th>
     <th>Average Temp</th>
     <th>Aaverage humid</th>
     <th>Transportation time</th>
@@ -863,7 +919,16 @@ tr:nth-child(even) {
   </tr>
   <tr>
     <td>
-    <?php echo $strIII[1] ?></td>
+    <?php
+    if($value3 == "-"){
+      echo "-";
+    }if(empty($arrcount2III[count($tempIII)])){
+      echo abs($cIII - 1);
+    }elseif(!empty($arrcount2III[count($tempIII)])){
+      echo $cIII - 1;
+    }
+    ?>
+    </td>
     <td>
     <?php //temp
       if($value3 == "-"){
@@ -897,40 +962,60 @@ tr:nth-child(even) {
     </td>
     <td>
     <?php
-      echo $str1III[13].$str1III[14].$str1III[15]."-".$str11III[15].$str11III[16].$str11III[17];
+      if($value3 == "-"){
+        echo "-";
+      }
+      if($str11III[13] != "'Stop'"){
+        echo $str1III[13].$str1III[14].$str1III[15]." "."-"." "."Not the end";
+      }else{
+        echo $str1III[13].$str1III[14].$str1III[15]."-".$str11III[15].$str11III[16].$str11III[17];
+      }
     ?>
     </td>
     <td>
-    <?php echo $result1III.":".$result2III; ?>
+    <?php
+    if($value3 == "-"){
+      echo "-";
+    }if($str11III[13] != "'Stop'"){
+      echo "Not the end";
+    }else{
+      echo $result1III.":".$result2III;
+    }
+    ?>
     </td>
-    <td><p>Around 1</p></td>
+    <td></td>
   </tr>
 </table>
 <br><br>
 <?php
+  if($value3 == "-"){
+    echo "-";
+  }
   if($cIII = 3){
     if(!empty($arrcount2III[count($tempIII)])){
-      echo "<table>";
-      echo "<tr><th>Deive</th><th>Average Temp</th><th>Aaverage humid</th><th>Transportation time</th><th>Time spent</th><th>Note</th></tr>";
-      echo "<tr><td>".$strIII[1]."</td>"."<td>".number_format($averagetemp2III, 2)."</td><td>".number_format($averagehumid2III, 2)."</td><td>".
-      $c2III[13].$c2III[14].$c2III[15]."-".$str22III[15].$str22III[16].$str22III[17]."</td><td>".$result1III.":".$result2III."</td><td><p>Around 2</p></td></tr>";
-      echo "</table>";
+      if($str22III[13] != "'Stop'"){
+        echo "<table>";
+        echo "<tr><th>Around</th><th>Average Temp</th><th>Aaverage humid</th><th>Transportation time</th><th>Time spent</th><th>Note</th></tr>";
+        echo "<tr><td>2</td>"."<td>".number_format($averagetemp2III, 2)."</td><td>".number_format($averagehumid2III, 2)."</td><td>".
+        $c2III[13].$c2III[14].$c2III[15]."-"."Not the end","</td><td>"."Not the end"."</td><td></td></tr>";
+        echo "</table>";
+      }else{
+        echo "<table>";
+        echo "<tr><th>Around</th><th>Average Temp</th><th>Aaverage humid</th><th>Transportation time</th><th>Time spent</th><th>Note</th></tr>";
+        echo "<tr><td>2</td>"."<td>".number_format($averagetemp2III, 2)."</td><td>".number_format($averagehumid2III, 2)."</td><td>".
+        $c2III[13].$c2III[14].$c2III[15]."-".$str22III[15].$str22III[16].$str22III[17]."</td><td>".$result12III.":".$result22III."</td><td></td></tr>";
+        echo "</table>";
+      }
     }
   }
 ?>
 
 <br><br>
 <!-- Device 4 -->
-<h3>Delivery cycle :
-<?php
-  if(empty($arrcount2IV[count($tempIV)])){
-    echo $cIV = $cIV - 1;
-  }elseif(!empty($arrcount2IV[count($tempIV)])){
-    echo $cIV;
-} ?> around</h3>
+<h3>Device 4</h3>
 <table>
   <tr>
-    <th>Deive</th>
+    <th>Around</th>
     <th>Average Temp</th>
     <th>Aaverage humid</th>
     <th>Transportation time</th>
@@ -939,7 +1024,16 @@ tr:nth-child(even) {
   </tr>
   <tr>
     <td>
-    <?php echo $strIV[1] ?></td>
+    <?php
+    if($value4 == "-"){
+      echo "-";
+    }if(empty($arrcount2IV[count($tempIV)])){
+      echo abs($cIV - 1);
+    }elseif(!empty($arrcount2IV[count($tempIV)])){
+      echo $cIV - 1;
+    }
+    ?>
+    </td>
     <td>
     <?php //temp
       if($value4 == "-"){
@@ -973,24 +1067,52 @@ tr:nth-child(even) {
     </td>
     <td>
     <?php
-      echo $str1IV[13].$str1IV[14].$str1IV[15]."-".$str11IV[15].$str11IV[16].$str11IV[17];
+      if($value4 == "-"){
+        echo "-";
+      }
+      if($str11IV[13] != "'Stop'"){
+        echo $str1IV[13].$str1IV[14].$str1IV[15]." "."-"." "."Not the end";
+      }else{
+        echo $str1IV[13].$str1IV[14].$str1IV[15]."-".$str11IV[15].$str11IV[16].$str11IV[17];
+      }
     ?>
     </td>
     <td>
-    <?php echo $result1IV.":".$result2IV; ?>
+    <?php
+    if($value4 == "-"){
+      echo "-";
+    }
+    if($str11IV[13] != "'Stop'"){
+      echo "Not the end";
+    }else{
+      echo $result1IV.":".$result2IV;
+    }
+    ?>
     </td>
-    <td><p>Around 1</p></td>
+    <td></td>
   </tr>
 </table>
 <br><br>
 <?php
+  if($value4 == "-"){
+    echo "-";
+  }
   if($cIV = 3){
     if(!empty($arrcount2IV[count($tempIV)])){
-      echo "<table>";
-      echo "<tr><th>Deive</th><th>Average Temp</th><th>Aaverage humid</th><th>Transportation time</th><th>Time spent</th><th>Note</th></tr>";
-      echo "<tr><td>".$strIV[1]."</td>"."<td>".number_format($averagetemp2IV, 2)."</td><td>".number_format($averagehumid2IV, 2)."</td><td>".
-      $c2IV[13].$c2IV[14].$c2IV[15]."-".$str22IV[15].$str22IV[16].$str22IV[17]."</td><td>".$result1IV.":".$result2IV."</td><td><p>Around 2</p></td></tr>";
-      echo "</table>";
+      if($str22IV[13] != "'Stop'")
+      { 
+        echo "<table>";
+        echo "<tr><th>Around</th><th>Average Temp</th><th>Aaverage humid</th><th>Transportation time</th><th>Time spent</th><th>Note</th></tr>";
+        echo "<tr><td>2</td>"."<td>".number_format($averagetemp2IV, 2)."</td><td>".number_format($averagehumid2IV, 2)."</td><td>".
+        $c2IV[13].$cIV2[14].$c2IV[15]."-"."Not the end","</td><td>"."Not the end"."</td><td></td></tr>";
+        echo "</table>";
+      }else{
+        echo "<table>";
+        echo "<tr><th>Around</th><th>Average Temp</th><th>Aaverage humid</th><th>Transportation time</th><th>Time spent</th><th>Note</th></tr>";
+        echo "<tr><td>2</td>"."<td>".number_format($averagetemp2IV, 2)."</td><td>".number_format($averagehumid2IV, 2)."</td><td>".
+        $c2IV[13].$c2IV[14].$c2IV[15]."-".$str22IV[15].$str22IV[16].$str22IV[17],"</td><td>".$result1IV.":".$result2IV."</td><td></td></tr>";
+        echo "</table>";
+      }
     }
   }
 ?>
@@ -1008,3 +1130,4 @@ ob_end_flush()
 ?>
 <br>
 <a href="report/ReportAllDevice.pdf">คลิกที่นี้</a>
+<a href="welcome.php">ย้อนกลับ</a>
