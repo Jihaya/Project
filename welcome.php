@@ -205,19 +205,19 @@ if(empty($value)){
             $date = new DateTime("now",  new DateTimeZone('Asia/Bangkok') );
             echo $date->format("d-m-Y"); //\T H:i:s
             echo "<br>";
-            $timeall = [4, 5, 6, 7 ,8 ,9 ,10 ,11 ,12, 13, 14, 15, 16, 17, 18];
+            $timeall = [4, 5, 6, 7 ,8 ,9 ,10 ,11 ,12, 17, 18, 19, 20, 21];
             $timeMooning = [4, 5, 6, 7 ,8 ,9 ,10 ,11 ,12]; // [0, 1, 2, 3, 4, 5, 6, 7 ,8 ,9 ,10 ,11 ,12]
-            $timeafter = [13, 14, 15, 16, 17]; // [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+            $timeeve = [17 ,18, 19, 20, 21]; // [13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
             $timech = $date->format("H");
             $timeChint = intval($timech);
             $result_array = in_array($timeChint, $timeMooning);
-            $result_array2 = in_array($timeChint, $timeafter);
+            $result_array2 = in_array($timeChint, $timeeve);
             $result_array4 = in_array($timeChint, $timeall);
 
             if ($result_array != False){
                 echo "รอบเช้า";
             }else if($result_array2 != False){
-                echo "รอบบ่าย";
+                echo "รอบเย็น";
             }else if($result_array4 != True){
                 echo "ไม่อยู่ในรอบการส่ง";
             }

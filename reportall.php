@@ -794,7 +794,7 @@ tr:nth-child(even) {
         echo "<table>";
         echo "<tr><th>Around</th><th>Average Temp</th><th>Aaverage humid</th><th>Transportation time</th><th>Time spent</th><th>Note</th></tr>";
         echo "<tr><td>2</td>"."<td>".number_format($averagetemp2, 2)."</td><td>".number_format($averagehumid2, 2)."</td><td>".
-        $c2[13].$c2[14].$c2[15]."-".$str22[15].$str22[16].$str22[17],"</td><td>".$result1.":".$result2."</td><td></td></tr>";
+        $c2[13].$c2[14].$c2[15]."-".$str22[15].$str22[16].$str22[17],"</td><td>".$result12.":".$result22."</td><td></td></tr>";
         echo "</table>";
       }
     }
@@ -1110,7 +1110,7 @@ tr:nth-child(even) {
         echo "<table>";
         echo "<tr><th>Around</th><th>Average Temp</th><th>Aaverage humid</th><th>Transportation time</th><th>Time spent</th><th>Note</th></tr>";
         echo "<tr><td>2</td>"."<td>".number_format($averagetemp2IV, 2)."</td><td>".number_format($averagehumid2IV, 2)."</td><td>".
-        $c2IV[13].$c2IV[14].$c2IV[15]."-".$str22IV[15].$str22IV[16].$str22IV[17],"</td><td>".$result1IV.":".$result2IV."</td><td></td></tr>";
+        $c2IV[13].$c2IV[14].$c2IV[15]."-".$str22IV[15].$str22IV[16].$str22IV[17],"</td><td>".$result12IV.":".$result22IV."</td><td></td></tr>";
         echo "</table>";
       }
     }

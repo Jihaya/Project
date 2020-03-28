@@ -373,6 +373,9 @@ function toggleDataSeries(e){
     <li style="float:right"><a href="dashboard1.php">Back</a></li>
   </ul>
 <br><br>
+<h4>รอบขนส่งทั้งหมด</h4>
+<p>รอบเช้า : 4.00 - 12.00</p>
+<p>รอบเย็น : 17.00 - 21.00</p>
 <p align="left">Unit</p>
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>

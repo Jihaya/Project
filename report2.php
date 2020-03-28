@@ -202,7 +202,7 @@ if(empty($value)){
 <!DOCTYPE html>
 <html>
 <head>
-<title>PDF</title>
+<title>Device 2</title>
 <link href="https://fonts.googleapis.com/css?family=Sarabun&display=swap" rel="stylesheet">
 <style>
 body {
@@ -355,4 +355,4 @@ $mpdf->Output("report/Report2.pdf");
 ob_end_flush()
 ?>
 <br>
-<a href="report/ReportDevice2.pdf">คลิกที่นี้</a>
+<a href="report/Report2.pdf">PDF File</a>

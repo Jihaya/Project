@@ -202,7 +202,7 @@ if(empty($value)){
 <!DOCTYPE html>
 <html>
 <head>
-<title>PDF</title>
+<title>Device 4</title>
 <link href="https://fonts.googleapis.com/css?family=Sarabun&display=swap" rel="stylesheet">
 <style>
 body {
@@ -238,7 +238,7 @@ tr:nth-child(even) {
 <h3>Issue date : <?php $date = new DateTime("now",  new DateTimeZone('Asia/Bangkok') );
             echo $date->format("d/m/Y");?> &nbsp; Time : <?php echo $date->format("H:i");?></h3>
 <hr>
-<h3>Device 2</h3>
+<h3>Device 4</h3>
 <br><br>
 <table>
   <tr>
@@ -352,8 +352,8 @@ tr:nth-child(even) {
 <?php
 $html = ob_get_contents();
 $mpdf->WriteHTML($html);
-$mpdf->Output("report/Report.pdf");
+$mpdf->Output("report/Report4.pdf");
 ob_end_flush()
 ?>
 <br>
-<a href="report/ReportDevice4.pdf">คลิกที่นี้</a>
+<a href="report/Report4.pdf">PDF File</a>

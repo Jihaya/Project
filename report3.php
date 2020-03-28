@@ -201,7 +201,7 @@ if(empty($value)){
 <!DOCTYPE html>
 <html>
 <head>
-<title>PDF</title>
+<title>Device 3</title>
 <link href="https://fonts.googleapis.com/css?family=Sarabun&display=swap" rel="stylesheet">
 <style>
 body {
@@ -351,8 +351,8 @@ tr:nth-child(even) {
 <?php
 $html = ob_get_contents();
 $mpdf->WriteHTML($html);
-$mpdf->Output("report/Report.pdf");
+$mpdf->Output("report/Report3.pdf");
 ob_end_flush()
 ?>
 <br>
-<a href="report/ReportDevice3.pdf">คลิกที่นี้</a>
+<a href="report/Report3.pdf">PDF File</a>
