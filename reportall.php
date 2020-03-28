@@ -87,24 +87,120 @@ if(empty($value)){
     $timestart1 = intval($str1[13]);
     $timestart2 = intval($str1[15]);
 
+    if($str11[17] == 0){
+      $str111[17] = 60;
     $strTime2 = $str11[15].$str11[16].$str11[17];
     $timeend1 = intval($str11[15]);
-    $timeend2 = intval($str11[17]);
-
+    $timeend2 = intval($str111[17]);
+    
     $timeresult1 = $timestart1 - $timeend1;
     $timeresult2 = $timestart2 - $timeend2;
+
+    if($timestart2 > 50){
+      $timestart2 = $timestart2 - 60;
+      $timeresult2 = $timestart2 - $timeend2;
+      
+    if(abs($timeresult2) > 60){
+        $timeresult2 = abs($timeresult2) - 60;
+      }
+    }
+    
+    if($timestart1 != $timeend1)
+    {
+      if($timeend1 > $timestart1){
+        $timeresult1 = $timeend1 - $timestart1;
+        $timeresult1 = $timeresult1 - 1 ;
+      }else {
+        $timeresult1 = $timestart1 - $timeend1;
+        $timeresult1 = $timeresult1 - 1 ;
+      }
+    }
                     
     if($timeresult1 < 0){
         $result1 = abs($timeresult1);
     } else{
         $result1 = $timeresult1;
-        // echo ".";
     }
     if($timeresult2 < 0){
         $result2 = abs($timeresult2);
-    } else{
+    }else{
         $result2 = $timeresult2;
     }
+  }else{
+    $strTime2 = $str11[15].$str11[16].$str11[17];
+    $timeend1 = intval($str11[15]);
+    $timeend2 = intval($str11[17]);
+    
+    $timeresult1 = $timestart1 - $timeend1;
+    $timeresult2 = $timestart2 - $timeend2;
+
+    if($timestart2 > 50){
+      $timestart2 = $timestart2 - 60;
+      $timeresult2 = $timestart2 - $timeend2;
+      
+    if(abs($timeresult2) > 60){
+        $timeresult2 = abs($timeresult2) - 60;
+      }
+    }
+    
+    if($timestart1 != $timeend1)
+    {
+      if($timeend1 > $timestart1){
+        $timeresult1 = $timeend1 - $timestart1;
+        $timeresult1 = $timeresult1 - 1 ;
+      }else {
+        $timeresult1 = $timestart1 - $timeend1;
+        $timeresult1 = $timeresult1 - 1 ;
+      }
+    }
+                    
+    if($timeresult1 < 0){
+        $result1 = abs($timeresult1);
+    } else{
+        $result1 = $timeresult1;
+    }
+    if($timeresult2 < 0){
+        $result2 = abs($timeresult2);
+    }else{
+        $result2 = $timeresult2;
+    }$strTime2 = $str11[15].$str11[16].$str11[17];
+    $timeend1 = intval($str11[15]);
+    $timeend2 = intval($str11[17]);
+    
+    $timeresult1 = $timestart1 - $timeend1;
+    $timeresult2 = $timestart2 - $timeend2;
+
+    if($timestart2 > 50){
+      $timestart2 = $timestart2 - 60;
+      $timeresult2 = $timestart2 - $timeend2;
+      
+    if(abs($timeresult2) > 60){
+        $timeresult2 = abs($timeresult2) - 60;
+      }
+    }
+    
+    if($timestart1 != $timeend1)
+    {
+      if($timeend1 > $timestart1){
+        $timeresult1 = $timeend1 - $timestart1;
+        $timeresult1 = $timeresult1 - 1 ;
+      }else {
+        $timeresult1 = $timestart1 - $timeend1;
+        $timeresult1 = $timeresult1 - 1 ;
+      }
+    }
+                    
+    if($timeresult1 < 0){
+        $result1 = abs($timeresult1);
+    } else{
+        $result1 = $timeresult1;
+    }
+    if($timeresult2 < 0){
+        $result2 = abs($timeresult2);
+    }else{
+        $result2 = $timeresult2;
+    }
+  }
 }
 
   
@@ -173,23 +269,84 @@ if(empty($value)){
         $timestart12 = intval($c2[13]);
         $timestart22 = intval($c2[15]);
       
-        $strTime22 = $str22[15].$str22[16].$str22[17];
-        $timeend12 = intval($str22[15]);
-        $timeend22 = intval($str22[17]);
-      
-        $timeresult12 = $timestart12 - $timeend12;
-        $timeresult22 = $timestart22 - $timeend22;
-                        
-        if($timeresult12 < 0){
-            $result12 = abs($timeresult12);
-        } else{
-            $result12 = $timeresult12;
-            // echo ".";
-        }
-        if($timeresult22 < 0){
-            $result22 = abs($timeresult22);
-        } else{
-            $result22 = $timeresult22;
+        if($str22[17] == 0){
+          $str222[17] = 60;
+
+          $strTime22 = $str22[15].$str22[16].$str22[17];
+          $timeend12 = intval($str22[15]);
+          $timeend22 = intval($str222[17]);
+
+          $timeresult12 = $timestart12 - $timeend12;
+          $timeresult22 = $timestart22 - $timeend22;
+
+          if($timestart22 > 50){
+            $timestart22 = $timestart22 - 60;
+            $timeresult22 = $timestart22 - $timeend22;
+            
+          if(abs($timeresult22) > 60){
+              $timeresult22 = abs($timeresult22) - 60;
+            }
+          }
+
+          if($timestart12 != $timeend12)
+          {
+            if($timeend12 > $timestart12){
+              $timeresult12 = $timeend12 - $timestart12;
+              $timeresult12 = $timeresult12 - 1 ;
+            }else {
+              $timeresult12 = $timestart12 - $timeend12;
+              $timeresult12 = $timeresult12 - 1 ;
+            }
+          }
+          
+          if($timeresult12 < 0){
+              $result12 = abs($timeresult12);
+          } else{
+              $result12 = $timeresult12;
+          }
+          if($timeresult2 < 0){
+              $result22 = abs($timeresult22);
+          } else{
+              $result22 = $timeresult22;
+          }
+        }else{
+          $strTime22 = $str22[15].$str22[16].$str22[17];
+          $timeend12 = intval($str22[15]);
+          $timeend22 = intval($str22[17]);
+
+          $timeresult12 = $timestart12 - $timeend12;
+          $timeresult22 = $timestart22 - $timeend22;
+
+          if($timestart22 > 50){
+            $timestart22 = $timestart22 - 60;
+            $timeresult22 = $timestart22 - $timeend22;
+            
+          if(abs($timeresult22) > 60){
+              $timeresult22 = abs($timeresult22) - 60;
+            }
+          }
+
+          if($timestart12 != $timeend12)
+          {
+            if($timeend12 > $timestart12){
+              $timeresult12 = $timeend12 - $timestart12;
+              $timeresult12 = $timeresult12 - 1 ;
+            }else {
+              $timeresult12 = $timestart12 - $timeend12;
+              $timeresult12 = $timeresult12 - 1 ;
+            }
+          }
+          
+          if($timeresult12 < 0){
+              $result12 = abs($timeresult12);
+          } else{
+              $result12 = $timeresult12;
+          }
+          if($timeresult2 < 0){
+              $result22 = abs($timeresult22);
+          } else{
+              $result22 = $timeresult22;
+          }
         }
       }
       if(count($temp2)) {
@@ -240,12 +397,34 @@ if(empty($value2)){
     $timestart1II = intval($str1II[13]);
     $timestart2II = intval($str1II[15]);
 
+    if($str11[17] == 0){
+      $str111[17] = 60;
     $strTime2II = $str11II[15].$str11II[16].$str11II[17];
     $timeend1II = intval($str11II[15]);
-    $timeend2II = intval($str11II[17]);
-
+    $timeend2II = intval($str111II[17]);
+    
     $timeresult1II = $timestart1II - $timeend1II;
     $timeresult2II = $timestart2II - $timeend2II;
+
+    if($timestart2II > 50){
+      $timestart2II = $timestart2II - 60;
+      $timeresult2II = $timestart2II - $timeend2II;
+      
+    if(abs($timeresult2II) > 60){
+        $timeresult2II = abs($timeresult2II) - 60;
+      }
+    }
+    
+    if($timestart1II != $timeend1II)
+    {
+      if($timeend1II > $timestart1){
+        $timeresult1II = $timeend1II - $timestart1II;
+        $timeresult1II = $timeresult1II - 1 ;
+      }else {
+        $timeresult1II = $timestart1II - $timeend1II;
+        $timeresult1II = $timeresult1II - 1 ;
+      }
+    }
                     
     if($timeresult1II < 0){
         $result1II = abs($timeresult1II);
@@ -254,9 +433,84 @@ if(empty($value2)){
     }
     if($timeresult2II < 0){
         $result2II = abs($timeresult2II);
-    } else{
+    }else{
         $result2II = $timeresult2II;
     }
+  }else{
+    $strTime2II = $str11II[15].$str11II[16].$str11II[17];
+    $timeend1II = intval($str11II[15]);
+    $timeend2II = intval($str11II[17]);
+    
+    $timeresult1II = $timestart1II - $timeend1II;
+    $timeresult2II = $timestart2II - $timeend2II;
+
+    if($timestart2II > 50){
+      $timestart2II = $timestart2II - 60;
+      $timeresult2 = $timestart2II - $timeend2II;
+      
+    if(abs($timeresult2II) > 60){
+        $timeresult2II = abs($timeresult2II) - 60;
+      }
+    }
+    
+    if($timestart1II != $timeend1II)
+    {
+      if($timeend1II > $timestart1II){
+        $timeresult1II = $timeend1II - $timestart1II;
+        $timeresult1II = $timeresult1II - 1 ;
+      }else {
+        $timeresult1II = $timestart1II - $timeend1II;
+        $timeresult1II = $timeresult1II - 1 ;
+      }
+    }
+                    
+    if($timeresult1II < 0){
+        $result1II = abs($timeresult1II);
+    } else{
+        $result1II = $timeresult1II;
+    }
+    if($timeresult2II < 0){
+        $result2II = abs($timeresult2II);
+    }else{
+        $result2II = $timeresult2II;
+    }$strTime2II = $str11II[15].$str11II[16].$str11II[17];
+    $timeend1II = intval($str11II[15]);
+    $timeend2II = intval($str11II[17]);
+    
+    $timeresult1II = $timestart1II - $timeend1II;
+    $timeresult2II = $timestart2II - $timeend2II;
+
+    if($timestart2II > 50){
+      $timestart2II = $timestart2II - 60;
+      $timeresult2II = $timestart2II - $timeend2II;
+      
+    if(abs($timeresult2II) > 60){
+        $timeresult2II = abs($timeresult2II) - 60;
+      }
+    }
+    
+    if($timestart1II != $timeend1II)
+    {
+      if($timeend1II > $timestart1II){
+        $timeresult1II = $timeend1II - $timestart1II;
+        $timeresult1II = $timeresult1II - 1 ;
+      }else {
+        $timeresult1II = $timestart1II - $timeend1II;
+        $timeresult1II = $timeresult1II - 1 ;
+      }
+    }
+                    
+    if($timeresult1II < 0){
+        $result1II = abs($timeresult1II);
+    } else{
+        $result1II = $timeresult1II;
+    }
+    if($timeresult2II < 0){
+        $result2II = abs($timeresult2II);
+    }else{
+        $result2II = $timeresult2II;
+    }
+  }
 }
 
   
@@ -324,22 +578,84 @@ if(empty($value2)){
         $timestart12II = intval($c2II[13]);
         $timestart22II = intval($c2II[15]);
       
-        $strTime22II = $str22II[15].$str22II[16].$str22II[17];
-        $timeend12II = intval($str22II[15]);
-        $timeend22II = intval($str22II[17]);
-      
-        $timeresult12II = $timestart12II - $timeend12II;
-        $timeresult22II = $timestart22II - $timeend22II;
-                        
-        if($timeresult12II < 0){
-            $result12II = abs($timeresult12II);
-        } else{
-            $result12II = $timeresult12II;
-        }
-        if($timeresult22II < 0){
-            $result22II = abs($timeresult22II);
-        } else{
-            $result22II = $timeresult22II;
+        if($str22II[17] == 0){
+          $str222II[17] = 60;
+
+          $strTime22II = $str22II[15].$str22II[16].$str22II[17];
+          $timeend12II = intval($str22II[15]);
+          $timeend22II = intval($str222II[17]);
+
+          $timeresult12II = $timestart12II - $timeend12II;
+          $timeresult22II = $timestart22II - $timeend22II;
+
+          if($timestart22II > 50){
+            $timestart22II = $timestart22II - 60;
+            $timeresult22II = $timestart22II - $timeend22II;
+            
+          if(abs($timeresult22II) > 60){
+              $timeresult22II = abs($timeresult22II) - 60;
+            }
+          }
+
+          if($timestart12II != $timeend12II)
+          {
+            if($timeend12II > $timestart12II){
+              $timeresult12II = $timeend12II - $timestart12II;
+              $timeresult12II = $timeresult12II - 1 ;
+            }else {
+              $timeresult12II = $timestart12II - $timeend12II;
+              $timeresult12II = $timeresult12II - 1 ;
+            }
+          }
+          
+          if($timeresult12II < 0){
+              $result12II = abs($timeresult12II);
+          } else{
+              $result12II = $timeresult12II;
+          }
+          if($timeresult2II < 0){
+              $result22II = abs($timeresult22II);
+          } else{
+              $result22II = $timeresult22II;
+          }
+        }else{
+          $strTime22II = $str22II[15].$str22II[16].$str22II[17];
+          $timeend12II = intval($str22II[15]);
+          $timeend22II = intval($str22II[17]);
+
+          $timeresult12II = $timestart12II - $timeend12II;
+          $timeresult22II = $timestart22II - $timeend22II;
+
+          if($timestart22II > 50){
+            $timestart22II = $timestart22II - 60;
+            $timeresult22II = $timestart22II - $timeend22II;
+            
+          if(abs($timeresult22II) > 60){
+              $timeresult22II = abs($timeresult22II) - 60;
+            }
+          }
+
+          if($timestart12II != $timeend12II)
+          {
+            if($timeend12II > $timestart12II){
+              $timeresult12II = $timeend12II - $timestart12II;
+              $timeresult12II = $timeresult12II - 1 ;
+            }else {
+              $timeresult12II = $timestart12II - $timeend12II;
+              $timeresult12II = $timeresult12II - 1 ;
+            }
+          }
+          
+          if($timeresult12II < 0){
+              $result12II = abs($timeresult12II);
+          } else{
+              $result12II = $timeresult12II;
+          }
+          if($timeresult2II < 0){
+              $result22II = abs($timeresult22II);
+          } else{
+              $result22II = $timeresult22II;
+          }
         }
       }
       if(count($temp2II)) {
@@ -390,12 +706,34 @@ if(empty($value3)){
     $timestart1III = intval($str1III[13]);
     $timestart2III = intval($str1III[15]);
 
+    if($str11[17] == 0){
+      $str111[17] = 60;
     $strTime2III = $str11III[15].$str11III[16].$str11III[17];
     $timeend1III = intval($str11III[15]);
-    $timeend2III = intval($str11III[17]);
-
+    $timeend2III = intval($str111III[17]);
+    
     $timeresult1III = $timestart1III - $timeend1III;
     $timeresult2III = $timestart2III - $timeend2III;
+
+    if($timestart2III > 50){
+      $timestart2III = $timestart2III - 60;
+      $timeresult2III = $timestart2III - $timeend2III;
+      
+    if(abs($timeresult2III) > 60){
+        $timeresult2III = abs($timeresult2III) - 60;
+      }
+    }
+    
+    if($timestart1III != $timeend1III)
+    {
+      if($timeend1III > $timestart1){
+        $timeresult1III = $timeend1III - $timestart1III;
+        $timeresult1III = $timeresult1III - 1 ;
+      }else {
+        $timeresult1III = $timestart1III - $timeend1III;
+        $timeresult1III = $timeresult1III - 1 ;
+      }
+    }
                     
     if($timeresult1III < 0){
         $result1III = abs($timeresult1III);
@@ -404,9 +742,84 @@ if(empty($value3)){
     }
     if($timeresult2III < 0){
         $result2III = abs($timeresult2III);
-    } else{
+    }else{
         $result2III = $timeresult2III;
     }
+  }else{
+    $strTime2III = $str11III[15].$str11III[16].$str11III[17];
+    $timeend1III = intval($str11III[15]);
+    $timeend2III = intval($str11III[17]);
+    
+    $timeresult1III = $timestart1III - $timeend1III;
+    $timeresult2III = $timestart2III - $timeend2III;
+
+    if($timestart2III > 50){
+      $timestart2III = $timestart2III - 60;
+      $timeresult2 = $timestart2III - $timeend2III;
+      
+    if(abs($timeresult2III) > 60){
+        $timeresult2III = abs($timeresult2III) - 60;
+      }
+    }
+    
+    if($timestart1III != $timeend1III)
+    {
+      if($timeend1III > $timestart1III){
+        $timeresult1III = $timeend1III - $timestart1III;
+        $timeresult1III = $timeresult1III - 1 ;
+      }else {
+        $timeresult1III = $timestart1III - $timeend1III;
+        $timeresult1III = $timeresult1III - 1 ;
+      }
+    }
+                    
+    if($timeresult1III < 0){
+        $result1III = abs($timeresult1III);
+    } else{
+        $result1III = $timeresult1III;
+    }
+    if($timeresult2III < 0){
+        $result2III = abs($timeresult2III);
+    }else{
+        $result2III = $timeresult2III;
+    }$strTime2III = $str11III[15].$str11III[16].$str11III[17];
+    $timeend1III = intval($str11III[15]);
+    $timeend2III = intval($str11III[17]);
+    
+    $timeresult1III = $timestart1III - $timeend1III;
+    $timeresult2III = $timestart2III - $timeend2III;
+
+    if($timestart2III > 50){
+      $timestart2III = $timestart2III - 60;
+      $timeresult2III = $timestart2III - $timeend2III;
+      
+    if(abs($timeresult2III) > 60){
+        $timeresult2III = abs($timeresult2III) - 60;
+      }
+    }
+    
+    if($timestart1III != $timeend1III)
+    {
+      if($timeend1III > $timestart1III){
+        $timeresult1III = $timeend1III - $timestart1III;
+        $timeresult1III = $timeresult1III - 1 ;
+      }else {
+        $timeresult1III = $timestart1III - $timeend1III;
+        $timeresult1III = $timeresult1III - 1 ;
+      }
+    }
+                    
+    if($timeresult1III < 0){
+        $result1III = abs($timeresult1III);
+    } else{
+        $result1III = $timeresult1III;
+    }
+    if($timeresult2III < 0){
+        $result2III = abs($timeresult2III);
+    }else{
+        $result2III = $timeresult2III;
+    }
+  }
 }
 
   
@@ -474,22 +887,84 @@ if(empty($value3)){
         $timestart12III = intval($c2III[13]);
         $timestart22III = intval($c2III[15]);
       
-        $strTime22III = $str22III[15].$str22III[16].$str22III[17];
-        $timeend12III = intval($str22III[15]);
-        $timeend22III = intval($str22III[17]);
-      
-        $timeresult12III = $timestart12III - $timeend12III;
-        $timeresult22III = $timestart22III - $timeend22III;
-                        
-        if($timeresult12III < 0){
-            $result12III = abs($timeresult12III);
-        } else{
-            $result12III = $timeresult12III;
-        }
-        if($timeresult22III < 0){
-            $result22III = abs($timeresult22III);
-        } else{
-            $result22III = $timeresult22III;
+        if($str22III[17] == 0){
+          $str222III[17] = 60;
+
+          $strTime22III = $str22III[15].$str22III[16].$str22III[17];
+          $timeend12III = intval($str22III[15]);
+          $timeend22III = intval($str222III[17]);
+
+          $timeresult12III = $timestart12III - $timeend12III;
+          $timeresult22III = $timestart22III - $timeend22III;
+
+          if($timestart22III > 50){
+            $timestart22III = $timestart22III - 60;
+            $timeresult22III = $timestart22III - $timeend22III;
+            
+          if(abs($timeresult22III) > 60){
+              $timeresult22III = abs($timeresult22III) - 60;
+            }
+          }
+
+          if($timestart12III != $timeend12III)
+          {
+            if($timeend12III > $timestart12III){
+              $timeresult12III = $timeend12III - $timestart12III;
+              $timeresult12III = $timeresult12III - 1 ;
+            }else {
+              $timeresult12III = $timestart12III - $timeend12III;
+              $timeresult12III = $timeresult12III - 1 ;
+            }
+          }
+          
+          if($timeresult12III < 0){
+              $result12III = abs($timeresult12III);
+          } else{
+              $result12III = $timeresult12III;
+          }
+          if($timeresult2III < 0){
+              $result22III = abs($timeresult22III);
+          } else{
+              $result22III = $timeresult22III;
+          }
+        }else{
+          $strTime22III = $str22III[15].$str22III[16].$str22III[17];
+          $timeend12III = intval($str22III[15]);
+          $timeend22III = intval($str22III[17]);
+
+          $timeresult12III = $timestart12III - $timeend12III;
+          $timeresult22III = $timestart22III - $timeend22III;
+
+          if($timestart22III > 50){
+            $timestart22III = $timestart22III - 60;
+            $timeresult22III = $timestart22III - $timeend22III;
+            
+          if(abs($timeresult22III) > 60){
+              $timeresult22III = abs($timeresult22III) - 60;
+            }
+          }
+
+          if($timestart12III != $timeend12III)
+          {
+            if($timeend12III > $timestart12III){
+              $timeresult12III = $timeend12III - $timestart12III;
+              $timeresult12III = $timeresult12III - 1 ;
+            }else {
+              $timeresult12III = $timestart12III - $timeend12III;
+              $timeresult12III = $timeresult12III - 1 ;
+            }
+          }
+          
+          if($timeresult12III < 0){
+              $result12III = abs($timeresult12III);
+          } else{
+              $result12III = $timeresult12III;
+          }
+          if($timeresult2III < 0){
+              $result22III = abs($timeresult22III);
+          } else{
+              $result22III = $timeresult22III;
+          }
         }
       }
       if(count($temp2III)) {
@@ -540,12 +1015,34 @@ if(empty($value4)){
     $timestart1IV = intval($str1IV[13]);
     $timestart2IV = intval($str1IV[15]);
 
+    if($str11[17] == 0){
+      $str111[17] = 60;
     $strTime2IV = $str11IV[15].$str11IV[16].$str11IV[17];
     $timeend1IV = intval($str11IV[15]);
-    $timeend2IV = intval($str11IV[17]);
-
+    $timeend2IV = intval($str111IV[17]);
+    
     $timeresult1IV = $timestart1IV - $timeend1IV;
     $timeresult2IV = $timestart2IV - $timeend2IV;
+
+    if($timestart2IV > 50){
+      $timestart2IV = $timestart2IV - 60;
+      $timeresult2IV = $timestart2IV - $timeend2IV;
+      
+    if(abs($timeresult2IV) > 60){
+        $timeresult2IV = abs($timeresult2IV) - 60;
+      }
+    }
+    
+    if($timestart1IV != $timeend1IV)
+    {
+      if($timeend1IV > $timestart1){
+        $timeresult1IV = $timeend1IV - $timestart1IV;
+        $timeresult1IV = $timeresult1IV - 1 ;
+      }else {
+        $timeresult1IV = $timestart1IV - $timeend1IV;
+        $timeresult1IV = $timeresult1IV - 1 ;
+      }
+    }
                     
     if($timeresult1IV < 0){
         $result1IV = abs($timeresult1IV);
@@ -554,9 +1051,84 @@ if(empty($value4)){
     }
     if($timeresult2IV < 0){
         $result2IV = abs($timeresult2IV);
-    } else{
+    }else{
         $result2IV = $timeresult2IV;
     }
+  }else{
+    $strTime2IV = $str11IV[15].$str11IV[16].$str11IV[17];
+    $timeend1IV = intval($str11IV[15]);
+    $timeend2IV = intval($str11IV[17]);
+    
+    $timeresult1IV = $timestart1IV - $timeend1IV;
+    $timeresult2IV = $timestart2IV - $timeend2IV;
+
+    if($timestart2IV > 50){
+      $timestart2IV = $timestart2IV - 60;
+      $timeresult2 = $timestart2IV - $timeend2IV;
+      
+    if(abs($timeresult2IV) > 60){
+        $timeresult2IV = abs($timeresult2IV) - 60;
+      }
+    }
+    
+    if($timestart1IV != $timeend1IV)
+    {
+      if($timeend1IV > $timestart1IV){
+        $timeresult1IV = $timeend1IV - $timestart1IV;
+        $timeresult1IV = $timeresult1IV - 1 ;
+      }else {
+        $timeresult1IV = $timestart1IV - $timeend1IV;
+        $timeresult1IV = $timeresult1IV - 1 ;
+      }
+    }
+                    
+    if($timeresult1IV < 0){
+        $result1IV = abs($timeresult1IV);
+    } else{
+        $result1IV = $timeresult1IV;
+    }
+    if($timeresult2IV < 0){
+        $result2IV = abs($timeresult2IV);
+    }else{
+        $result2IV = $timeresult2IV;
+    }$strTime2IV = $str11IV[15].$str11IV[16].$str11IV[17];
+    $timeend1IV = intval($str11IV[15]);
+    $timeend2IV = intval($str11IV[17]);
+    
+    $timeresult1IV = $timestart1IV - $timeend1IV;
+    $timeresult2IV = $timestart2IV - $timeend2IV;
+
+    if($timestart2IV > 50){
+      $timestart2IV = $timestart2IV - 60;
+      $timeresult2IV = $timestart2IV - $timeend2IV;
+      
+    if(abs($timeresult2IV) > 60){
+        $timeresult2IV = abs($timeresult2IV) - 60;
+      }
+    }
+    
+    if($timestart1IV != $timeend1IV)
+    {
+      if($timeend1IV > $timestart1IV){
+        $timeresult1IV = $timeend1IV - $timestart1IV;
+        $timeresult1IV = $timeresult1IV - 1 ;
+      }else {
+        $timeresult1IV = $timestart1IV - $timeend1IV;
+        $timeresult1IV = $timeresult1IV - 1 ;
+      }
+    }
+                    
+    if($timeresult1IV < 0){
+        $result1IV = abs($timeresult1IV);
+    } else{
+        $result1IV = $timeresult1IV;
+    }
+    if($timeresult2IV < 0){
+        $result2IV = abs($timeresult2IV);
+    }else{
+        $result2IV = $timeresult2IV;
+    }
+  }
 }
 
   
@@ -624,22 +1196,84 @@ if(empty($value4)){
         $timestart12IV = intval($c2IV[13]);
         $timestart22IV = intval($c2IV[15]);
       
-        $strTime22IV = $str22IV[15].$str22IV[16].$str22IV[17];
-        $timeend12IV = intval($str22IV[15]);
-        $timeend22IV = intval($str22IV[17]);
-      
-        $timeresult12IV = $timestart12IV - $timeend12IV;
-        $timeresult22IV = $timestart22IV - $timeend22IV;
-                        
-        if($timeresult12IV < 0){
-            $result12IV = abs($timeresult12IV);
-        } else{
-            $result12IV = $timeresult12IV;
-        }
-        if($timeresult22IV < 0){
-            $result22IV = abs($timeresult22IV);
-        } else{
-            $result22IV = $timeresult22IV;
+        if($str22IV[17] == 0){
+          $str222IV[17] = 60;
+
+          $strTime22IV = $str22IV[15].$str22IV[16].$str22IV[17];
+          $timeend12IV = intval($str22IV[15]);
+          $timeend22IV = intval($str222IV[17]);
+
+          $timeresult12IV = $timestart12IV - $timeend12IV;
+          $timeresult22IV = $timestart22IV - $timeend22IV;
+
+          if($timestart22IV > 50){
+            $timestart22IV = $timestart22IV - 60;
+            $timeresult22IV = $timestart22IV - $timeend22IV;
+            
+          if(abs($timeresult22IV) > 60){
+              $timeresult22IV = abs($timeresult22IV) - 60;
+            }
+          }
+
+          if($timestart12IV != $timeend12IV)
+          {
+            if($timeend12IV > $timestart12IV){
+              $timeresult12IV = $timeend12IV - $timestart12IV;
+              $timeresult12IV = $timeresult12IV - 1 ;
+            }else {
+              $timeresult12IV = $timestart12IV - $timeend12IV;
+              $timeresult12IV = $timeresult12IV - 1 ;
+            }
+          }
+          
+          if($timeresult12IV < 0){
+              $result12IV = abs($timeresult12IV);
+          } else{
+              $result12IV = $timeresult12IV;
+          }
+          if($timeresult2IV < 0){
+              $result22IV = abs($timeresult22IV);
+          } else{
+              $result22IV = $timeresult22IV;
+          }
+        }else{
+          $strTime22IV = $str22IV[15].$str22IV[16].$str22IV[17];
+          $timeend12IV = intval($str22IV[15]);
+          $timeend22IV = intval($str22IV[17]);
+
+          $timeresult12IV = $timestart12IV - $timeend12IV;
+          $timeresult22IV = $timestart22IV - $timeend22IV;
+
+          if($timestart22IV > 50){
+            $timestart22IV = $timestart22IV - 60;
+            $timeresult22IV = $timestart22IV - $timeend22IV;
+            
+          if(abs($timeresult22IV) > 60){
+              $timeresult22IV = abs($timeresult22IV) - 60;
+            }
+          }
+
+          if($timestart12IV != $timeend12IV)
+          {
+            if($timeend12IV > $timestart12IV){
+              $timeresult12IV = $timeend12IV - $timestart12IV;
+              $timeresult12IV = $timeresult12IV - 1 ;
+            }else {
+              $timeresult12IV = $timestart12IV - $timeend12IV;
+              $timeresult12IV = $timeresult12IV - 1 ;
+            }
+          }
+          
+          if($timeresult12IV < 0){
+              $result12IV = abs($timeresult12IV);
+          } else{
+              $result12IV = $timeresult12IV;
+          }
+          if($timeresult2IV < 0){
+              $result22IV = abs($timeresult22IV);
+          } else{
+              $result22IV = $timeresult22IV;
+          }
         }
       }
       if(count($temp2IV)) {
