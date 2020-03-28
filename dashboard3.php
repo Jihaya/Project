@@ -437,23 +437,81 @@ setInterval(function () {
                             $timestart1 = intval($str1[13]);
                             $timestart2 = intval($str1[15]);
 
-                            $strTime2 = $str11[15].$str11[16].$str11[17];
-                            $timeend1 = intval($str11[15]);
-                            $timeend2 = intval($str11[17]);
+                            if($str11[17] == 0){
+                                $str111[17] = 60;
+                                $strTime2 = $str11[15].$str11[16].$str11[17];
+                                $timeend1 = intval($str11[15]);
+                                $timeend2 = intval($str111[17]);
 
-                            $timeresult1 = $timestart1 - $timeend1;
-                            $timeresult2 = $timestart2 - $timeend2;
-                            if($timeresult1 < 0){
-                                echo abs($timeresult1);
-                                echo ":";
-                            } else{
-                                echo $timeresult1;
-                                echo ":";
-                            }
-                            if($timeresult2 < 0){
-                                echo abs($timeresult2);
+                                $timeresult1 = $timestart1 - $timeend1;
+                                $timeresult2 = $timestart2 - $timeend2;
+
+                                if($timestart2 > 50){
+                                    $timestart2 = $timestart2 - 60;
+                                    $timeresult2 = $timestart2 - $timeend2;
+                                    
+                                  if(abs($timeresult2) > 60){
+                                      $timeresult2 = abs($timeresult2) - 60;
+                                    }
+                                  }
+                                if($timestart1 != $timeend1){
+                                    if($timeend1 > $timestart1){
+                                      $timeresult1 = $timeend1 - $timestart1;
+                                      $timeresult1 = $timeresult1 - 1 ;
+                                    }else {
+                                      $timeresult1 = $timestart1 - $timeend1;
+                                      $timeresult1 = $timeresult1 - 1 ;
+                                    }
+                                }
+                                if($timeresult1 < 0){
+                                    echo abs($timeresult1);
+                                    echo ":";
+                                } else{
+                                    echo $timeresult1;
+                                    echo ":";
+                                }
+                                if($timeresult2 < 0){
+                                    echo abs($timeresult2);
+                                }else{
+                                    echo $timeresult2;
+                                }
                             }else{
-                                echo $timeresult2;
+                                $strTime2 = $str11[15].$str11[16].$str11[17];
+                                $timeend1 = intval($str11[15]);
+                                $timeend2 = intval($str11[17]);
+
+                                $timeresult1 = $timestart1 - $timeend1;
+                                $timeresult2 = $timestart2 - $timeend2;
+
+                                if($timestart2 > 50){
+                                    $timestart2 = $timestart2 - 60;
+                                    $timeresult2 = $timestart2 - $timeend2;
+                                    
+                                  if(abs($timeresult2) > 60){
+                                      $timeresult2 = abs($timeresult2) - 60;
+                                    }
+                                  }
+                                if($timestart1 != $timeend1){
+                                    if($timeend1 > $timestart1){
+                                      $timeresult1 = $timeend1 - $timestart1;
+                                      $timeresult1 = $timeresult1 - 1 ;
+                                    }else {
+                                      $timeresult1 = $timestart1 - $timeend1;
+                                      $timeresult1 = $timeresult1 - 1 ;
+                                    }
+                                }
+                                if($timeresult1 < 0){
+                                    echo abs($timeresult1);
+                                    echo ":";
+                                } else{
+                                    echo $timeresult1;
+                                    echo ":";
+                                }
+                                if($timeresult2 < 0){
+                                    echo abs($timeresult2);
+                                }else{
+                                    echo $timeresult2;
+                                }
                             }
                         }
                     }elseif(!empty($arrcount2[count($temp)])){
@@ -464,23 +522,81 @@ setInterval(function () {
                             $timestart1 = intval($str2[13]);
                             $timestart2 = intval($str2[15]);
 
-                            $strTime2 = $str22[15].$str22[16].$str22[17];
-                            $timeend1 = intval($str22[15]);
-                            $timeend2 = intval($str22[17]);
+                            if($str22[17] == 0){
+                                $str222[17] = 60;
+                                $strTime2 = $str22[15].$str22[16].$str22[17];
+                                $timeend1 = intval($str22[15]);
+                                $timeend2 = intval($str222[17]);
 
-                            $timeresult1 = $timestart1 - $timeend1;
-                            $timeresult2 = $timestart2 - $timeend2;
-                            if($timeresult1 < 0){
-                                echo abs($timeresult1);
-                                echo ":";
-                            } else{
-                                echo $timeresult1;
-                                echo ":";
-                            }
-                            if($timeresult2 < 0){
-                                echo abs($timeresult2);
+                                $timeresult1 = $timestart1 - $timeend1;
+                                $timeresult2 = $timestart2 - $timeend2;
+
+                                if($timestart2 > 50){
+                                    $timestart2 = $timestart2 - 60;
+                                    $timeresult2 = $timestart2 - $timeend2;
+                                    
+                                  if(abs($timeresult2) > 60){
+                                      $timeresult2 = abs($timeresult2) - 60;
+                                    }
+                                  }
+                                if($timestart1 != $timeend1){
+                                    if($timeend1 > $timestart1){
+                                      $timeresult1 = $timeend1 - $timestart1;
+                                      $timeresult1 = $timeresult1 - 1 ;
+                                    }else {
+                                      $timeresult1 = $timestart1 - $timeend1;
+                                      $timeresult1 = $timeresult1 - 1 ;
+                                    }
+                                }
+                                if($timeresult1 < 0){
+                                    echo abs($timeresult1);
+                                    echo ":";
+                                } else{
+                                    echo $timeresult1;
+                                    echo ":";
+                                }
+                                if($timeresult2 < 0){
+                                    echo abs($timeresult2);
+                                }else{
+                                    echo $timeresult2;
+                                }
                             }else{
-                                echo $timeresult2;
+                                $strTime2 = $str22[15].$str22[16].$str22[17];
+                                $timeend1 = intval($str22[15]);
+                                $timeend2 = intval($str22[17]);
+
+                                $timeresult1 = $timestart1 - $timeend1;
+                                $timeresult2 = $timestart2 - $timeend2;
+
+                                if($timestart2 > 50){
+                                    $timestart2 = $timestart2 - 60;
+                                    $timeresult2 = $timestart2 - $timeend2;
+                                    
+                                  if(abs($timeresult2) > 60){
+                                      $timeresult2 = abs($timeresult2) - 60;
+                                    }
+                                  }
+                                if($timestart1 != $timeend1){
+                                    if($timeend1 > $timestart1){
+                                      $timeresult1 = $timeend1 - $timestart1;
+                                      $timeresult1 = $timeresult1 - 1 ;
+                                    }else {
+                                      $timeresult1 = $timestart1 - $timeend1;
+                                      $timeresult1 = $timeresult1 - 1 ;
+                                    }
+                                }
+                                if($timeresult1 < 0){
+                                    echo abs($timeresult1);
+                                    echo ":";
+                                } else{
+                                    echo $timeresult1;
+                                    echo ":";
+                                }
+                                if($timeresult2 < 0){
+                                    echo abs($timeresult2);
+                                }else{
+                                    echo $timeresult2;
+                                }
                             }
                         }
                     }
