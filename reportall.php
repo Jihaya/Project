@@ -711,7 +711,7 @@ tr:nth-child(even) {
     <?php
     if($value == "-"){
       echo "-";
-    }if(empty($arrcount2[count($temp)])){
+    }elseif(empty($arrcount2[count($temp)])){
       echo abs($c - 1);
     }elseif(!empty($arrcount2[count($temp)])){
       echo $c - 1;
@@ -753,8 +753,7 @@ tr:nth-child(even) {
     <?php
       if($value == "-"){
         echo "-";
-      }
-      if($str11[13] != "'Stop'"){
+      }elseif($str11[13] != "'Stop'"){
         echo $str1[13].$str1[14].$str1[15]." "."-"." "."Not the end";
       }else{
         echo $str1[13].$str1[14].$str1[15]."-".$str11[15].$str11[16].$str11[17];
@@ -765,8 +764,7 @@ tr:nth-child(even) {
     <?php
     if($value == "-"){
       echo "-";
-    }
-    if($str11[13] != "'Stop'"){
+    }elseif($str11[13] != "'Stop'"){
       echo "Not the end";
     }else{
       echo $result1.":".$result2;
@@ -780,8 +778,7 @@ tr:nth-child(even) {
 <?php
   if($value == "-"){
     echo "-";
-  }
-  if($c = 3){
+  }elseif($c = 3){
     if(!empty($arrcount2[count($temp)])){
       if($str22[13] != "'Stop'")
       { 
@@ -817,7 +814,7 @@ tr:nth-child(even) {
     <?php
     if($value2 == "-"){
       echo "-";
-    }if(empty($arrcount2II[count($tempII)])){
+    }elseif(empty($arrcount2II[count($tempII)])){
       echo abs($cII - 1);
     }elseif(!empty($arrcount2II[count($tempII)])){
       echo $cII - 1;
@@ -859,8 +856,7 @@ tr:nth-child(even) {
     <?php
       if($value2 == "-"){
         echo "-";
-      }
-      if($str11II[13] != "'Stop'"){
+      }elseif($str11II[13] != "'Stop'"){
         echo $str1II[13].$str1II[14].$str1II[15]." "."-"." "."Not the end";
       }else{
         echo $str1II[13].$str1II[14].$str1II[15]."-".$str11II[15].$str11II[16].$str11II[17];
@@ -871,7 +867,7 @@ tr:nth-child(even) {
     <?php
     if($value2 == "-"){
       echo "-";
-    }if($str11II[13] != "'Stop'"){
+    }elseif($str11II[13] != "'Stop'"){
       echo "Not the end";
     }else{
       echo $result1II.":".$result2II;
@@ -885,8 +881,7 @@ tr:nth-child(even) {
 <?php
   if($value2 == "-"){
     echo "-";
-  }
-  if($cII = 3){
+  }elseif($cII = 3){
     if(!empty($arrcount2II[count($tempII)])){
       if($str22II[13] != "'Stop'"){
         echo "<table>";
@@ -922,7 +917,7 @@ tr:nth-child(even) {
     <?php
     if($value3 == "-"){
       echo "-";
-    }if(empty($arrcount2III[count($tempIII)])){
+    }elseif(empty($arrcount2III[count($tempIII)])){
       echo abs($cIII - 1);
     }elseif(!empty($arrcount2III[count($tempIII)])){
       echo $cIII - 1;
@@ -964,8 +959,7 @@ tr:nth-child(even) {
     <?php
       if($value3 == "-"){
         echo "-";
-      }
-      if($str11III[13] != "'Stop'"){
+      }elseif($str11III[13] != "'Stop'"){
         echo $str1III[13].$str1III[14].$str1III[15]." "."-"." "."Not the end";
       }else{
         echo $str1III[13].$str1III[14].$str1III[15]."-".$str11III[15].$str11III[16].$str11III[17];
@@ -976,7 +970,7 @@ tr:nth-child(even) {
     <?php
     if($value3 == "-"){
       echo "-";
-    }if($str11III[13] != "'Stop'"){
+    }elseif($str11III[13] != "'Stop'"){
       echo "Not the end";
     }else{
       echo $result1III.":".$result2III;
@@ -990,8 +984,7 @@ tr:nth-child(even) {
 <?php
   if($value3 == "-"){
     echo "-";
-  }
-  if($cIII = 3){
+  }elseif($cIII = 3){
     if(!empty($arrcount2III[count($tempIII)])){
       if($str22III[13] != "'Stop'"){
         echo "<table>";
@@ -1027,7 +1020,7 @@ tr:nth-child(even) {
     <?php
     if($value4 == "-"){
       echo "-";
-    }if(empty($arrcount2IV[count($tempIV)])){
+    }elseif(empty($arrcount2IV[count($tempIV)])){
       echo abs($cIV - 1);
     }elseif(!empty($arrcount2IV[count($tempIV)])){
       echo $cIV - 1;
@@ -1069,8 +1062,7 @@ tr:nth-child(even) {
     <?php
       if($value4 == "-"){
         echo "-";
-      }
-      if($str11IV[13] != "'Stop'"){
+      }elseif($str11IV[13] != "'Stop'"){
         echo $str1IV[13].$str1IV[14].$str1IV[15]." "."-"." "."Not the end";
       }else{
         echo $str1IV[13].$str1IV[14].$str1IV[15]."-".$str11IV[15].$str11IV[16].$str11IV[17];
@@ -1081,8 +1073,7 @@ tr:nth-child(even) {
     <?php
     if($value4 == "-"){
       echo "-";
-    }
-    if($str11IV[13] != "'Stop'"){
+    }elseif($str11IV[13] != "'Stop'"){
       echo "Not the end";
     }else{
       echo $result1IV.":".$result2IV;
@@ -1096,8 +1087,7 @@ tr:nth-child(even) {
 <?php
   if($value4 == "-"){
     echo "-";
-  }
-  if($cIV = 3){
+  }elseif($cIV = 3){
     if(!empty($arrcount2IV[count($tempIV)])){
       if($str22IV[13] != "'Stop'")
       { 

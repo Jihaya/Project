@@ -201,7 +201,7 @@ if(empty($value)){
                         if(empty($arrcount2[count($temp)]))
                         {
                             if($str11[13] != "'Stop'"){
-                                echo $str11[13].$str11[14].$str11[15];
+                                echo "-";
                             }
                             else{
                                 echo $str11[15].$str11[16].$str11[17];
@@ -210,7 +210,7 @@ if(empty($value)){
                     }if(!empty($arrcount2[count($temp)]))
                     {
                         if($str22[13] != "'Stop'"){
-                            echo $str22[13].$str22[14].$str22[15];
+                            echo "-";
                         }
                         else{
                             echo $str22[15].$str22[16].$str22[17];
@@ -227,7 +227,7 @@ if(empty($value)){
                 }else if ($c = 2){
                     if(empty($arrcount2[count($temp)])){
                         if($str11[13] != "'Stop'"){
-                            echo "Not ending the transport";
+                            echo "-";
                         }elseif($str11[13] == "'Stop'"){
                             $strTime1 = $str1[13].$str1[14].$str1[15];
                             $timestart1 = intval($str1[13]);

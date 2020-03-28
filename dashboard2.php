@@ -417,7 +417,7 @@ setInterval(function () {
                 }else if ($c = 2){
                     if(empty($arrcount2[count($temp)])){
                         if($str11[13] != "'Stop'"){
-                            echo "Not ending the transport";
+                            echo "-";
                         }elseif($str11[13] == "'Stop'"){
                             $strTime1 = $str1[13].$str1[14].$str1[15];
                             $timestart1 = intval($str1[13]);
