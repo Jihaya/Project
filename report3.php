@@ -80,17 +80,39 @@ if(empty($value)){
     $strTime1 = $str1[13].$str1[14].$str1[15];
     $timestart1 = intval($str1[13]);
     $timestart2 = intval($str1[15]);
-
+    
+    if($str11[17] == 0){
+      $str111[17] = 60;
     $strTime2 = $str11[15].$str11[16].$str11[17];
     $timeend1 = intval($str11[15]);
-    $timeend2 = intval($str11[17]);
-
+    $timeend2 = intval($str111[17]);
+    
     $timeresult1 = $timestart1 - $timeend1;
     $timeresult2 = $timestart2 - $timeend2;
 
+    if($timestart2 > 50){
+      $timestart2 = $timestart2 - 60;
+      $timeresult2 = $timestart2 - $timeend2;
+      
+    if(abs($timeresult2) > 60){
+        $timeresult2 = abs($timeresult2) - 60;
+      }
+    }
+    
+    if($timestart1 != $timeend1)
+    {
+      if($timeend1 > $timestart1){
+        $timeresult1 = $timeend1 - $timestart1;
+        $timeresult1 = $timeresult1 - 1 ;
+      }else {
+        $timeresult1 = $timestart1 - $timeend1;
+        $timeresult1 = $timeresult1 - 1 ;
+      }
+    }
+                    
     if($timeresult1 < 0){
         $result1 = abs($timeresult1);
-    }else{
+    } else{
         $result1 = $timeresult1;
     }
     if($timeresult2 < 0){
@@ -98,8 +120,82 @@ if(empty($value)){
     }else{
         $result2 = $timeresult2;
     }
-}
+  }else{
+    $strTime2 = $str11[15].$str11[16].$str11[17];
+    $timeend1 = intval($str11[15]);
+    $timeend2 = intval($str11[17]);
+    
+    $timeresult1 = $timestart1 - $timeend1;
+    $timeresult2 = $timestart2 - $timeend2;
 
+    if($timestart2 > 50){
+      $timestart2 = $timestart2 - 60;
+      $timeresult2 = $timestart2 - $timeend2;
+      
+    if(abs($timeresult2) > 60){
+        $timeresult2 = abs($timeresult2) - 60;
+      }
+    }
+    
+    if($timestart1 != $timeend1)
+    {
+      if($timeend1 > $timestart1){
+        $timeresult1 = $timeend1 - $timestart1;
+        $timeresult1 = $timeresult1 - 1 ;
+      }else {
+        $timeresult1 = $timestart1 - $timeend1;
+        $timeresult1 = $timeresult1 - 1 ;
+      }
+    }
+                    
+    if($timeresult1 < 0){
+        $result1 = abs($timeresult1);
+    } else{
+        $result1 = $timeresult1;
+    }
+    if($timeresult2 < 0){
+        $result2 = abs($timeresult2);
+    }else{
+        $result2 = $timeresult2;
+    }$strTime2 = $str11[15].$str11[16].$str11[17];
+    $timeend1 = intval($str11[15]);
+    $timeend2 = intval($str11[17]);
+    
+    $timeresult1 = $timestart1 - $timeend1;
+    $timeresult2 = $timestart2 - $timeend2;
+
+    if($timestart2 > 50){
+      $timestart2 = $timestart2 - 60;
+      $timeresult2 = $timestart2 - $timeend2;
+      
+    if(abs($timeresult2) > 60){
+        $timeresult2 = abs($timeresult2) - 60;
+      }
+    }
+    
+    if($timestart1 != $timeend1)
+    {
+      if($timeend1 > $timestart1){
+        $timeresult1 = $timeend1 - $timestart1;
+        $timeresult1 = $timeresult1 - 1 ;
+      }else {
+        $timeresult1 = $timestart1 - $timeend1;
+        $timeresult1 = $timeresult1 - 1 ;
+      }
+    }
+                    
+    if($timeresult1 < 0){
+        $result1 = abs($timeresult1);
+    } else{
+        $result1 = $timeresult1;
+    }
+    if($timeresult2 < 0){
+        $result2 = abs($timeresult2);
+    }else{
+        $result2 = $timeresult2;
+    }
+  }
+}
   
   // หยุดหารอบสองค่าแรก
   foreach($value as $x=>$x_value){
@@ -165,22 +261,84 @@ if(empty($value)){
         $timestart12 = intval($c2[13]);
         $timestart22 = intval($c2[15]);
       
-        $strTime22 = $str22[15].$str22[16].$str22[17];
-        $timeend12 = intval($str22[15]);
-        $timeend22 = intval($str22[17]);
-      
-        $timeresult12 = $timestart12 - $timeend12;
-        $timeresult22 = $timestart22 - $timeend22;
-                        
-        if($timeresult12 < 0){
-            $result12 = abs($timeresult12);
-        } else{
-            $result12 = $timeresult12;
-        }
-        if($timeresult22 < 0){
-            $result22 = abs($timeresult22);
-        } else{
-            $result22 = $timeresult22;
+        if($str22[17] == 0){
+          $str222[17] = 60;
+
+          $strTime22 = $str22[15].$str22[16].$str22[17];
+          $timeend12 = intval($str22[15]);
+          $timeend22 = intval($str222[17]);
+
+          $timeresult12 = $timestart12 - $timeend12;
+          $timeresult22 = $timestart22 - $timeend22;
+
+          if($timestart22 > 50){
+            $timestart22 = $timestart22 - 60;
+            $timeresult22 = $timestart22 - $timeend22;
+            
+          if(abs($timeresult22) > 60){
+              $timeresult22 = abs($timeresult22) - 60;
+            }
+          }
+
+          if($timestart12 != $timeend12)
+          {
+            if($timeend12 > $timestart12){
+              $timeresult12 = $timeend12 - $timestart12;
+              $timeresult12 = $timeresult12 - 1 ;
+            }else {
+              $timeresult12 = $timestart12 - $timeend12;
+              $timeresult12 = $timeresult12 - 1 ;
+            }
+          }
+          
+          if($timeresult12 < 0){
+              $result12 = abs($timeresult12);
+          } else{
+              $result12 = $timeresult12;
+          }
+          if($timeresult2 < 0){
+              $result22 = abs($timeresult22);
+          } else{
+              $result22 = $timeresult22;
+          }
+        }else{
+          $strTime22 = $str22[15].$str22[16].$str22[17];
+          $timeend12 = intval($str22[15]);
+          $timeend22 = intval($str22[17]);
+
+          $timeresult12 = $timestart12 - $timeend12;
+          $timeresult22 = $timestart22 - $timeend22;
+
+          if($timestart22 > 50){
+            $timestart22 = $timestart22 - 60;
+            $timeresult22 = $timestart22 - $timeend22;
+            
+          if(abs($timeresult22) > 60){
+              $timeresult22 = abs($timeresult22) - 60;
+            }
+          }
+
+          if($timestart12 != $timeend12)
+          {
+            if($timeend12 > $timestart12){
+              $timeresult12 = $timeend12 - $timestart12;
+              $timeresult12 = $timeresult12 - 1 ;
+            }else {
+              $timeresult12 = $timestart12 - $timeend12;
+              $timeresult12 = $timeresult12 - 1 ;
+            }
+          }
+          
+          if($timeresult12 < 0){
+              $result12 = abs($timeresult12);
+          } else{
+              $result12 = $timeresult12;
+          }
+          if($timeresult2 < 0){
+              $result22 = abs($timeresult22);
+          } else{
+              $result22 = $timeresult22;
+          }
         }
       }
       if(count($temp2)) {
