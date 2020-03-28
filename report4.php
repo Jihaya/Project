@@ -254,7 +254,7 @@ tr:nth-child(even) {
     <?php
     if($value == "-"){
       echo "-";
-    }if(empty($arrcount2[count($temp)])){
+    }elseif(empty($arrcount2[count($temp)])){
       echo abs($c - 1);
     }elseif(!empty($arrcount2[count($temp)])){
       echo $c - 1;
@@ -296,8 +296,7 @@ tr:nth-child(even) {
     <?php
       if($value == "-"){
         echo "-";
-      }
-      if($str11[13] != "'Stop'"){
+      }elseif($str11[13] != "'Stop'"){
         echo $str1[13].$str1[14].$str1[15]." "."-"." "."Not the end";
       }else{
         echo $str1[13].$str1[14].$str1[15]."-".$str11[15].$str11[16].$str11[17];
@@ -308,8 +307,7 @@ tr:nth-child(even) {
     <?php
     if($value == "-"){
       echo "-";
-    }
-    if($str11[13] != "'Stop'"){
+    }elseif($str11[13] != "'Stop'"){
       echo "Not the end";
     }else{
       echo $result1.":".$result2;
@@ -323,8 +321,7 @@ tr:nth-child(even) {
 <?php
   if($value == "-"){
     echo "-";
-  }
-  if($c = 3){
+  }elseif($c = 3){
     if(!empty($arrcount2[count($temp)])){
       if($str22[13] != "'Stop'")
       { 
@@ -337,7 +334,7 @@ tr:nth-child(even) {
         echo "<table>";
         echo "<tr><th>Around</th><th>Average Temp</th><th>Aaverage humid</th><th>Transportation time</th><th>Time spent</th><th>Note</th></tr>";
         echo "<tr><td>2</td>"."<td>".number_format($averagetemp2, 2)."</td><td>".number_format($averagehumid2, 2)."</td><td>".
-        $c2[13].$c2[14].$c2[15]."-".$str22[15].$str22[16].$str22[17],"</td><td>".$result1.":".$result2."</td><td></td></tr>";
+        $c2[13].$c2[14].$c2[15]."-".$str22[15].$str22[16].$str22[17],"</td><td>".$result12.":".$result22."</td><td></td></tr>";
         echo "</table>";
       }
     }

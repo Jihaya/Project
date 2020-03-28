@@ -152,7 +152,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
     <div>
         <a target ="_blank" href="https://www.facebook.com/" class="fa fa-facebook"></a>
         <a target ="_blank" href="https://twitter.com/" class="fa fa-twitter"></a>
-        <a target ="_blank" href="https://gmail.    com/" class="fa fa-google"></a>
+        <a target ="_blank" href="https://gmail.com/" class="fa fa-google"></a>
     </div>
 </body>
 </html>

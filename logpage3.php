@@ -368,6 +368,7 @@ function toggleDataSeries(e){
   <body>
   <div class = "header"><img class = "logo" src="images/logo.png"></div>
   <ul>
+    <li><a class="active" href="home.php">Home</a></li>
     <li><a target ="_blank" href="report3.php">Report</a></li>
     <li style="float:right"><a href="dashboard1.php">Back</a></li>
   </ul>
