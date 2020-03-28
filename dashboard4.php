@@ -284,6 +284,7 @@ if(empty($value)){
         var options = {
           chart: {
             title: 'Temp & Humid',
+            subtitle: 'Unit',
           }
         };
 
@@ -323,22 +324,34 @@ setInterval(function () {
                 <br>
                   <table class="td1" name= "td1" id="tbl_Cars_list" border="1">
                     <tr>
-                      <td>Device</td>
-                      <td>Temp(°C)</td>
-                      <td>Humid(%)</td>
-                      <td>Time (Start)</td>
-                      <td>Time (Stop)</td>
-                      <td>Time used</td>
-                      <td>Status</td>
+                        <td>Around</td>
+                        <td>Device</td>
+                        <td>Temp(°C)</td>
+                        <td>Humid(%)</td>
+                        <td>Time (Start)</td>
+                        <td>Time (Stop)</td>
+                        <td>Time used</td>
+                        <td>Status</td>
                     </tr>
                     <td>
-                      <?php //device id
-                if($value == "-"){
-                    echo "-";
-                }else{
-                echo $str[1];
-                }
-            ?>
+                    <?php
+                    if($value == "-"){
+                        echo "-";
+                    }elseif(empty($arrcount2[count($temp)])){
+                        echo 1;
+                    }elseif(!empty($arrcount2[count($temp)])){
+                        echo 2;
+                    }
+                    ?>
+                    </td>
+                    <td>
+                    <?php //device id
+                        if($value == "-"){
+                            echo "-";
+                        }else{
+                        echo $str[1];
+                        }
+                    ?>
                     </td>
                     <td>
                       <?php //temp
@@ -392,15 +405,14 @@ setInterval(function () {
                         {
                             if($str11[13] != "'Stop'"){
                                 echo "-";
-                            }
-                            else{
-                                echo "-";
+                            }else{
+                                echo $str11[15].$str11[16].$str11[17];
                             }
                         }
                     }if(!empty($arrcount2[count($temp)]))
                     {
-                        if($str22[13] != "'Stop'"){
-                            echo $str22[13].$str22[14].$str22[15];
+                        if($str2[13] != "'Stop'"){
+                            echo "-";
                         }
                         else{
                             echo $str22[15].$str22[16].$str22[17];
@@ -416,7 +428,7 @@ setInterval(function () {
                 }else if ($c = 2){
                     if(empty($arrcount2[count($temp)])){
                         if($str11[13] != "'Stop'"){
-                            echo "Not ending the transport";
+                            echo "-";
                         }elseif($str11[13] == "'Stop'"){
                             $strTime1 = $str1[13].$str1[14].$str1[15];
                             $timestart1 = intval($str1[13]);
@@ -443,7 +455,7 @@ setInterval(function () {
                         }
                     }elseif(!empty($arrcount2[count($temp)])){
                         if($str22[13] != "'Stop'"){
-                            echo "Not ending the transport";
+                            echo "-";
                         }elseif($str22[13] == "'Stop'"){
                             $strTime1 = $str2[13].$str2[14].$str2[15];
                             $timestart1 = intval($str2[13]);
@@ -518,5 +530,6 @@ setInterval(function () {
                     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDZlLeEp_1W-pWTInUkU4YJEJxq8Kg86ds&callback=initMap"></script>
                   </div>
+                  <br><br>
                 </body>
               </html>

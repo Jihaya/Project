@@ -130,6 +130,7 @@ if(empty($value)){
 ?>
 <table class="td1" name= "td1" id="tbl_Cars_list" border="1">
         <tr>
+            <td>Around</td>
             <td>Device</td>
             <td>Temp(°C)</td>
             <td>Humid(%)</td>
@@ -138,6 +139,18 @@ if(empty($value)){
             <td>Time used</td>
             <td>Status</td>
         </tr>
+        
+            <td>
+                <?php
+                    if($value == "-"){
+                        echo "-";
+                    }elseif(empty($arrcount2[count($temp)])){
+                        echo 1;
+                    }elseif(!empty($arrcount2[count($temp)])){
+                        echo 2;
+                    }
+                ?>
+            </td>
             <td>
             <?php //device id
                 if($value == "-"){
@@ -201,7 +214,7 @@ if(empty($value)){
                         if(empty($arrcount2[count($temp)]))
                         {
                             if($str11[13] != "'Stop'"){
-                                echo $str11[13].$str11[14].$str11[15];
+                                echo "-";
                             }
                             else{
                                 echo $str11[15].$str11[16].$str11[17];
@@ -210,7 +223,7 @@ if(empty($value)){
                     }if(!empty($arrcount2[count($temp)]))
                     {
                         if($str22[13] != "'Stop'"){
-                            echo $str22[13].$str22[14].$str22[15];
+                            echo "-";
                         }
                         else{
                             echo $str22[15].$str22[16].$str22[17];
@@ -227,7 +240,7 @@ if(empty($value)){
                 }else if ($c = 2){
                     if(empty($arrcount2[count($temp)])){
                         if($str11[13] != "'Stop'"){
-                            echo "Not ending the transport";
+                            echo "-";
                         }elseif($str11[13] == "'Stop'"){
                             $strTime1 = $str1[13].$str1[14].$str1[15];
                             $timestart1 = intval($str1[13]);
@@ -254,7 +267,7 @@ if(empty($value)){
                         }
                     }elseif(!empty($arrcount2[count($temp)])){
                         if($str22[13] != "'Stop'"){
-                            echo "Not ending the transport";
+                            echo "-";
                         }elseif($str22[13] == "'Stop'"){
                             $strTime1 = $str2[13].$str2[14].$str2[15];
                             $timestart1 = intval($str2[13]);

@@ -89,16 +89,13 @@ if(empty($value)){
         $h_data = array("label"=> $timearr[$i], "y"=> $humidity[$i]);
         array_push($dataPoints2, $h_data);
     }	
-}
-?>
-<?php
+
     $temp = [];
     $humid = [];
     $c = 0;
     $arrcount = []; // หยุดที่ค่า Stop คึอ ตำแหน่งที่ 9 ค่าที่ 10
     $arrcount2 = [];
     $arrcount3 = [];
-    
     
     // รอบแรกที่จะหยุด
     foreach($value as $x=>$x_value){
@@ -115,8 +112,8 @@ if(empty($value)){
     $cut2arrcount = end($arrcount);
     $str1 = explode(' ',$cut1arrcount);
     $str11 = explode(' ',$cut2arrcount);
-    $lat1 = json_decode($str11[7]);
-    $long1 = json_decode($str11[9]);
+    $lat1 = json_decode($str1[7]);
+    $long1 = json_decode($str1[9]);
     $lat11 = json_decode($str11[7]);
     $long11 = json_decode($str11[9]);
     
@@ -143,31 +140,38 @@ if(empty($value)){
     if($strch[13] == "'Stop'"){
     
     }
+    if($c != 2){
+        $lat2 = "0";
+        $lat22 = "0";
+        $long2 = "0";
+        $long22 = "0";
+    }
     if($c == 2){
-    // รอบที่ 2
-    $arrstop = [];
-    if(empty($arrcount2[count($temp)])){
-        $lat2 = json_decode(0);
-        $long2 = json_decode(0);
-        $lat22 = json_decode(0);
-        $long22 = json_decode(0);
-    }elseif (!empty($arrcount2[count($temp)])) {
-        $c2 = explode(' ', $arrcount2[count($temp)]);
-        foreach($value as $x=>$x_value){
-            array_push($arrcount3, $x_value);
-            $str = explode(' ',$x_value);
-            for($i = 0; $i <= count($temp) -1; $i++){
-                unset($arrcount3[$i]);
+        // รอบที่ 2
+        $arrstop = [];
+        if(empty($arrcount2[count($temp)])){
+            $lat2 = json_decode(0);
+            $long2 = json_decode(0);
+            $lat22 = json_decode(0);
+            $long22 = json_decode(0);
+        }elseif (!empty($arrcount2[count($temp)])) {
+            $c2 = explode(' ', $arrcount2[count($temp)]);
+            foreach($value as $x=>$x_value){
+                array_push($arrcount3, $x_value);
+                $str = explode(' ',$x_value);
+                for($i = 0; $i <= count($temp) -1; $i++){
+                    unset($arrcount3[$i]);
+                }
             }
+            $cut1arrcount3 = current($arrcount3);
+            $cut2arrcount3 = end($arrcount3);
+            $str2 = explode(' ',$cut1arrcount3);
+            $str22 = explode(' ',$cut2arrcount3);
+            $lat2 = json_decode($str2[7]);
+            $long2 = json_decode($str2[9]);
+            $lat22 = json_decode($str22[7]);
+            $long22 = json_decode($str22[9]);
         }
-        $cut1arrcount3 = current($arrcount3);
-        $cut2arrcount3 = end($arrcount3);
-        $str2 = explode(' ',$cut1arrcount3);
-        $str22 = explode(' ',$cut2arrcount3);
-        $lat2 = json_decode($str2[7]);
-        $long2 = json_decode($str2[9]);
-        $lat22 = json_decode($str22[7]);
-        $long22 = json_decode($str22[9]);
     }
 }
 ?>
@@ -369,11 +373,18 @@ function toggleDataSeries(e){
     <li style="float:right"><a href="dashboard1.php">Back</a></li>
   </ul>
 <br><br>
+<h4>รอบขนส่งทั้งหมด</h4>
+<p>รอบเช้า : 4.00 - 12.00</p>
+<p>รอบเย็น : 17.00 - 21.00</p>
+<p align="left">Unit</p>
 <div id="chartContainer" style="height: 370px; width: 100%;"></div>
 <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<p>Time</p>
+<br>
 <p>*หากปรากฏ 'Stop' ด้านหน้าเวลา หมายถึงสิ้นสุดรอบการส่งในครั้งนั้น</p>
 <p>**หมายเลขด้านหน้า 'Stop' หมายถึงรอบการขนส่งที่สิ้นสุด</p>
-<br><br><br>
+<br>
+<br><br>
 
 <div id="map" style="margin:auto;width:600px;height:500px;"></div>
     <script>

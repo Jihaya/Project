@@ -81,24 +81,120 @@ if(empty($value)){
     $timestart1 = intval($str1[13]);
     $timestart2 = intval($str1[15]);
 
+    if($str11[17] == 0){
+      $str111[17] = 60;
     $strTime2 = $str11[15].$str11[16].$str11[17];
     $timeend1 = intval($str11[15]);
-    $timeend2 = intval($str11[17]);
-
+    $timeend2 = intval($str111[17]);
+    
     $timeresult1 = $timestart1 - $timeend1;
     $timeresult2 = $timestart2 - $timeend2;
+
+    if($timestart2 > 50){
+      $timestart2 = $timestart2 - 60;
+      $timeresult2 = $timestart2 - $timeend2;
+      
+    if(abs($timeresult2) > 60){
+        $timeresult2 = abs($timeresult2) - 60;
+      }
+    }
+    
+    if($timestart1 != $timeend1)
+    {
+      if($timeend1 > $timestart1){
+        $timeresult1 = $timeend1 - $timestart1;
+        $timeresult1 = $timeresult1 - 1 ;
+      }else {
+        $timeresult1 = $timestart1 - $timeend1;
+        $timeresult1 = $timeresult1 - 1 ;
+      }
+    }
                     
     if($timeresult1 < 0){
         $result1 = abs($timeresult1);
     } else{
         $result1 = $timeresult1;
-        // echo ".";
     }
     if($timeresult2 < 0){
         $result2 = abs($timeresult2);
-    } else{
+    }else{
         $result2 = $timeresult2;
     }
+  }else{
+    $strTime2 = $str11[15].$str11[16].$str11[17];
+    $timeend1 = intval($str11[15]);
+    $timeend2 = intval($str11[17]);
+    
+    $timeresult1 = $timestart1 - $timeend1;
+    $timeresult2 = $timestart2 - $timeend2;
+
+    if($timestart2 > 50){
+      $timestart2 = $timestart2 - 60;
+      $timeresult2 = $timestart2 - $timeend2;
+      
+    if(abs($timeresult2) > 60){
+        $timeresult2 = abs($timeresult2) - 60;
+      }
+    }
+    
+    if($timestart1 != $timeend1)
+    {
+      if($timeend1 > $timestart1){
+        $timeresult1 = $timeend1 - $timestart1;
+        $timeresult1 = $timeresult1 - 1 ;
+      }else {
+        $timeresult1 = $timestart1 - $timeend1;
+        $timeresult1 = $timeresult1 - 1 ;
+      }
+    }
+                    
+    if($timeresult1 < 0){
+        $result1 = abs($timeresult1);
+    } else{
+        $result1 = $timeresult1;
+    }
+    if($timeresult2 < 0){
+        $result2 = abs($timeresult2);
+    }else{
+        $result2 = $timeresult2;
+    }$strTime2 = $str11[15].$str11[16].$str11[17];
+    $timeend1 = intval($str11[15]);
+    $timeend2 = intval($str11[17]);
+    
+    $timeresult1 = $timestart1 - $timeend1;
+    $timeresult2 = $timestart2 - $timeend2;
+
+    if($timestart2 > 50){
+      $timestart2 = $timestart2 - 60;
+      $timeresult2 = $timestart2 - $timeend2;
+      
+    if(abs($timeresult2) > 60){
+        $timeresult2 = abs($timeresult2) - 60;
+      }
+    }
+    
+    if($timestart1 != $timeend1)
+    {
+      if($timeend1 > $timestart1){
+        $timeresult1 = $timeend1 - $timestart1;
+        $timeresult1 = $timeresult1 - 1 ;
+      }else {
+        $timeresult1 = $timestart1 - $timeend1;
+        $timeresult1 = $timeresult1 - 1 ;
+      }
+    }
+                    
+    if($timeresult1 < 0){
+        $result1 = abs($timeresult1);
+    } else{
+        $result1 = $timeresult1;
+    }
+    if($timeresult2 < 0){
+        $result2 = abs($timeresult2);
+    }else{
+        $result2 = $timeresult2;
+    }
+  }
 }
 
   
@@ -161,28 +257,90 @@ if(empty($value)){
       $str21 = explode(' ',$cut1arrcount3);
       $str22 = explode(' ',$cut2arrcount3);
       if($str22[13] == "'Stop'"){
-        $timeend = $str11[15].$str11[16].$str11[17];
-        $strTime1 = $str1[13].$str1[14].$str1[15];
-        $timestart1 = intval($str1[13]);
-        $timestart2 = intval($str1[15]);
+        $timeend2 = $str22[15].$str22[16].$str22[17];
+        $strTime12 = $c2[13].$c2[14].$c2[15];
+        $timestart12 = intval($c2[13]);
+        $timestart22 = intval($c2[15]);
       
-        $strTime2 = $str11[15].$str11[16].$str11[17];
-        $timeend1 = intval($str11[15]);
-        $timeend2 = intval($str11[17]);
-      
-        $timeresult1 = $timestart1 - $timeend1;
-        $timeresult2 = $timestart2 - $timeend2;
-                        
-        if($timeresult1 < 0){
-            $result1 = abs($timeresult1);
-        } else{
-            $result1 = $timeresult1;
-            // echo ".";
+        if($str22[17] == 0){
+          $str222[17] = 60;
+
+          $strTime22 = $str22[15].$str22[16].$str22[17];
+          $timeend12 = intval($str22[15]);
+          $timeend22 = intval($str222[17]);
+
+          $timeresult12 = $timestart12 - $timeend12;
+          $timeresult22 = $timestart22 - $timeend22;
+
+          if($timestart22 > 50){
+            $timestart22 = $timestart22 - 60;
+            $timeresult22 = $timestart22 - $timeend22;
+            
+          if(abs($timeresult22) > 60){
+              $timeresult22 = abs($timeresult22) - 60;
+            }
+          }
+
+          if($timestart12 != $timeend12)
+          {
+            if($timeend12 > $timestart12){
+              $timeresult12 = $timeend12 - $timestart12;
+              $timeresult12 = $timeresult12 - 1 ;
+            }else {
+              $timeresult12 = $timestart12 - $timeend12;
+              $timeresult12 = $timeresult12 - 1 ;
+            }
+          }
+          
+          if($timeresult12 < 0){
+              $result12 = abs($timeresult12);
+          } else{
+              $result12 = $timeresult12;
+          }
+          if($timeresult2 < 0){
+              $result22 = abs($timeresult22);
+          } else{
+              $result22 = $timeresult22;
+          }
         }
-        if($timeresult2 < 0){
-            $result2 = abs($timeresult2);
-        } else{
-            $result2 = $timeresult2;
+        else{
+          $strTime22 = $str22[15].$str22[16].$str22[17];
+          $timeend12 = intval($str22[15]);
+          $timeend22 = intval($str22[17]);
+
+          $timeresult12 = $timestart12 - $timeend12;
+          $timeresult22 = $timestart22 - $timeend22;
+
+          if($timestart22 > 50){
+            $timestart22 = $timestart22 - 60;
+            $timeresult22 = $timestart22 - $timeend22;
+            
+          if(abs($timeresult22) > 60){
+              $timeresult22 = abs($timeresult22) - 60;
+            }
+          }
+
+          if($timestart12 != $timeend12)
+          {
+            if($timeend12 > $timestart12){
+              $timeresult12 = $timeend12 - $timestart12;
+              $timeresult12 = $timeresult12 - 1 ;
+            }else {
+              $timeresult12 = $timestart12 - $timeend12;
+              $timeresult12 = $timeresult12 - 1 ;
+            }
+          }
+          
+          if($timeresult12 < 0){
+              $result12 = abs($timeresult12);
+          } else{
+              $result12 = $timeresult12;
+          }
+          if($timeresult2 < 0){
+              $result22 = abs($timeresult22);
+          } else{
+              $result22 = $timeresult22;
+          }
         }
       }
       if(count($temp2)) {
@@ -202,7 +360,7 @@ if(empty($value)){
 <!DOCTYPE html>
 <html>
 <head>
-<title>PDF</title>
+<title>Device 4</title>
 <link href="https://fonts.googleapis.com/css?family=Sarabun&display=swap" rel="stylesheet">
 <style>
 body {
@@ -238,17 +396,11 @@ tr:nth-child(even) {
 <h3>Issue date : <?php $date = new DateTime("now",  new DateTimeZone('Asia/Bangkok') );
             echo $date->format("d/m/Y");?> &nbsp; Time : <?php echo $date->format("H:i");?></h3>
 <hr>
-<h3>Delivery cycle :
-<?php
-  if(empty($arrcount2[count($temp)])){
-    echo $c = $c - 1;
-  }elseif(!empty($arrcount2[count($temp)])){
-    echo $c;
-} ?> around</h3>
+<h3>Device 4</h3>
 <br><br>
 <table>
   <tr>
-    <th>Deive</th>
+    <th>Around</th>
     <th>Average Temp</th>
     <th>Aaverage humid</th>
     <th>Transportation time</th>
@@ -257,7 +409,16 @@ tr:nth-child(even) {
   </tr>
   <tr>
     <td>
-    <?php echo $str[1] ?></td>
+    <?php
+    if($value == "-"){
+      echo "-";
+    }elseif(empty($arrcount2[count($temp)])){
+      echo abs($c - 1);
+    }elseif(!empty($arrcount2[count($temp)])){
+      echo $c - 1;
+    }
+    ?>
+    </td>
     <td>
     <?php //temp
       if($value == "-"){
@@ -291,24 +452,49 @@ tr:nth-child(even) {
     </td>
     <td>
     <?php
-      echo $str1[13].$str1[14].$str1[15]."-".$str11[15].$str11[16].$str11[17];
+      if($value == "-"){
+        echo "-";
+      }elseif($str11[13] != "'Stop'"){
+        echo $str1[13].$str1[14].$str1[15]." "."-"." "."Not the end";
+      }else{
+        echo $str1[13].$str1[14].$str1[15]."-".$str11[15].$str11[16].$str11[17];
+      }
     ?>
     </td>
     <td>
-    <?php echo $result1.":".$result2; ?>
+    <?php
+    if($value == "-"){
+      echo "-";
+    }elseif($str11[13] != "'Stop'"){
+      echo "Not the end";
+    }else{
+      echo $result1.":".$result2;
+    }
+    ?>
     </td>
-    <td><p>Around 1</p></td>
+    <td></td>
   </tr>
 </table>
 <br><br>
 <?php
-  if($c = 3){
+  if($value == "-"){
+    echo "-";
+  }elseif($c = 3){
     if(!empty($arrcount2[count($temp)])){
-      echo "<table>";
-      echo "<tr><th>Deive</th><th>Average Temp</th><th>Aaverage humid</th><th>Transportation time</th><th>Time spent</th><th>Note</th></tr>";
-      echo "<tr><td>".$str[1]."</td>"."<td>".number_format($averagetemp2, 2)."</td><td>".number_format($averagehumid2, 2)."</td><td>".
-      $c2[13].$c2[14].$c2[15]."-".$str22[15].$str22[16].$str22[17]."</td><td>".$result1.":".$result2."</td><td><p>Around 2</p></td></tr>";
-      echo "</table>";
+      if($str22[13] != "'Stop'")
+      { 
+        echo "<table>";
+        echo "<tr><th>Around</th><th>Average Temp</th><th>Aaverage humid</th><th>Transportation time</th><th>Time spent</th><th>Note</th></tr>";
+        echo "<tr><td>2</td>"."<td>".number_format($averagetemp2, 2)."</td><td>".number_format($averagehumid2, 2)."</td><td>".
+        $c2[13].$c2[14].$c2[15]."-"."Not the end","</td><td>"."Not the end"."</td><td></td></tr>";
+        echo "</table>";
+      }else{
+        echo "<table>";
+        echo "<tr><th>Around</th><th>Average Temp</th><th>Aaverage humid</th><th>Transportation time</th><th>Time spent</th><th>Note</th></tr>";
+        echo "<tr><td>2</td>"."<td>".number_format($averagetemp2, 2)."</td><td>".number_format($averagehumid2, 2)."</td><td>".
+        $c2[13].$c2[14].$c2[15]."-".$str22[15].$str22[16].$str22[17],"</td><td>".$result12.":".$result22."</td><td></td></tr>";
+        echo "</table>";
+      }
     }
   }
 ?>
@@ -321,8 +507,8 @@ tr:nth-child(even) {
 <?php
 $html = ob_get_contents();
 $mpdf->WriteHTML($html);
-$mpdf->Output("report/Report.pdf");
+$mpdf->Output("report/Report4.pdf");
 ob_end_flush()
 ?>
 <br>
-<a href="report/Report.pdf">คลิกที่นี้</a>
+<a href="report/Report4.pdf">PDF File</a>

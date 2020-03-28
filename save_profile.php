@@ -9,7 +9,7 @@
 	include('config.php');
 	
 	$sql = "UPDATE users SET fname = '".trim($_POST['fname'])."', lname = '".trim($_POST['lname'])."'
-	, address = '".trim($_POST['address'])."', tel = '".trim($_POST['tel'])."' WHERE id = '".$_SESSION["id"]."' ";
+	, address = '".trim($_POST['address'])."', tel = '".trim($_POST['tel'])."', email = '".trim($_POST['email'])."' WHERE id = '".$_SESSION["id"]."' ";
 	$result = mysqli_query($link, $sql) or die ("Error in query: $sql " . mysqli_error());
 	
     echo "Save Completed!<br>";
